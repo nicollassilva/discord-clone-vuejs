@@ -11191,17 +11191,21 @@ body {
   margin-bottom: 3px;
 }
 
-.column-properties .properties-navigation-me .button:hover {
+.column-properties .properties-navigation-me .button:hover,
+.column-properties .properties-navigation-me .button.active {
   background-color: rgba(255, 255, 255, 0.03);
   cursor: pointer;
 }
 
 .column-properties .properties-navigation-me .button:hover .icon svg,
-.column-properties .properties-navigation-me .button:hover .infos span {
+.column-properties .properties-navigation-me .button:hover .infos span,
+.column-properties .properties-navigation-me .button.active .icon svg,
+.column-properties .properties-navigation-me .button.active .infos span {
   color: white;
 }
 
-.column-properties .properties-navigation-me .button:hover i.fa-times {
+.column-properties .properties-navigation-me .button:hover i.fa-times,
+.column-properties .properties-navigation-me .button.active i.fa-times {
   visibility: visible;
 }
 
@@ -11518,6 +11522,10 @@ body {
   background-color: #36393F;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   position: relative;
+}
+
+.strikethrough-1n4ekb {
+  color: #F04747;
 }
 
 .bs-tooltip-top .tooltip-inner,

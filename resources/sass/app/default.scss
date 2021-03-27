@@ -217,7 +217,8 @@ body {
         padding: 2.5px 5px;
         margin-bottom: 3px;
 
-        &:hover {
+        &:hover,
+        &.active {
             background-color: rgba(255, 255, 255, .03);
             cursor: pointer;
 
@@ -543,3 +544,5 @@ body {
         position: relative;
     }
 }
+
+.strikethrough-1n4ekb { color: $dDanger }

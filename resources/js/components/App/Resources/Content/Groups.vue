@@ -72,6 +72,10 @@ export default {
                 page: 'group',
                 data: group
             })
+            this.changeBody('group', group)
+        },
+        changeBody(type, data) {
+            window.eventBus.$emit('changeBody', { type, data })
         }
     }
 }

@@ -3,8 +3,7 @@
         <ColumnGroups></ColumnGroups>
         <ColumnProperties></ColumnProperties>
         <BodyApplication></BodyApplication>
-        <GroupsMenuHandle></GroupsMenuHandle>
-        <UsersMenuHandle></UsersMenuHandle>
+        <MouseMenuHandle></MouseMenuHandle>
     </div>
 </template>
 <script>
@@ -12,12 +11,11 @@
 import ColumnGroups from './Resources/ColumnGroups.vue'
 import ColumnProperties from './Resources/ColumnProperties.vue'
 import BodyApplication from './Resources/BodyApplication.vue'
-import GroupsMenuHandle from '../Helper/MenuMouse/GroupsMenuHandle.vue'
-import UsersMenuHandle from '../Helper/MenuMouse/UsersMenuHandle.vue'
+import MouseMenuHandle from '../Helper/MenuMouse/MouseMenuHandle.vue'
 
 export default {
     components: {
-        ColumnGroups, ColumnProperties, BodyApplication, GroupsMenuHandle, UsersMenuHandle
+        ColumnGroups, ColumnProperties, BodyApplication, MouseMenuHandle
     }
 }
 </script>

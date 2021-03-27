@@ -6,11 +6,16 @@
 
 require('./bootstrap');
 
+import SvgHandle from './components/Helper/SvgHandle'
+import AudioHandle from './components/Helper/AudioHandle'
+
 /**
  * Globals variables
  */
 
 window.Vue = require('vue').default
+window.svgHandle = SvgHandle
+window.audioHandle = AudioHandle
 window.eventBus = new Vue()
 window.myUser = {
     id: 1,
@@ -42,6 +47,13 @@ const app = new Vue({
 });
 
 /**
+ * Global variables
+ */
+
+const buttons = document.querySelectorAll('.rounded-icon')
+const menuHandle = document.querySelectorAll('.properties-navigation-me .button')
+
+/**
  * Functions
  */
 
@@ -55,6 +67,25 @@ function removeActiveButton() {
         if(element.classList.contains('active')) {
             element.classList.remove('active')
         }
+    })
+}
+
+function removeActiveMenuHandle() {
+    menuHandle.forEach(element => {
+        if(element.classList.contains('active')) {
+            element.classList.remove('active')
+        }
+    })
+}
+
+function menuHandleActions() {
+    menuHandle.forEach(element => {
+        element.addEventListener('click', function(e) {
+            if(!element.classList.contains('active')) {
+                removeActiveMenuHandle()
+                element.classList.add('active')
+            }
+        })
     })
 }
 
@@ -102,15 +133,15 @@ $('body').tooltip({
     html: true,
     boundary: 'window'
 });
+
 menuToggle()
+menuHandleActions()
 
 document.addEventListener('contextmenu', event => { eventPreventDefault(event) })
 
 document.addEventListener('click', _ => {
     closeMenu()
 })
-
-const buttons = document.querySelectorAll('.rounded-icon')
 
 buttons.forEach(element => {
     element.addEventListener('click', function() {
