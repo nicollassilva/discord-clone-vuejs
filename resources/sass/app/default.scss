@@ -1,0 +1,545 @@
+body {
+    background-color: $dBackground !important;
+    font-family: 'Oxanium', cursive;
+    position: relative;
+    overflow: hidden;
+}
+
+.column-groups {
+    width: 72px;
+    height: 100vh;
+    position: relative;
+    float: left;
+    padding: 7px 0;
+    overflow: auto;
+}
+
+::-webkit-scrollbar { display: none; }
+
+.flex-column {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rounded-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: $dbackgroundApplication;
+    margin-bottom: 7.5px;
+    transition: all .2s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 60px;
+    position: relative;
+}
+
+.rounded-icon::before {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 0;
+    top: 24px;
+    left: -17px;
+    background-color: none;
+    border-radius: 10px;
+    transition: all .2s;
+}
+
+.rounded-icon.active::before {
+    top: 4px;
+    height: 40.5px;
+    background-color: #eee;
+}
+
+.rounded-icon svg { color: white; }
+.rounded-icon.intuitive svg { color: $dSuccess; }
+
+.rounded-icon:last-of-type { margin-bottom: 0; }
+.rounded-icon:hover { border-radius: 35%; cursor: pointer; }
+
+.rounded-icon.icon-me:hover,
+.rounded-icon.active { background-color: $dPurple; border-radius: 35%; }
+
+.rounded-icon.intuitive:hover { background-color: $dSuccess; }
+.rounded-icon.intuitive:hover svg { color: white }
+
+.column-groups .navigation-me,
+.column-groups .navigation-groups {
+    width: 100%;
+    min-height: 55px;
+    float: left;
+    position: relative;
+    padding: 5px 0;
+}
+
+.column-groups .navigation-groups {
+    margin-top: 7.5px;
+}
+
+.column-groups .navigation-me::before {
+    content: '';
+    position: absolute;
+    width: 32.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, .05);
+    height: 2px;
+    border-radius: 5px;
+    bottom: -5px;
+}
+
+.menuMouseAction {
+    min-width: 210px;
+    min-height: 200px;
+    background-color: $dBackgroundMenuActionMouse;
+    position: absolute;
+    padding: 7px;
+    z-index: 999;
+    border-radius: 5px;
+}
+
+.menuMouseAction li.menuOption {
+    width: 100%;
+    height: 31px;
+    list-style: none;
+    color: rgba(255, 255, 255, .6);
+    margin-bottom: 1px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 2px;
+}
+
+.menuMouseAction li.menuOption.disabled {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.menuMouseAction li.menuOption:not(.disabled):hover {
+    background-color: $dPurpleHover;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menuMouseAction li.menuOption.menuLink { color: $dPurpleHover; }
+.menuMouseAction li.menuOption.menuDanger { color: $dDanger; }
+
+.menuMouseAction li.menuOption.menuDanger:hover { background-color: $dDanger; }
+
+.menuMouseAction .separator {
+    width: 95%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, .05);
+    margin: 5px 0;
+    margin-left: 2.5%;
+    position: relative;
+}
+
+.column-properties {
+    width: 240px;
+    height: 100vh;
+    background-color: $dBackgroundProperties;
+    float: left;
+    position: relative;
+}
+
+.column-properties .top-handle {
+    width: 100%;
+    height: 48px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.column-properties .top-handle .search-friends {
+    width: 92%;
+    height: 28px;
+    background-color: $dBackground;
+    margin-top: 10px;
+    border-radius: 3px;
+    position: relative;
+    color: rgba(255, 255, 255, .3);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .3px;
+    padding-top: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.column-properties .top-handle .group-name {
+    flex-direction: row;
+    width: 240px;
+    height: 48px;
+    position: relative;
+
+    &:hover {
+        background-color: $dBackgroundGroupNameHover;
+        cursor: pointer;
+    }
+}
+
+.column-properties .top-handle .group-name span {
+    font-weight: 600;
+    color: white;
+    font-size: 15px;
+    padding: 13px 5px 0 15px;
+    width: calc(100% - 50px);
+    height: 48px;
+    float: left;
+}
+
+.column-properties .top-handle .group-name .icon {
+    width: 50px;
+    height: 48px;
+
+    i {
+        color:rgba(255, 255, 255, .6)
+    }
+}
+
+.column-properties .properties-navigation-me {
+    width: 100%;
+    height: calc(100vh - 48px);
+    position: relative;
+    padding: 10px 10px 50px 10px;
+    overflow-y: auto;
+
+    .button {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        border-radius: 5px;
+        padding: 2.5px 5px;
+        margin-bottom: 3px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, .03);
+            cursor: pointer;
+
+            .icon svg,
+            .infos span {
+                color: white;
+            }
+
+            i.fa-times {
+                visibility: visible;
+            }
+        }
+
+        .icon {
+            width: 32.5px;
+            height: 32.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            float: left;
+            margin-right: 12px;
+            margin-top: 1px;
+
+            &.user {
+                position: relative;
+
+                .status {
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    background-color: $dBackgroundProperties;
+                    border-radius: 50%;
+                    right: -2px;
+                    bottom: -2px;
+
+                    &.online,
+                    &.absent,
+                    &.offline,
+                    &.busy {
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 10px;
+                            height: 10px;
+                            background-color: $dSuccess;
+                            border-radius: 50%;
+                            right: 2px;
+                            bottom: 2px;
+                            z-index: 2;
+                        }
+
+                    &.absent {
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background-color: $dBackgroundProperties;
+                            right: 5px;
+                            bottom: 5px;
+                            z-index: 5;
+                        }
+
+                        &::before {
+                            background-color: $dWarning;
+                        }
+                    }
+
+                    &.busy {
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 7.5px;
+                            height: 3px;
+                            border-radius: 50%;
+                            background-color: $dBackgroundProperties;
+                            right: 3px;
+                            bottom: 5.5px;
+                            z-index: 5;
+                        }
+
+                        &::before {
+                            background-color: $dDanger;
+                        }
+                    }
+    
+                    }
+                }
+
+            }
+
+            svg {
+                color: rgba(255, 255, 255, .4);
+            }
+        }
+
+        .infos {
+            width: calc(100% - 47px);
+            height: 35px;
+            float: right;
+
+            span {
+                width: 100%;
+                display: flex;
+                font-size: 14px;
+                font-weight: 400;
+                justify-content: flex-start;
+                align-items: center;
+                color: rgba(255, 255, 255, .4);
+
+                &:first-of-type {
+                    font-size: 15px;
+                }
+
+                &:nth-child(even) {
+                    font-size: 10px;
+                    margin-top: -2px;
+                }
+            }
+        }
+
+        i.fa-times {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            color: rgba(255, 255, 255, .4);
+            padding: 5px;
+            background-color: #34373C;
+            visibility: hidden;
+            font-size: 17px;
+
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .separator-property {
+        width: 100%;
+        height: 25px;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        padding: 3px 10px 0 8px;
+        font-size: 11px;
+        letter-spacing: .5px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, .4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            color: white;
+        }
+        .icon {
+            cursor: pointer;
+
+            i {
+                color: rgba(255, 255, 255, .7);
+            }
+        }
+    }
+
+    .popup-me {
+        width: 240px;
+        height: 50px;
+        background-color: $dBackgroundPopupMe;
+        position: fixed;
+        bottom: 0;
+        left: 72px;
+        z-index: 10;
+        color: white;
+        padding: 10px 0 10px 10px;
+        cursor: pointer;
+
+        .avatar {
+            width: 32.5px;
+            height: 32.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            float: left;
+            margin-right: 7.5px;
+            position: relative;
+
+            .status {
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                background-color: $dBackgroundProperties;
+                border-radius: 50%;
+                right: -2px;
+                bottom: -2px;
+
+                &.online,
+                &.absent,
+                &.offline,
+                &.busy {
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        background-color: $dSuccess;
+                        border-radius: 50%;
+                        right: 2px;
+                        bottom: 2px;
+                        z-index: 2;
+                    }
+
+                &.absent {
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background-color: $dBackgroundProperties;
+                        right: 5px;
+                        bottom: 5px;
+                        z-index: 5;
+                    }
+
+                    &::before {
+                        background-color: $dWarning;
+                    }
+                }
+
+                &.busy {
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 7.5px;
+                        height: 3px;
+                        border-radius: 50%;
+                        background-color: $dBackgroundProperties;
+                        right: 3px;
+                        bottom: 5.5px;
+                        z-index: 5;
+                    }
+
+                    &::before {
+                        background-color: $dDanger;
+                    }
+                }
+
+                }
+            }
+        }
+
+        .info {
+            width: 90px;
+            height: 30px;
+            float: left;
+            position: relative;
+            margin-top: 1px;
+
+            span {
+                width: 100%;
+                float: left;
+                height: 30px;
+                line-height: 15px;
+                font-size: 11px;
+                color: rgba(255, 255, 255, .6);
+
+                b {
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: white;
+                }
+            }
+        }
+
+        .buttons {
+            width: calc(100% - 130px);
+            height: 30px;
+            float: right;
+            margin-top: -2px;
+
+            button {
+                width: 31px;
+                height: 32px;
+                background: none;
+                border: none;
+                float: left;
+
+                svg {
+                    color: rgba(255, 255, 255, .6);
+                }
+            }
+        }
+    }
+}
+
+.body-application {
+    width: calc(100vw - 312px);
+    height: 100vh;
+    position: relative;
+    background-color: $dbackgroundApplication;
+    float: right;
+
+    .topbar {
+        width: 100%;
+        height: 48px;
+        background-color: $dbackgroundApplication;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        position: relative;
+    }
+}
