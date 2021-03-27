@@ -4,7 +4,7 @@
             <div class="search-friends flex-column justify-content-center">Encontre ou comece uma conversa</div>
         </div>
         <div class="properties-navigation-me">
-            <Button>
+            <Button active>
                 <span slot="icon" v-html="svg.friends"></span>
                 <template v-slot:info>
                     <span class="text-truncate">Amigos</span>
@@ -66,7 +66,7 @@ export default {
                     id: 1,
                     name: 'Nícollas',
                     image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
-                    status: 'absent'
+                    status: 'busy'
                 },
                 {
                     id: 2,

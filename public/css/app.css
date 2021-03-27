@@ -11524,6 +11524,199 @@ body {
   position: relative;
 }
 
+.body-application .topbar .column-info {
+  width: calc(100% - 600px);
+  height: 48px;
+  position: relative;
+  float: left;
+  padding: 12px 0 0 16px;
+}
+
+.body-application .topbar .column-info span.icon-svg {
+  margin-right: 8px;
+  float: left;
+}
+
+.body-application .topbar .column-info span.icon-svg svg {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.body-application .topbar .column-info .name {
+  font-size: 15px;
+  color: white;
+  font-weight: 600;
+  margin-top: 1px;
+  position: relative;
+  float: left;
+}
+
+.body-application .topbar .column-info .name .status {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #36393F;
+  right: -18px;
+  bottom: 6px;
+}
+
+.body-application .topbar .column-info .name .status.online::before,
+.body-application .topbar .column-info .name .status.absent::before,
+.body-application .topbar .column-info .name .status.offline::before,
+.body-application .topbar .column-info .name .status.busy::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #43B581;
+  border-radius: 50%;
+  right: 2px;
+  bottom: 2px;
+  z-index: 2;
+}
+
+.body-application .topbar .column-info .name .status.online.absent::after,
+.body-application .topbar .column-info .name .status.absent.absent::after,
+.body-application .topbar .column-info .name .status.offline.absent::after,
+.body-application .topbar .column-info .name .status.busy.absent::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #36393F;
+  right: 5px;
+  bottom: 5px;
+  z-index: 5;
+}
+
+.body-application .topbar .column-info .name .status.online.absent::before,
+.body-application .topbar .column-info .name .status.absent.absent::before,
+.body-application .topbar .column-info .name .status.offline.absent::before,
+.body-application .topbar .column-info .name .status.busy.absent::before {
+  background-color: #FAA61A;
+}
+
+.body-application .topbar .column-info .name .status.online.busy::after,
+.body-application .topbar .column-info .name .status.absent.busy::after,
+.body-application .topbar .column-info .name .status.offline.busy::after,
+.body-application .topbar .column-info .name .status.busy.busy::after {
+  content: "";
+  position: absolute;
+  width: 7.5px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #2F3136;
+  right: 3px;
+  bottom: 5.5px;
+  z-index: 5;
+}
+
+.body-application .topbar .column-info .name .status.online.busy::before,
+.body-application .topbar .column-info .name .status.absent.busy::before,
+.body-application .topbar .column-info .name .status.offline.busy::before,
+.body-application .topbar .column-info .name .status.busy.busy::before {
+  background-color: #F04747;
+}
+
+.body-application .topbar .column-buttons {
+  min-width: 400px;
+  max-width: 600px;
+  height: 48px;
+  position: relative;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-application .topbar .column-buttons .button {
+  height: 24px;
+  width: auto;
+  flex: 0 0 auto;
+  margin: 0 8px;
+  position: relative;
+}
+
+.body-application .topbar .column-buttons .button svg {
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.body-application .topbar .column-buttons .button svg:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.body-application .topbar .column-buttons .search {
+  background-color: #202225;
+  width: 144px;
+  height: 24px;
+  margin: 0 8px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.body-application .topbar .column-buttons .search input {
+  width: 100%;
+  height: 24px;
+  background-color: transparent;
+  border: transparent;
+  padding: 2.5px 15px 0 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.body-application .topbar .column-buttons .search input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.body-application .topbar .column-buttons .search input:-ms-input-placeholder,
+.body-application .topbar .column-buttons .search input::-webkit-input-placeholder,
+.body-application .topbar .column-buttons .search input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.body-application .topbar .column-buttons .search i {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+}
+
+.body-application .topbar .column-buttons .search i svg {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.body-application .body-conversation {
+  width: 100%;
+  height: calc(100% - 48px);
+  position: relative;
+}
+
+.body-application .body-conversation .conversation {
+  width: 100%;
+  height: calc(100% - calc(48px - 75px));
+  position: relative;
+  overflow-y: auto;
+}
+
+.body-application .body-conversation .incoming-message {
+  width: 100%;
+  height: 75px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 8px 4px;
+}
+
+.body-application .body-conversation .incoming-message .input-area {
+  width: calc(100% - 25px);
+  margin-left: 12.5px;
+  height: 43px;
+  border-radius: 7px;
+  background-color: #40444b;
+}
+
 .strikethrough-1n4ekb {
   color: #F04747;
 }

@@ -4,7 +4,7 @@
         :data-menu="[menu ? menu : '']">
         <div class="icon"
             :style="[avatar ? { 'background-image': `url('${avatar}')` } : '']"
-            :class="[avatar ? 'user' : '']"
+            :class="[[avatar ? 'user' : ''], [active ? 'active' : '']]"
         >
             <slot name="icon"></slot>
             <div class="status"
@@ -25,7 +25,8 @@ export default {
     props: {
         avatar: String,
         status: String,
-        menu: String
+        menu: String,
+        active: Boolean
     },
     methods: {
         getStatusTitle() {

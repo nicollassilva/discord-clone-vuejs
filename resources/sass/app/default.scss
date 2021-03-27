@@ -542,6 +542,195 @@ body {
         background-color: $dbackgroundApplication;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
         position: relative;
+
+        .column-info {
+            width: calc(100% - 600px);
+            height: 48px;
+            position: relative;
+            float: left;
+            padding: 12px 0 0 16px;
+
+            span.icon-svg {
+                margin-right: 8px;
+                float: left;
+
+                svg {
+                    color: rgba(255, 255, 255, .3)
+                }
+            }
+
+            .name {
+                font-size: 15px;
+                color: white;
+                font-weight: 600;
+                margin-top: 1px;
+                position: relative;
+                float: left;
+
+                .status {
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: $dbackgroundApplication;
+                    right: -18px;
+                    bottom: 6px;
+    
+                    &.online,
+                    &.absent,
+                    &.offline,
+                    &.busy {
+    
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 10px;
+                            height: 10px;
+                            background-color: $dSuccess;
+                            border-radius: 50%;
+                            right: 2px;
+                            bottom: 2px;
+                            z-index: 2;
+                        }
+    
+                    &.absent {
+    
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background-color: $dbackgroundApplication;
+                            right: 5px;
+                            bottom: 5px;
+                            z-index: 5;
+                        }
+    
+                        &::before {
+                            background-color: $dWarning;
+                        }
+                    }
+    
+                    &.busy {
+    
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 7.5px;
+                            height: 3px;
+                            border-radius: 50%;
+                            background-color: $dBackgroundProperties;
+                            right: 3px;
+                            bottom: 5.5px;
+                            z-index: 5;
+                        }
+    
+                        &::before {
+                            background-color: $dDanger;
+                        }
+                    }
+    
+                    }
+                }
+            }
+
+        }
+
+        .column-buttons {
+            min-width: 400px;
+            max-width: 600px;
+            height: 48px;
+            position: relative;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .button {
+                height: 24px;
+                width: auto;
+                flex: 0 0 auto;
+                margin: 0 8px;
+                position: relative;
+                
+                svg {
+                    color: rgba(255, 255, 255, .6);
+                    cursor: pointer;
+
+                    &:hover {
+                        color: rgba(255, 255, 255, .8);
+                    }
+                }
+            }
+
+            .search {
+                background-color: $dBackground;
+                width: 144px;
+                height: 24px;
+                margin: 0 8px;
+                border-radius: 4px;
+                position: relative;
+
+                input {
+                    width: 100%;
+                    height: 24px;
+                    background-color: transparent;
+                    border: transparent;
+                    padding: 2.5px 15px 0 5px;
+                    color: white;
+                    font-size: 12px;
+                    font-weight: 600;
+
+                    &:-ms-input-placeholder,
+                    &::-webkit-input-placeholder,
+                    &::placeholder {
+                        color: rgba(255, 255, 255, .4);
+                    }
+                }
+
+                i {
+                    position: absolute;
+                    right: 5px;
+                    bottom: 0;
+
+                    svg {
+                        color: rgba(255, 255, 255, .4);
+                    }
+                }
+
+            }
+        }
+    }
+
+    .body-conversation {
+        width: 100%;
+        height: calc(100% - 48px);
+        position: relative;
+
+        .conversation {
+            width: 100%;
+            height: calc(100% - calc(48px - 75px));
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .incoming-message {
+            width: 100%;
+            height: 75px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 8px 4px;
+
+            .input-area {
+                width: calc(100% - 25px);
+                margin-left: 12.5px;
+                height: 43px;
+                border-radius: 7px;
+                background-color: $dBackgroundTextarea;
+            }
+        }
     }
 }
 
