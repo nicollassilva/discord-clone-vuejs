@@ -11695,8 +11695,9 @@ body {
 
 .body-application .body-conversation .conversation {
   width: 100%;
-  height: calc(100% - calc(48px - 75px));
+  height: calc(100% - 75px);
   position: relative;
+  padding: 15px;
   overflow-y: auto;
 }
 
@@ -11706,19 +11707,84 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 8px 4px;
+  padding: 7px 3px;
+  background-color: #36393F;
 }
 
 .body-application .body-conversation .incoming-message .input-area {
-  width: calc(100% - 25px);
+  width: calc(100% - 26px);
   margin-left: 12.5px;
-  height: 43px;
+  height: 44px;
   border-radius: 7px;
   background-color: #40444b;
 }
 
+.body-application .body-conversation .incoming-message .input-area .button {
+  width: 40px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
+.body-application .body-conversation .incoming-message .input-area .button svg {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.body-application .body-conversation .incoming-message .input-area .button.first {
+  width: 56px;
+}
+
+.body-application .body-conversation .incoming-message .input-area .button:hover {
+  cursor: pointer;
+}
+
+.body-application .body-conversation .incoming-message .input-area .button:hover svg {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.body-application .body-conversation .incoming-message .input-area input.input {
+  width: calc(100% - calc(160px + 56px));
+  height: 44px;
+  float: left;
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.body-application .body-conversation .incoming-message .input-area .buttons {
+  width: 160px;
+  height: 44px;
+  position: relative;
+  float: right;
+}
+
+.body-application .body-conversation .incoming-message .input-area .buttons .button .emojis {
+  background-image: url("/images/emojis.png");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 22px;
+  display: block;
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition: all 0.2s;
+  background-size: 242px 110px;
+  background-position: -88px -44px;
+}
+
+.body-application .body-conversation .incoming-message .input-area .buttons .button .emojis:hover {
+  filter: grayscale(0);
+}
+
 .strikethrough-1n4ekb {
   color: #F04747;
+}
+
+.attachButtonPlay-3iJ0mf {
+  color: #43B581;
 }
 
 .bs-tooltip-top .tooltip-inner,

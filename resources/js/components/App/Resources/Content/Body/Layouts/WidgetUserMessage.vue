@@ -1,6 +1,6 @@
 <template>
     <div class="widget-user-message">
-        {{ Data.name }}
+        <p>{{ Data.name }}</p>
     </div>
 </template>
 <script>
