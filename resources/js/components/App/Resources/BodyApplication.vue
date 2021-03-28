@@ -32,6 +32,8 @@ export default {
             } else {
                 this.data = event.data
                 this.type = event.type
+
+                window.eventBus.$emit('updateMenuPeoples', event.data)
             }
         })
     }

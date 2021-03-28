@@ -60,6 +60,16 @@ export default {
             }
         })
     },
+    updated() {
+        if(this.Type === 'myFriends') {
+            document.querySelector('.column-info .menu').addEventListener('click', event => {
+                if(event.target && event.target.localName === 'li' && event.target.classList.length <= 0) {
+                    document.querySelector('li.active').classList.remove('active')
+                    event.target.classList.add('active')
+                }
+            })
+        }
+    },
     methods: {
         toggleWidthInput() {
             return this.widthInput = this.widthInput === 144 ? 244 : 144

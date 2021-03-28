@@ -202,6 +202,73 @@ body {
     }
 }
 
+.status {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $dbackgroundApplication;
+    right: -2px;
+    bottom: -2px;
+
+    &.online,
+    &.absent,
+    &.offline,
+    &.busy {
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: $dSuccess;
+            border-radius: 50%;
+            right: 2px;
+            bottom: 2px;
+            z-index: 2;
+        }
+
+    &.absent {
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $dbackgroundApplication;
+            right: 5px;
+            bottom: 5px;
+            z-index: 5;
+        }
+
+        &::before {
+            background-color: $dWarning;
+        }
+    }
+
+    &.busy {
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 7.5px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: $dBackgroundProperties;
+            right: 3px;
+            bottom: 5.5px;
+            z-index: 5;
+        }
+
+        &::before {
+            background-color: $dDanger;
+        }
+    }
+
+    }
+}
+
 .column-properties .properties-navigation-me {
     width: 100%;
     height: calc(100vh - 48px);
@@ -248,74 +315,6 @@ body {
 
             &.user {
                 position: relative;
-
-                .status {
-                    position: absolute;
-                    width: 15px;
-                    height: 15px;
-                    background-color: $dBackgroundProperties;
-                    border-radius: 50%;
-                    right: -2px;
-                    bottom: -2px;
-
-                    &.online,
-                    &.absent,
-                    &.offline,
-                    &.busy {
-
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            width: 10px;
-                            height: 10px;
-                            background-color: $dSuccess;
-                            border-radius: 50%;
-                            right: 2px;
-                            bottom: 2px;
-                            z-index: 2;
-                        }
-
-                    &.absent {
-
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 50%;
-                            background-color: $dBackgroundProperties;
-                            right: 5px;
-                            bottom: 5px;
-                            z-index: 5;
-                        }
-
-                        &::before {
-                            background-color: $dWarning;
-                        }
-                    }
-
-                    &.busy {
-
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            width: 7.5px;
-                            height: 3px;
-                            border-radius: 50%;
-                            background-color: $dBackgroundProperties;
-                            right: 3px;
-                            bottom: 5.5px;
-                            z-index: 5;
-                        }
-
-                        &::before {
-                            background-color: $dDanger;
-                        }
-                    }
-    
-                    }
-                }
-
             }
 
             svg {
@@ -416,73 +415,6 @@ body {
             float: left;
             margin-right: 7.5px;
             position: relative;
-
-            .status {
-                position: absolute;
-                width: 15px;
-                height: 15px;
-                background-color: $dBackgroundProperties;
-                border-radius: 50%;
-                right: -2px;
-                bottom: -2px;
-
-                &.online,
-                &.absent,
-                &.offline,
-                &.busy {
-
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        width: 10px;
-                        height: 10px;
-                        background-color: $dSuccess;
-                        border-radius: 50%;
-                        right: 2px;
-                        bottom: 2px;
-                        z-index: 2;
-                    }
-
-                &.absent {
-
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        background-color: $dBackgroundProperties;
-                        right: 5px;
-                        bottom: 5px;
-                        z-index: 5;
-                    }
-
-                    &::before {
-                        background-color: $dWarning;
-                    }
-                }
-
-                &.busy {
-
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        width: 7.5px;
-                        height: 3px;
-                        border-radius: 50%;
-                        background-color: $dBackgroundProperties;
-                        right: 3px;
-                        bottom: 5.5px;
-                        z-index: 5;
-                    }
-
-                    &::before {
-                        background-color: $dDanger;
-                    }
-                }
-
-                }
-            }
         }
 
         .info {
@@ -575,63 +507,6 @@ body {
                     background-color: $dbackgroundApplication;
                     right: -18px;
                     bottom: 6px;
-    
-                    &.online,
-                    &.absent,
-                    &.offline,
-                    &.busy {
-    
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            width: 10px;
-                            height: 10px;
-                            background-color: $dSuccess;
-                            border-radius: 50%;
-                            right: 2px;
-                            bottom: 2px;
-                            z-index: 2;
-                        }
-    
-                    &.absent {
-    
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 50%;
-                            background-color: $dbackgroundApplication;
-                            right: 5px;
-                            bottom: 5px;
-                            z-index: 5;
-                        }
-    
-                        &::before {
-                            background-color: $dWarning;
-                        }
-                    }
-    
-                    &.busy {
-    
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            width: 7.5px;
-                            height: 3px;
-                            border-radius: 50%;
-                            background-color: $dBackgroundProperties;
-                            right: 3px;
-                            bottom: 5.5px;
-                            z-index: 5;
-                        }
-    
-                        &::before {
-                            background-color: $dDanger;
-                        }
-                    }
-    
-                    }
                 }
             }
             
@@ -884,6 +759,7 @@ body {
             float: left;
             position: relative;
             padding: 16px 30px;
+            overflow-y: auto;
             
             .friend-title {
                 height: 25px;
@@ -916,13 +792,54 @@ body {
                     margin-left: -10px;
                     cursor: pointer;
                     background-color: rgba(255, 255, 255, .03);
+
+                    .infos span:first-of-type em {
+                        display: block;
+                    }
                 }
 
                 .avatar {
                     width: 32px;
                     height: 32px;
-                    background-color: red;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
                     border-radius: 50%;
+                    position: relative;
+                    float: left;
+                }
+
+                .infos {
+                    width: calc(100% - 47px);
+                    height: 35px;
+                    float: right;
+        
+                    span {
+                        width: 100%;
+                        display: flex;
+                        font-size: 14px;
+                        font-weight: 500;
+                        justify-content: flex-start;
+                        align-items: center;
+                        color: white;
+        
+                        &:first-of-type {
+                            font-size: 15px;
+
+                            em {
+                                display: none;
+                                color: rgba(255, 255, 255, .5);
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                        }
+        
+                        &:nth-child(even) {
+                            font-size: 12px;
+                            margin-top: -2px;
+                            color: rgba(255, 255, 255, .5);
+                        }
+                    }
                 }
             }
         }

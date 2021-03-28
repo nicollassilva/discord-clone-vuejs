@@ -20,10 +20,7 @@ export default {
     mounted() {
         setTimeout(() => {
             let firstButton = document.querySelector('.column-properties .button:first-of-type')
-            if(firstButton) {
-                firstButton.classList.add('active')
-                firstButton.click()
-            }
+            if(firstButton) firstButton.click()
         }, 100)
     }
 }

@@ -30,25 +30,7 @@ export default {
     },
     methods: {
         getStatusTitle() {
-            let title = '';
-                switch(this.status) {
-                    case 'online':
-                        title = 'Disponível'
-                        break;
-                    case 'offline':
-                        title = 'Offline'
-                        break;
-                    case 'absent':
-                        title = 'Ausente'
-                        break;
-                    case 'busy':
-                        title = 'Não perturbar'
-                        break;
-                    default:
-                        title ='Offline'
-                        break;
-                }
-            return title
+            return window.appData.realStatusTitle(this.status)
         }
     }
 }

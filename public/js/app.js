@@ -1871,11 +1871,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     setTimeout(function () {
       var firstButton = document.querySelector('.column-properties .button:first-of-type');
-
-      if (firstButton) {
-        firstButton.classList.add('active');
-        firstButton.click();
-      }
+      if (firstButton) firstButton.click();
     }, 100);
   }
 });
@@ -1932,6 +1928,7 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         _this.data = event.data;
         _this.type = event.type;
+        window.eventBus.$emit('updateMenuPeoples', event.data);
       }
     });
   }
@@ -2204,11 +2201,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      lists: 20
+      lists: window.appData.friends
     };
+  },
+  methods: {
+    getStatusTitle: function getStatusTitle(status) {
+      return window.appData.realStatusTitle(status);
+    },
+    changeBody: function changeBody(type) {
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      window.eventBus.$emit('changeBody', {
+        type: type,
+        data: data
+      });
+    }
   }
 });
 
@@ -2289,6 +2304,16 @@ __webpack_require__.r(__webpack_exports__);
         _this.widthInput === 244 && _this.toggleWidthInput();
       }
     });
+  },
+  updated: function updated() {
+    if (this.Type === 'myFriends') {
+      document.querySelector('.column-info .menu').addEventListener('click', function (event) {
+        if (event.target && event.target.localName === 'li' && event.target.classList.length <= 0) {
+          document.querySelector('li.active').classList.remove('active');
+          event.target.classList.add('active');
+        }
+      });
+    }
   },
   methods: {
     toggleWidthInput: function toggleWidthInput() {
@@ -2385,43 +2410,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      groups: [{
-        id: 1,
-        name: 'Discord Oficial',
-        icon: 'https://cdn.icon-icons.com/icons2/1476/PNG/512/discord_101785.png'
-      }, {
-        id: 2,
-        name: 'Minecraft Group',
-        icon: 'https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/minecraft-icon.png'
-      }, {
-        id: 3,
-        name: 'Facebook Oficial Group 2020',
-        icon: 'https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png'
-      }, {
-        id: 4,
-        name: 'Twitter Oficial',
-        icon: 'https://pbs.twimg.com/profile_images/1354479643882004483/Btnfm47p_400x400.jpg'
-      }, {
-        id: 5,
-        name: 'Instagram Oficial',
-        icon: 'https://neilpatel.com/wp-content/uploads/2017/08/instagram-1.jpg'
-      }, {
-        id: 6,
-        name: 'Snapchat Oficial',
-        icon: 'https://play-lh.googleusercontent.com/KxeSAjPTKliCErbivNiXrd6cTwfbqUJcbSRPe_IBVK_YmwckfMRS1VIHz-5cgT09yMo'
-      }, {
-        id: 7,
-        name: 'WhatsApp Oficial',
-        icon: 'https://imagens.canaltech.com.br/empresas/630.400.jpg'
-      }, {
-        id: 8,
-        name: 'Telegram Oficial',
-        icon: 'https://manualdousuario.net/wp-content/uploads/2018/11/Telegram-logo.png'
-      }, {
-        id: 9,
-        name: 'TikTok Oficial',
-        icon: 'https://s16.tiktokcdn.com/musical/resource/mtact/static/images/share_img.png'
-      }]
+      groups: window.appData.groups
     };
   },
   methods: {
@@ -2521,31 +2510,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getStatusTitle: function getStatusTitle() {
-      var title = '';
-
-      switch (this.status) {
-        case 'online':
-          title = 'Disponível';
-          break;
-
-        case 'offline':
-          title = 'Offline';
-          break;
-
-        case 'absent':
-          title = 'Ausente';
-          break;
-
-        case 'busy':
-          title = 'Não perturbar';
-          break;
-
-        default:
-          title = 'Offline';
-          break;
-      }
-
-      return title;
+      return window.appData.realStatusTitle(this.status);
     }
   }
 });
@@ -2616,6 +2581,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2628,44 +2594,8 @@ __webpack_require__.r(__webpack_exports__);
       microphone: false,
       speaker: true,
       me: window.myUser,
-      friends: [{
-        id: 1,
-        name: 'Nícollas',
-        image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
-        status: 'busy'
-      }, {
-        id: 2,
-        name: 'Bill Gates',
-        image: 'https://cdn-istoedinheiro-ssl.akamaized.net/wp-content/uploads/sites/17/2021/02/bill-gates-e1613016156235.jpg',
-        status: 'online'
-      }, {
-        id: 3,
-        name: 'Mark Zuckerberg',
-        image: 'https://img.olhardigital.com.br/wp-content/uploads/2019/11/20191106064628.jpg',
-        status: 'busy',
-        activity: 'Navegando no Facebook'
-      }, {
-        id: 4,
-        name: 'Linus Torvalds',
-        image: 'https://diolinux.com.br/wp-content/uploads/2019/04/Linus-Torvalds-sobre-o-Linux-Desktop.jpg',
-        status: 'absent'
-      }, {
-        id: 5,
-        name: 'James Gosling',
-        image: 'https://computerworld.com.br/wp-content/uploads/2020/08/James-Gosling-criador-do-Java-sobre-carreira-Low-Code-e-futuro-da-linguagem.jpg',
-        status: 'online'
-      }, {
-        id: 6,
-        name: 'Guido van Rossum',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Guido_van_Rossum_OSCON_2006.jpg',
-        status: 'busy',
-        activity: 'Jogando Visual Studio Code'
-      }, {
-        id: 7,
-        name: 'Rasmus Lerdorf',
-        image: 'https://pbs.twimg.com/profile_images/918348833205116928/V9ROYRNJ.jpg',
-        status: 'absent'
-      }]
+      friends: window.appData.friends,
+      activeId: null
     };
   },
   watch: {
@@ -2675,6 +2605,13 @@ __webpack_require__.r(__webpack_exports__);
     speaker: function speaker() {
       this.audio.getSound('speaker', this.speaker ? 'enabled' : 'disabled');
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    window.eventBus.$on('updateMenuPeoples', function (event) {
+      _this.activeId = event.id;
+    });
   },
   methods: {
     hide: function hide(friend) {
@@ -2918,7 +2855,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Helper_SvgHandle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Helper/SvgHandle */ "./resources/js/components/Helper/SvgHandle.js");
 /* harmony import */ var _components_Helper_AudioHandle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Helper/AudioHandle */ "./resources/js/components/Helper/AudioHandle.js");
-/* harmony import */ var _components_App_DiscordClone_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App/DiscordClone.vue */ "./resources/js/components/App/DiscordClone.vue");
+/* harmony import */ var _components_Helper_ApplicationData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Helper/ApplicationData */ "./resources/js/components/Helper/ApplicationData.js");
+/* harmony import */ var _components_App_DiscordClone_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App/DiscordClone.vue */ "./resources/js/components/App/DiscordClone.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -2928,12 +2866,14 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
 /**
  * Globals variables
  */
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 window.svgHandle = _components_Helper_SvgHandle__WEBPACK_IMPORTED_MODULE_0__.default;
+window.appData = _components_Helper_ApplicationData__WEBPACK_IMPORTED_MODULE_2__.default;
 window.audioHandle = _components_Helper_AudioHandle__WEBPACK_IMPORTED_MODULE_1__.default;
 window.eventBus = new Vue({
   methods: {
@@ -2942,7 +2882,6 @@ window.eventBus = new Vue({
         page: page,
         data: data
       });
-      menuHandleActions();
     }
   }
 });
@@ -2969,7 +2908,7 @@ files.keys().map(function (key) {
 
 var app = new Vue({
   components: {
-    DiscordClone: _components_App_DiscordClone_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    DiscordClone: _components_App_DiscordClone_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   el: '#app'
 });
@@ -2978,7 +2917,6 @@ var app = new Vue({
  */
 
 var buttons = document.querySelectorAll('.rounded-icon');
-var menuHandle = document.querySelectorAll('.properties-navigation-me .button');
 /**
  * Functions
  */
@@ -2993,25 +2931,6 @@ function removeActiveButton() {
     if (element.classList.contains('active')) {
       element.classList.remove('active');
     }
-  });
-}
-
-function removeActiveMenuHandle() {
-  menuHandle.forEach(function (element) {
-    if (element.classList.contains('active')) {
-      element.classList.remove('active');
-    }
-  });
-}
-
-function menuHandleActions() {
-  menuHandle.forEach(function (element) {
-    element.addEventListener('click', function (e) {
-      if (!element.classList.contains('active')) {
-        removeActiveMenuHandle();
-        element.classList.add('active');
-      }
-    });
   });
 }
 
@@ -3062,7 +2981,6 @@ $('body').tooltip({
   boundary: 'window'
 });
 menuToggle();
-menuHandleActions();
 document.addEventListener('contextmenu', function (event) {
   eventPreventDefault(event);
 });
@@ -3123,6 +3041,131 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Helper/ApplicationData.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Helper/ApplicationData.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  'friends': [{
+    id: 1,
+    name: 'Nícollas',
+    hashtagNumber: '#1564',
+    image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
+    status: 'busy'
+  }, {
+    id: 2,
+    name: 'Bill Gates',
+    hashtagNumber: '#4634',
+    image: 'https://cdn-istoedinheiro-ssl.akamaized.net/wp-content/uploads/sites/17/2021/02/bill-gates-e1613016156235.jpg',
+    status: 'online'
+  }, {
+    id: 3,
+    name: 'Mark Zuckerberg',
+    hashtagNumber: '#3235',
+    image: 'https://img.olhardigital.com.br/wp-content/uploads/2019/11/20191106064628.jpg',
+    status: 'busy',
+    activity: 'Navegando no Facebook'
+  }, {
+    id: 4,
+    name: 'Linus Torvalds',
+    hashtagNumber: '#2355',
+    image: 'https://diolinux.com.br/wp-content/uploads/2019/04/Linus-Torvalds-sobre-o-Linux-Desktop.jpg',
+    status: 'absent'
+  }, {
+    id: 5,
+    name: 'James Gosling',
+    hashtagNumber: '#6856',
+    image: 'https://computerworld.com.br/wp-content/uploads/2020/08/James-Gosling-criador-do-Java-sobre-carreira-Low-Code-e-futuro-da-linguagem.jpg',
+    status: 'online'
+  }, {
+    id: 6,
+    name: 'Guido van Rossum',
+    hashtagNumber: '#5234',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Guido_van_Rossum_OSCON_2006.jpg',
+    status: 'busy',
+    activity: 'Jogando Visual Studio Code'
+  }, {
+    id: 7,
+    name: 'Rasmus Lerdorf',
+    hashtagNumber: '#1412',
+    image: 'https://pbs.twimg.com/profile_images/918348833205116928/V9ROYRNJ.jpg',
+    status: 'absent'
+  }],
+  'groups': [{
+    id: 1,
+    name: 'Discord Oficial',
+    icon: 'https://cdn.icon-icons.com/icons2/1476/PNG/512/discord_101785.png'
+  }, {
+    id: 2,
+    name: 'Minecraft Group',
+    icon: 'https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/minecraft-icon.png'
+  }, {
+    id: 3,
+    name: 'Facebook Oficial Group 2020',
+    icon: 'https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png'
+  }, {
+    id: 4,
+    name: 'Twitter Oficial',
+    icon: 'https://pbs.twimg.com/profile_images/1354479643882004483/Btnfm47p_400x400.jpg'
+  }, {
+    id: 5,
+    name: 'Instagram Oficial',
+    icon: 'https://neilpatel.com/wp-content/uploads/2017/08/instagram-1.jpg'
+  }, {
+    id: 6,
+    name: 'Snapchat Oficial',
+    icon: 'https://play-lh.googleusercontent.com/KxeSAjPTKliCErbivNiXrd6cTwfbqUJcbSRPe_IBVK_YmwckfMRS1VIHz-5cgT09yMo'
+  }, {
+    id: 7,
+    name: 'WhatsApp Oficial',
+    icon: 'https://imagens.canaltech.com.br/empresas/630.400.jpg'
+  }, {
+    id: 8,
+    name: 'Telegram Oficial',
+    icon: 'https://manualdousuario.net/wp-content/uploads/2018/11/Telegram-logo.png'
+  }, {
+    id: 9,
+    name: 'TikTok Oficial',
+    icon: 'https://s16.tiktokcdn.com/musical/resource/mtact/static/images/share_img.png'
+  }],
+  realStatusTitle: function realStatusTitle(status) {
+    var title = '';
+
+    switch (status) {
+      case 'online':
+        title = 'Disponível';
+        break;
+
+      case 'offline':
+        title = 'Offline';
+        break;
+
+      case 'absent':
+        title = 'Ausente';
+        break;
+
+      case 'busy':
+        title = 'Não perturbar';
+        break;
+
+      default:
+        title = 'Offline';
+        break;
+    }
+
+    return title;
+  }
+});
 
 /***/ }),
 
@@ -40448,9 +40491,56 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.lists, function(list) {
-      return _c("div", { key: list, staticClass: "user-list" }, [
-        _c("div", { staticClass: "avatar" })
-      ])
+      return _c(
+        "div",
+        {
+          key: list.id,
+          staticClass: "user-list",
+          on: {
+            click: function($event) {
+              return _vm.changeBody("conversation", list)
+            }
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "avatar",
+              style: { "background-image": "url('" + list.image + "')" }
+            },
+            [
+              _c("div", {
+                class: ["status", list.status],
+                attrs: {
+                  "data-toggle": "tooltip",
+                  title: _vm.getStatusTitle(list.status)
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "infos" }, [
+            _c("span", [
+              _vm._v(_vm._s(list.name)),
+              _c("em", [_vm._v(_vm._s(list.hashtagNumber))])
+            ]),
+            _vm._v(" "),
+            _c("span", [
+              _vm._v(
+                _vm._s(
+                  list.activity
+                    ? list.activity
+                    : _vm.getStatusTitle(list.status)
+                )
+              ),
+              list.activity
+                ? _c("i", { staticClass: "fas fa-file-alt ml-1" })
+                : _vm._e()
+            ])
+          ])
+        ]
+      )
     }),
     0
   )
@@ -40980,6 +41070,7 @@ var render = function() {
             "Button",
             {
               key: friend.id,
+              class: { active: friend.id === _vm.activeId },
               attrs: {
                 avatar: friend.image,
                 status: friend.status,
@@ -41022,6 +41113,7 @@ var render = function() {
                 attrs: { slot: "remove" },
                 on: {
                   click: function($event) {
+                    $event.stopPropagation()
                     return _vm.hide(friend)
                   }
                 },
