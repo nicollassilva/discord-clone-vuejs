@@ -4,7 +4,7 @@
         :data-menu="[menu ? menu : '']">
         <div class="icon"
             :style="[avatar ? { 'background-image': `url('${avatar}')` } : '']"
-            :class="[[avatar ? 'user' : ''], [active ? 'active' : '']]"
+            :class="[avatar ? 'user' : '']"
         >
             <slot name="icon"></slot>
             <div class="status"

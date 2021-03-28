@@ -25,6 +25,14 @@ export default {
             if(event.page && event.data) {
                 this.data = event.data
                 this.layout = event.page
+
+                setTimeout(() => {
+                    let firstButton = document.querySelector('.column-properties .button:first-of-type')
+                    if(firstButton) {
+                        firstButton.classList.add('active')
+                        firstButton.click()
+                    }
+                }, 100)
             }
         })
     }

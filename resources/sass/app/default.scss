@@ -634,6 +634,48 @@ body {
                     }
                 }
             }
+            
+            .menu {
+                width: 530px;
+                padding: 2px 5px 0 5px;
+                height: 24px;
+                float: left;
+                position: relative;
+                margin-left: 15px;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+
+                li {
+                    list-style: none;
+                    padding: 0 7px;
+                    color: rgba(255, 255, 255, .7);
+                    font-weight: 500;
+                    float: left;
+                    margin-left: 16px;
+                    border-radius: 3px;
+
+                    &:hover,
+                    &.active {
+                        background-color: rgba(255, 255, 255, .05);
+                        color: white;
+                    }
+
+                    &:not(.active):hover { cursor: pointer; background-color: rgba(255, 255, 255, .03); }
+                }
+
+                .add-friend {
+                    float: right;
+                    margin: 0 8px;
+                    height: 24px;
+                    font-weight: 500;
+                    padding: 2px 8px;
+                    background-color: $dSuccess;
+                    color: white;
+                    font-size: 15px;
+                    border-radius: 3px;
+                    margin-top: -2px;
+                    cursor: pointer;
+                }
+            }
 
         }
 
@@ -646,6 +688,15 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+
+            &.justify-content-end {
+
+                .button:first-of-type {
+                    padding: 0 16px;
+                    border-right: 1px solid rgba(255, 255, 255, .05);
+                }
+
+            }
 
             .button {
                 height: 24px;
@@ -714,6 +765,40 @@ body {
             position: relative;
             padding: 15px;
             overflow-y: auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+
+            .widget-user-message {
+                width: 100%;
+                height: 210px;
+                position: relative;
+                border-bottom: 1px solid rgba(255, 255, 255, .05);
+
+                .avatar {
+                    width: 80px;
+                    height: 80px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    border-radius: 50%;
+                }
+
+                .name {
+                    font-size: 30px;
+                    margin: 8px 0;
+                    line-height: 40px;
+                    font-weight: 700;
+                    color: white;
+                }
+
+                span.introduction {
+                    line-height: 20px;
+                    font-size: 14px;
+                    color: $dHeader;
+                    margin-top: -5px;
+                }
+            }
         }
 
         .incoming-message {
@@ -789,6 +874,55 @@ body {
 
                         }
                     }
+                }
+            }
+        }
+
+        .mid-box {
+            width: calc(75% - 20px);
+            height: calc(100vh - 48px);
+            float: left;
+            position: relative;
+            padding: 16px 30px;
+            
+            .friend-title {
+                height: 25px;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, .05);
+                color: rgba(255, 255, 255, .6);
+                font-weight: 600;
+                font-size: 11px
+            }
+
+            .user-list {
+                width: 100%;
+                height: 62px;
+                position: relative;
+                border-radius: 10px;
+                padding: 12.5px 2.5px;
+
+                &:not(:hover):before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0;
+                    height: 1px;
+                    background-color: rgba(255, 255, 255, .03);
+                }
+                
+                &:hover {
+                    width: calc(100% + 19px);
+                    padding: 12.5px 12.5px;
+                    margin-left: -10px;
+                    cursor: pointer;
+                    background-color: rgba(255, 255, 255, .03);
+                }
+
+                .avatar {
+                    width: 32px;
+                    height: 32px;
+                    background-color: red;
+                    border-radius: 50%;
                 }
             }
         }

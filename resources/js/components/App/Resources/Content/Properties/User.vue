@@ -4,7 +4,7 @@
             <div class="search-friends flex-column justify-content-center">Encontre ou comece uma conversa</div>
         </div>
         <div class="properties-navigation-me">
-            <Button active>
+            <Button @click.native="changeBody('myFriends', { name: 'Amigos' })">
                 <span slot="icon" v-html="svg.friends"></span>
                 <template v-slot:info>
                     <span class="text-truncate">Amigos</span>
@@ -124,7 +124,7 @@ export default {
             }
         },
 
-        changeBody(type, data) {
+        changeBody(type, data = {}) {
             window.eventBus.$emit('changeBody', { type, data })
         },
 

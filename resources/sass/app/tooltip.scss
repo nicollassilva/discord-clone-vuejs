@@ -1,5 +1,6 @@
 .bs-tooltip-top .tooltip-inner,
-.bs-tooltip-right .tooltip-inner {
+.bs-tooltip-right .tooltip-inner,
+.bs-tooltip-bottom .tooltip-inner {
 	border-radius: 5px !important;
 	padding: 7px 12px;
 	background-color: #18191C;
@@ -33,7 +34,8 @@
 	max-width: 500px;
 }
 
-.bs-tooltip-top .tooltip-inner {
+.bs-tooltip-top .tooltip-inner,
+.bs-tooltip-bottom .tooltip-inner {
 	font-weight: 500;
     font-size: 12px;
 	opacity: 1;

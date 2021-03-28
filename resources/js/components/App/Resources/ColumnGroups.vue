@@ -30,10 +30,7 @@ export default {
     components: { Groups },
     methods: {
         changePage(group) {
-            window.eventBus.$emit('changePage', {
-                page: 'me',
-                data: {}
-            })
+            window.eventBus.changePage('me', {})
         }
     }
 }

@@ -11619,6 +11619,51 @@ body {
   background-color: #F04747;
 }
 
+.body-application .topbar .column-info .menu {
+  width: 530px;
+  padding: 2px 5px 0 5px;
+  height: 24px;
+  float: left;
+  position: relative;
+  margin-left: 15px;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.body-application .topbar .column-info .menu li {
+  list-style: none;
+  padding: 0 7px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  float: left;
+  margin-left: 16px;
+  border-radius: 3px;
+}
+
+.body-application .topbar .column-info .menu li:hover,
+.body-application .topbar .column-info .menu li.active {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.body-application .topbar .column-info .menu li:not(.active):hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.body-application .topbar .column-info .menu .add-friend {
+  float: right;
+  margin: 0 8px;
+  height: 24px;
+  font-weight: 500;
+  padding: 2px 8px;
+  background-color: #43B581;
+  color: white;
+  font-size: 15px;
+  border-radius: 3px;
+  margin-top: -2px;
+  cursor: pointer;
+}
+
 .body-application .topbar .column-buttons {
   min-width: 400px;
   max-width: 600px;
@@ -11628,6 +11673,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.body-application .topbar .column-buttons.justify-content-end .button:first-of-type {
+  padding: 0 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .body-application .topbar .column-buttons .button {
@@ -11699,6 +11749,40 @@ body {
   position: relative;
   padding: 15px;
   overflow-y: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.body-application .body-conversation .conversation .widget-user-message {
+  width: 100%;
+  height: 210px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.body-application .body-conversation .conversation .widget-user-message .avatar {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.body-application .body-conversation .conversation .widget-user-message .name {
+  font-size: 30px;
+  margin: 8px 0;
+  line-height: 40px;
+  font-weight: 700;
+  color: white;
+}
+
+.body-application .body-conversation .conversation .widget-user-message span.introduction {
+  line-height: 20px;
+  font-size: 14px;
+  color: #b9bbbe;
+  margin-top: -5px;
 }
 
 .body-application .body-conversation .incoming-message {
@@ -11779,6 +11863,55 @@ body {
   filter: grayscale(0);
 }
 
+.body-application .body-conversation .mid-box {
+  width: calc(75% - 20px);
+  height: calc(100vh - 48px);
+  float: left;
+  position: relative;
+  padding: 16px 30px;
+}
+
+.body-application .body-conversation .mid-box .friend-title {
+  height: 25px;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.body-application .body-conversation .mid-box .user-list {
+  width: 100%;
+  height: 62px;
+  position: relative;
+  border-radius: 10px;
+  padding: 12.5px 2.5px;
+}
+
+.body-application .body-conversation .mid-box .user-list:not(:hover):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.body-application .body-conversation .mid-box .user-list:hover {
+  width: calc(100% + 19px);
+  padding: 12.5px 12.5px;
+  margin-left: -10px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.body-application .body-conversation .mid-box .user-list .avatar {
+  width: 32px;
+  height: 32px;
+  background-color: red;
+  border-radius: 50%;
+}
+
 .strikethrough-1n4ekb {
   color: #F04747;
 }
@@ -11790,7 +11923,9 @@ body {
 .bs-tooltip-top .tooltip-inner,
 .bs-tooltip-auto[x-placement^=top] .tooltip-inner,
 .bs-tooltip-right .tooltip-inner,
-.bs-tooltip-auto[x-placement^=right] .tooltip-inner {
+.bs-tooltip-auto[x-placement^=right] .tooltip-inner,
+.bs-tooltip-bottom .tooltip-inner,
+.bs-tooltip-auto[x-placement^=bottom] .tooltip-inner {
   border-radius: 5px !important;
   padding: 7px 12px;
   background-color: #18191C;
@@ -11830,7 +11965,9 @@ body {
 }
 
 .bs-tooltip-top .tooltip-inner,
-.bs-tooltip-auto[x-placement^=top] .tooltip-inner {
+.bs-tooltip-auto[x-placement^=top] .tooltip-inner,
+.bs-tooltip-bottom .tooltip-inner,
+.bs-tooltip-auto[x-placement^=bottom] .tooltip-inner {
   font-weight: 500;
   font-size: 12px;
   opacity: 1;

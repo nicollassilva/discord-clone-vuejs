@@ -2,7 +2,7 @@
     <div class="incoming-message">
         <div class="input-area">
             <div class="button first" v-html="svg.attachFiles"></div>
-            <input :placeholder="`Conversar com @${Data.name}`" class="input">
+            <input :placeholder="`Conversar com @${Data.name}`" class="input" @keyup.enter="newMessage($event)">
             <div class="buttons">
                 <div class="button" v-html="svg.present"></div>
                 <div class="button" v-html="svg.gifs"></div>
@@ -42,6 +42,10 @@ export default {
             this.positionEmoji = `
                 background-position: ${randomObject.x} ${randomObject.y};
             `
+        },
+
+        newMessage(event) {
+            console.log(event)
         }
     }
 }

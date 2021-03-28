@@ -16,7 +16,14 @@ import AudioHandle from './components/Helper/AudioHandle'
 window.Vue = require('vue').default
 window.svgHandle = SvgHandle
 window.audioHandle = AudioHandle
-window.eventBus = new Vue()
+window.eventBus = new Vue({
+    methods: {
+        changePage(page, data) {
+            this.$emit('changePage', { page, data })
+            menuHandleActions()
+        }
+    }
+})
 window.myUser = {
     id: 1,
     name: 'Nícollas',
@@ -139,9 +146,7 @@ menuHandleActions()
 
 document.addEventListener('contextmenu', event => { eventPreventDefault(event) })
 
-document.addEventListener('click', _ => {
-    closeMenu()
-})
+document.addEventListener('click', _ => closeMenu())
 
 buttons.forEach(element => {
     element.addEventListener('click', function() {

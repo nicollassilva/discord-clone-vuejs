@@ -16,6 +16,15 @@ import MouseMenuHandle from '../Helper/MenuMouse/MouseMenuHandle.vue'
 export default {
     components: {
         ColumnGroups, ColumnProperties, BodyApplication, MouseMenuHandle
+    },
+    mounted() {
+        setTimeout(() => {
+            let firstButton = document.querySelector('.column-properties .button:first-of-type')
+            if(firstButton) {
+                firstButton.classList.add('active')
+                firstButton.click()
+            }
+        }, 100)
     }
 }
 </script>
