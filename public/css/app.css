@@ -11058,7 +11058,7 @@ body {
 
 .menuMouseAction {
   min-width: 210px;
-  min-height: 200px;
+  min-height: 50px;
   background-color: #18191C;
   position: absolute;
   padding: 7px;
@@ -11241,6 +11241,22 @@ body {
 .status.offline.busy::before,
 .status.busy.busy::before {
   background-color: #F04747;
+}
+
+.status.offline::before {
+  background-color: #747f8d;
+}
+
+.status.offline::after {
+  content: "";
+  position: absolute;
+  width: 5.5px;
+  height: 5.5px;
+  border-radius: 50%;
+  background-color: #36393F;
+  right: 4px;
+  bottom: 4.5px;
+  z-index: 5;
 }
 
 .column-properties .properties-navigation-me {
@@ -11870,6 +11886,10 @@ body {
 
 .attachButtonPlay-3iJ0mf {
   color: #43B581;
+}
+
+.flip-list-move {
+  transition: transform 0.3s;
 }
 
 .bs-tooltip-top .tooltip-inner,

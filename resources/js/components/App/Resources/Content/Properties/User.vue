@@ -18,7 +18,7 @@
             </Button>
             <div class="separator-property">
                 <span>MENSAGENS DIRETAS</span>
-                <div class="icon"><i class="fas fa-plus"></i></div>
+                <div class="icon" data-toggle="tooltip" title="Criar MD"><i class="fas fa-plus"></i></div>
             </div>
             <Button
                 v-for="friend in friends"
@@ -62,7 +62,7 @@ export default {
             microphone: false,
             speaker: true,
             me: window.myUser,
-            friends: window.appData.friends,
+            friends: window.appData.users,
             activeId: null
         }
     },

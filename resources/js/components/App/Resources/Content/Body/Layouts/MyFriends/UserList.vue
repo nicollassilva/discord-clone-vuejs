@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="user-list" v-for="list in lists" :key="list.id" @click="changeBody('conversation', list)">
+    <transition-group name="flip-list" tag="div">
+        <div class="user-list" data-menu="users" v-for="list in lists" :key="list.id" @click="changeBody('conversation', list)">
             <div class="avatar" :style="{ 'background-image': `url('${list.image}')` }">
                 <div data-toggle="tooltip" :title="getStatusTitle(list.status)" :class="['status', list.status]"></div>
             </div>
@@ -10,18 +11,28 @@
             </div>
             <div class="buttons">
                 <div class="button" data-toggle="tooltip" title="Mensagem" v-html="svg.message"></div>
-                <div class="button" data-toggle="tooltip" title="Mais" v-html="svg.moreIcon"></div>
+                <div class="button" data-toggle="tooltip" title="Mais" v-html="svg.moreIcon" @click.stop="menuClick($event, 'moreUserList')"></div>
             </div>
         </div>
+    </transition-group>
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            lists: window.appData.friends,
-            svg: window.svgHandle
+            lists: window.appData.users.filter(e => e.status != 'offline' && !e.pending),
+            svg: window.svgHandle,
+            page: 'disponível'
         }
+    },
+    mounted() {
+        window.eventBus.$on('changeUserList', event => {
+            if(this.page != event) {
+                this.page = event.page
+                this.lists = event.data
+            }
+        })
     },
     methods: {
         getStatusTitle(status) {
@@ -30,6 +41,10 @@ export default {
 
         changeBody(type, data = {}) {
             window.eventBus.$emit('changeBody', { type, data })
+        },
+
+        menuClick(event, menu) {
+            window.eventBus.leftMenuClick(menu, event.clientX, event.clientY)
         }
     }
 }

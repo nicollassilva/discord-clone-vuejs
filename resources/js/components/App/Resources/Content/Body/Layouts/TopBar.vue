@@ -50,6 +50,7 @@ export default {
         return {
             svg: window.svgHandle,
             silenceChannel: false,
+            allowedPages: ['disponível', 'todos', 'pendente', 'bloqueado'],
             widthInput: 144
         }
     },
@@ -63,9 +64,20 @@ export default {
     updated() {
         if(this.Type === 'myFriends') {
             document.querySelector('.column-info .menu').addEventListener('click', event => {
-                if(event.target && event.target.localName === 'li' && event.target.classList.length <= 0) {
-                    document.querySelector('li.active').classList.remove('active')
-                    event.target.classList.add('active')
+                if(event.target && 
+                   event.target.localName === 'li' &&
+                   event.target.classList.length <= 0) {
+
+                    let page = event.target.innerHTML.toLowerCase()
+
+                    if(this.allowedPages.indexOf(page) >= 0) {
+                        document.querySelector('li.active').classList.remove('active')
+                        event.target.classList.add('active')
+
+                        window.eventBus.$emit('changeUserList', {
+                            page, data: this.filterData(page)
+                        })
+                    }              
                 }
             })
         }
@@ -78,6 +90,21 @@ export default {
         toggleSilenceChannel() {
             return this.silenceChannel ? this.svg.silenceChannel.enabled : this.svg.silenceChannel.disabled
         },
+
+        filterData(page) {
+            let realData;
+            realData = window.appData.users.filter(e => {
+                if(page == 'disponível') {
+                    return e.status != 'offline' && !e.pending
+                } else if(page == 'todos') {
+                    return !e.pending
+                } else if(page == 'pendente') {
+                    return !!e.pending
+                }
+            })
+
+            return realData
+        }
     }
 }
 </script>

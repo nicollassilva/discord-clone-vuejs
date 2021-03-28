@@ -22,6 +22,9 @@ window.eventBus = new Vue({
     methods: {
         changePage(page, data) {
             this.$emit('changePage', { page, data })
+        },
+        leftMenuClick(menu, ...positions) {
+            this.$emit('leftMenuEvent', { type: menu, visible: true, positionX: positions[0], positionY: positions[1] })
         }
     }
 })
@@ -69,6 +72,13 @@ function eventPreventDefault(e) {
     e.preventDefault()
 }
 
+function menuMouseHandle(element, positionX, positionY) {
+    if(element.hasAttribute('data-menu') && element.dataset.menu != '') {
+        closeMenu()
+        window.eventBus.$emit('toggleMouseMenu', { type: element.dataset.menu, positionX, positionY, visible: true })
+    }
+}
+
 function removeActiveButton() {
     buttons.forEach(element => {
         if(element.classList.contains('active')) {
@@ -78,26 +88,20 @@ function removeActiveButton() {
 }
 
 function closeMenu() {
-    return window.eventBus.$emit('toggleMouseMenu', { visible: false })
+    window.eventBus.$emit('toggleMouseMenu', { visible: false })
+    window.eventBus.$emit('leftMenuEvent', { visible: false })
 }
 
-function menuToggle() {
-    document.querySelectorAll('[data-menu]').forEach((element, index) => {
+function buttonRightMenuToggle() {
+    document.querySelectorAll('[data-menu]').forEach(element => {
         element.addEventListener('contextmenu', function(e) {
-            const positionX = e.clientX,
-                  positionY = e.clientY
+            const x = e.clientX,
+                  y = e.clientY
             
-            if(element.hasAttribute('data-menu') && element.dataset.menu != '') {
-                closeMenu()
-                window.eventBus.$emit('toggleMouseMenu', {
-                    type: element.dataset.menu,
-                    positionX,
-                    positionY,
-                    visible: true
-                })
-            }
+            menuMouseHandle(element, x, y)
         })
     })
+
 }
 
 window.removeByAttr = function(arr, attr, value) {
@@ -122,11 +126,14 @@ $('body').tooltip({
     boundary: 'window'
 });
 
-menuToggle()
+buttonRightMenuToggle()
 
 document.addEventListener('contextmenu', event => { eventPreventDefault(event) })
 
-document.addEventListener('click', _ => closeMenu())
+document.addEventListener('click', _ => {
+    closeMenu(),
+    $('.tooltip').remove()
+})
 
 buttons.forEach(element => {
     element.addEventListener('click', function() {
@@ -134,6 +141,6 @@ buttons.forEach(element => {
             removeActiveButton()
             element.classList.add('active')
         }
-        menuToggle()
+        buttonRightMenuToggle()
     })
 })

@@ -2,9 +2,9 @@
     <div class="incoming-message">
         <div class="input-area">
             <div class="button first" v-html="svg.attachFiles"></div>
-            <input :placeholder="`Conversar com @${Data.name}`" class="input" @keyup.enter="newMessage($event)">
+            <input :placeholder="`Conversar com @${Data.name}`" class="input" @keyup.enter="newMessage($event)"></input>
             <div class="buttons">
-                <div class="button" v-html="svg.present"></div>
+                <div class="button" data-toggle="tooltip" title="Reforce os parças! Dê vantagens superbacanas de bate-papo com o Nitro. " v-html="svg.present"></div>
                 <div class="button" v-html="svg.gifs"></div>
                 <div class="button" v-html="svg.figures"></div>
                 <div class="button">

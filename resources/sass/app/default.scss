@@ -93,7 +93,7 @@ body {
 
 .menuMouseAction {
     min-width: 210px;
-    min-height: 200px;
+    min-height: 50px;
     background-color: $dBackgroundMenuActionMouse;
     position: absolute;
     padding: 7px;
@@ -229,43 +229,60 @@ body {
         }
 
     &.absent {
+            &::after {
+                content: '';
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: $dbackgroundApplication;
+                right: 5px;
+                bottom: 5px;
+                z-index: 5;
+            }
 
-        &::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: $dbackgroundApplication;
-            right: 5px;
-            bottom: 5px;
-            z-index: 5;
+            &::before {
+                background-color: $dWarning;
+            }
         }
-
-        &::before {
-            background-color: $dWarning;
-        }
-    }
 
     &.busy {
+            &::after {
+                content: '';
+                position: absolute;
+                width: 7.5px;
+                height: 3px;
+                border-radius: 50%;
+                background-color: $dBackgroundProperties;
+                right: 3px;
+                bottom: 5.5px;
+                z-index: 5;
+            }
+
+            &::before {
+                background-color: $dDanger;
+            }
+        }
+
+    }
+
+    &.offline {
+
+        &::before {
+            background-color: rgb(116, 127, 141);
+        }
 
         &::after {
             content: '';
             position: absolute;
-            width: 7.5px;
-            height: 3px;
+            width: 5.5px;
+            height: 5.5px;
             border-radius: 50%;
-            background-color: $dBackgroundProperties;
-            right: 3px;
-            bottom: 5.5px;
+            background-color: $dbackgroundApplication;
+            right: 4px;
+            bottom: 4.5px;
             z-index: 5;
         }
-
-        &::before {
-            background-color: $dDanger;
-        }
-    }
-
     }
 }
 
@@ -888,3 +905,7 @@ body {
 
 .strikethrough-1n4ekb { color: $dDanger }
 .attachButtonPlay-3iJ0mf { color: $dSuccess; }
+
+.flip-list-move {
+    transition: transform .3s;
+}
