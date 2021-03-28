@@ -28,13 +28,7 @@ window.eventBus = new Vue({
         }
     }
 })
-window.myUser = {
-    id: 1,
-    name: 'Nícollas',
-    nickId: '#8412',
-    image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
-    status: 'absent'
-}
+window.myUser = window.appData.users[0]
 
 /**
  * Registering all vue components within the instance

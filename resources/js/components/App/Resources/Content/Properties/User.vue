@@ -31,16 +31,16 @@
             >
                 <template v-slot:info>
                     <span class="text-truncate">{{ friend.name }}</span>
-                    <span class="text-truncate" v-if="!!friend.activity">{{ friend.activity }}<i class="fas fa-file-alt ml-1"></i></span>
+                    <span class="text-truncate" v-if="!!friend.activity && friend.status != 'offline'">{{ friend.activity }}<i class="fas fa-file-alt ml-1"></i></span>
                 </template>
                 <i slot="remove" class="fas fa-times flex-column justify-content-center" @click.stop="hide(friend)"></i>
             </Button>
             <div class="popup-me">
-                <div class="avatar" :style="{ 'background-image': `url('${me.image}')` }">
+                <div class="avatar" @click.stop="menuClick('myStatus')" :style="{ 'background-image': `url('${me.image}')` }">
                     <div :class="['status', me.status]"></div>
                 </div>
                 <div class="info">
-                    <span class="text-truncate"><b>{{ me.name }}</b><br>{{ me.nickId }}</span>
+                    <span class="text-truncate"><b>{{ me.name }}</b><br>{{ me.hashtagNumber }}</span>
                 </div>
                 <div class="buttons">
                     <button data-toggle="tooltip" title="Dessilenciar" @click="microphone = !microphone" v-html="toggleMicrophone()"></button>
@@ -96,6 +96,10 @@ export default {
 
         toggleSpeaker() {
             return this.speaker ? this.svg.speaker.enabled : this.svg.speaker.disabled
+        },
+
+        menuClick(menu) {
+            window.eventBus.leftMenuClick(menu, 81, 'calc(100vh - 355px)')
         }
     }
 }

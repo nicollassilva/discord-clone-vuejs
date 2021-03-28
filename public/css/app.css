@@ -11058,6 +11058,7 @@ body {
 
 .menuMouseAction {
   min-width: 210px;
+  max-width: 300px;
   min-height: 50px;
   background-color: #18191C;
   position: absolute;
@@ -11068,7 +11069,7 @@ body {
 
 .menuMouseAction li.menuOption {
   width: 100%;
-  height: 31px;
+  min-height: 31px;
   list-style: none;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 1px;
@@ -11076,6 +11077,7 @@ body {
   font-size: 13px;
   font-weight: 500;
   border-radius: 2px;
+  position: relative;
 }
 
 .menuMouseAction li.menuOption.disabled {
@@ -11089,6 +11091,36 @@ body {
   cursor: pointer;
 }
 
+.menuMouseAction li.menuOption:not(.disabled):hover .image .status {
+  background-color: #6881D7;
+}
+
+.menuMouseAction li.menuOption:not(.disabled):hover .image .status::after {
+  background-color: #6881D7;
+}
+
+.menuMouseAction li.menuOption:not(.disabled):hover .image .status::before {
+  background-color: white;
+}
+
+.menuMouseAction li.menuOption .image {
+  width: 15px;
+  height: 20px;
+  position: relative;
+  float: left;
+  margin-right: 8px;
+}
+
+.menuMouseAction li.menuOption .image .status {
+  right: 2px;
+  bottom: 5px;
+  background-color: #18191C;
+}
+
+.menuMouseAction li.menuOption .image .status::after {
+  background-color: #18191C;
+}
+
 .menuMouseAction li.menuOption.menuLink {
   color: #6881D7;
 }
@@ -11099,6 +11131,19 @@ body {
 
 .menuMouseAction li.menuOption.menuDanger:hover {
   background-color: #F04747;
+}
+
+.menuMouseAction li.menuOption:last-of-type .image {
+  background-image: url("/images/customStatus.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: -1px 0;
+}
+
+.menuMouseAction li.menuOption p {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0;
 }
 
 .menuMouseAction .separator {
@@ -11411,6 +11456,10 @@ body {
   float: left;
   margin-right: 7.5px;
   position: relative;
+}
+
+.column-properties .properties-navigation-me .popup-me .avatar:hover {
+  opacity: 0.8;
 }
 
 .column-properties .properties-navigation-me .popup-me .info {

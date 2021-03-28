@@ -5,6 +5,7 @@ export default {
             name: 'Nícollas',
             hashtagNumber: '#1564',
             image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
+            activity: 'Programando o Discord Clone',
             status: 'busy',
             pending: false
         },

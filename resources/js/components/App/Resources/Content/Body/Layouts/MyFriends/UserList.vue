@@ -7,7 +7,7 @@
             </div>
             <div class="infos">
                 <span>{{ list.name }}<em>{{ list.hashtagNumber }}</em></span>
-                <span>{{ list.activity ? list.activity : getStatusTitle(list.status) }}<i v-if="list.activity" class="fas fa-file-alt ml-1"></i></span>
+                <span>{{ list.activity && list.status != 'offline' ? list.activity : getStatusTitle(list.status) }}<i v-if="list.activity && list.status != 'offline'" class="fas fa-file-alt ml-1"></i></span>
             </div>
             <div class="buttons">
                 <div class="button" data-toggle="tooltip" title="Mensagem" v-html="svg.message"></div>
