@@ -11456,7 +11456,7 @@ body {
 }
 
 .body-application .topbar .column-info {
-  width: calc(100% - 600px);
+  width: auto;
   height: 48px;
   position: relative;
   float: left;
@@ -11492,7 +11492,7 @@ body {
 }
 
 .body-application .topbar .column-info .menu {
-  width: 530px;
+  width: auto;
   padding: 2px 5px 0 5px;
   height: 24px;
   float: left;
@@ -11537,8 +11537,7 @@ body {
 }
 
 .body-application .topbar .column-buttons {
-  min-width: 400px;
-  max-width: 600px;
+  width: auto;
   height: 48px;
   position: relative;
   float: right;
@@ -11782,6 +11781,10 @@ body {
   display: block;
 }
 
+.body-application .body-conversation .mid-box .user-list:hover .buttons button {
+  background-color: #202225;
+}
+
 .body-application .body-conversation .mid-box .user-list .avatar {
   width: 32px;
   height: 32px;
@@ -11794,9 +11797,10 @@ body {
 }
 
 .body-application .body-conversation .mid-box .user-list .infos {
-  width: calc(100% - 47px);
+  width: calc(100% - 145px);
   height: 35px;
-  float: right;
+  float: left;
+  margin-left: 10px;
 }
 
 .body-application .body-conversation .mid-box .user-list .infos span {
@@ -11824,6 +11828,40 @@ body {
   font-size: 12px;
   margin-top: -2px;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.body-application .body-conversation .mid-box .user-list .buttons {
+  width: 82px;
+  height: 35px;
+  float: right;
+  position: relative;
+  display: flex;
+}
+
+.body-application .body-conversation .mid-box .user-list .buttons .button {
+  width: 36px;
+  height: 36px;
+  background-color: #2F3136;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  border: none;
+}
+
+.body-application .body-conversation .mid-box .user-list .buttons .button svg {
+  color: rgba(255, 255, 255, 0.6);
+  width: 20px;
+  height: 20px;
+}
+
+.body-application .body-conversation .mid-box .user-list .buttons .button:hover svg {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.body-application .body-conversation .mid-box .user-list .buttons .button:last-of-type {
+  margin-right: 0;
 }
 
 .strikethrough-1n4ekb {

@@ -1,5 +1,5 @@
 export default {
-    'path': '/sounds/',
+    'path': window.location.pathname + 'sounds/',
 
     getSound(type, sound) {
         try {

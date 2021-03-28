@@ -476,7 +476,7 @@ body {
         position: relative;
 
         .column-info {
-            width: calc(100% - 600px);
+            width: auto;
             height: 48px;
             position: relative;
             float: left;
@@ -511,7 +511,7 @@ body {
             }
             
             .menu {
-                width: 530px;
+                width: auto;
                 padding: 2px 5px 0 5px;
                 height: 24px;
                 float: left;
@@ -555,8 +555,7 @@ body {
         }
 
         .column-buttons {
-            min-width: 400px;
-            max-width: 600px;
+            width: auto;
             height: 48px;
             position: relative;
             float: right;
@@ -796,6 +795,12 @@ body {
                     .infos span:first-of-type em {
                         display: block;
                     }
+
+                    .buttons {
+                        button {
+                            background-color: $dBackground;
+                        }
+                    }
                 }
 
                 .avatar {
@@ -810,9 +815,10 @@ body {
                 }
 
                 .infos {
-                    width: calc(100% - 47px);
+                    width: calc(100% - 145px);
                     height: 35px;
-                    float: right;
+                    float: left;
+                    margin-left: 10px;
         
                     span {
                         width: 100%;
@@ -839,6 +845,40 @@ body {
                             margin-top: -2px;
                             color: rgba(255, 255, 255, .5);
                         }
+                    }
+                }
+
+                .buttons {
+                    width: 82px;
+                    height: 35px;
+                    float: right;
+                    position: relative;
+                    display: flex;
+
+                    .button {
+                        width: 36px;
+                        height: 36px;
+                        background-color: $dBackgroundProperties;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                        border: none;
+
+                        svg {
+                            color: rgba(255, 255, 255, 0.6);
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        &:hover {
+                            svg {
+                                color: rgba(255, 255, 255, 0.8);
+                            }
+                        }
+
+                        &:last-of-type { margin-right: 0; }
                     }
                 }
             }

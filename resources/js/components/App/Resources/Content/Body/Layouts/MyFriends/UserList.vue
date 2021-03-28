@@ -8,6 +8,10 @@
                 <span>{{ list.name }}<em>{{ list.hashtagNumber }}</em></span>
                 <span>{{ list.activity ? list.activity : getStatusTitle(list.status) }}<i v-if="list.activity" class="fas fa-file-alt ml-1"></i></span>
             </div>
+            <div class="buttons">
+                <div class="button" data-toggle="tooltip" title="Mensagem" v-html="svg.message"></div>
+                <div class="button" data-toggle="tooltip" title="Mais" v-html="svg.moreIcon"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -15,7 +19,8 @@
 export default {
     data() {
         return {
-            lists: window.appData.friends
+            lists: window.appData.friends,
+            svg: window.svgHandle
         }
     },
     methods: {
