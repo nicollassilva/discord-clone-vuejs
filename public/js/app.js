@@ -2711,7 +2711,11 @@ __webpack_require__.r(__webpack_exports__);
       return this.speaker ? this.svg.speaker.enabled : this.svg.speaker.disabled;
     },
     menuClick: function menuClick(menu) {
-      window.eventBus.leftMenuClick(menu, 81, 'calc(100vh - 355px)');
+      if (menu == 'myStatus') {
+        window.eventBus.leftMenuClick(menu, 81, 'calc(100vh - 355px)');
+      } else {
+        window.eventBus.leftMenuClick(menu, 280, 185);
+      }
     }
   }
 });
@@ -2811,6 +2815,137 @@ __webpack_require__.r(__webpack_exports__);
         x: x,
         y: y
       };
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      visibility: false,
+      position: {
+        x: 0,
+        y: 0
+      },
+      selectedCounter: 9,
+      selectedUsers: [],
+      friends: window.appData.users,
+      svg: window.svgHandle
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    window.eventBus.$on('leftMenuEvent', function (event) {
+      if (event.type && event.type === 'MDCreate') {
+        _this.toggleVisibility(event.visible);
+
+        _this.setPositions(event.positionX, event.positionY);
+
+        _this.selectedCounter = 9;
+        _this.selectedUsers = [];
+      } else {
+        if (_this.visibility) {
+          _this.toggleVisibility(event.visible);
+        }
+      }
+    });
+  },
+  methods: {
+    toggleVisibility: function toggleVisibility(option) {
+      this.visibility = option;
+    },
+    setPositions: function setPositions(x, y) {
+      this.position = {
+        x: x,
+        y: y
+      };
+    },
+    toggleCheckbox: function toggleCheckbox(event, user) {
+      var parentNode = event.target.parentNode.classList,
+          secondParent = event.target.parentNode.parentNode.classList,
+          action;
+
+      if (parentNode && parentNode.contains('userlist')) {
+        parentNode.contains('selected') ? (action = 'up', this.toggleSelectedUser(user, 'remove')) : (action = 'down', this.toggleSelectedUser(user));
+        parentNode.toggle('selected');
+      } else {
+        secondParent.contains('selected') ? (action = 'up', this.toggleSelectedUser(user, 'remove')) : (action = 'down', this.toggleSelectedUser(user));
+        secondParent.toggle('selected');
+      }
+    },
+    toggleSelectedUser: function toggleSelectedUser(user) {
+      var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'add';
+
+      if (action == 'add') {
+        if (this.selectedUsers.filter(function (e) {
+          return e.id === user.id;
+        }) <= 0) {
+          this.selectedUsers.push(user);
+          this.selectedCounter--;
+        }
+      } else {
+        window.removeByAttr(this.selectedUsers, 'id', user.id);
+        this.selectedCounter++;
+      }
+    },
+    removeElementSelected: function removeElementSelected(id) {
+      this.toggleSelectedUser({
+        id: id
+      }, 'remove');
+      document.querySelector(".userlist.user-".concat(id)).classList.remove('selected');
+    },
+    filterInput: function filterInput(event) {
+      var filter = event.target.value;
+
+      if (filter.length > 0) {
+        var regex = new RegExp(filter, 'gi');
+        this.friends = window.appData.users.filter(function (e) {
+          return !!e.name.match(regex);
+        });
+      } else {
+        this.friends = window.appData.users;
+      }
     }
   }
 });
@@ -2926,18 +3061,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_ButtonMore_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layouts/ButtonMore.vue */ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue");
 /* harmony import */ var _Layouts_MyStatus_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layouts/MyStatus.vue */ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue");
+/* harmony import */ var _Layouts_MDCreate_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Layouts/MDCreate.vue */ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue");
 //
 //
 //
 //
 //
 //
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     ButtonMore: _Layouts_ButtonMore_vue__WEBPACK_IMPORTED_MODULE_0__.default,
-    MyStatus: _Layouts_MyStatus_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    MyStatus: _Layouts_MyStatus_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    MDCreate: _Layouts_MDCreate_vue__WEBPACK_IMPORTED_MODULE_2__.default
   }
 });
 
@@ -3639,8 +3778,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   'privateGroup': '<svg x="0" y="0" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20.998 0V3H23.998V5H20.998V8H18.998V5H15.998V3H18.998V0H20.998ZM2.99805 20V24L8.33205 20H14.998C16.102 20 16.998 19.103 16.998 18V9C16.998 7.896 16.102 7 14.998 7H1.99805C0.894047 7 -0.00195312 7.896 -0.00195312 9V18C-0.00195312 19.103 0.894047 20 1.99805 20H2.99805Z"></path></svg>',
   'message': '<svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill="currentColor" d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z"></path></svg>',
   'moreIcon': '<svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0z"></path><path fill="currentColor" d="M12 16c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2zm0-6c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2zm0-6c1.1045695 0 2 .8954305 2 2s-.8954305 2-2 2-2-.8954305-2-2 .8954305-2 2-2z"></path></g></svg>',
+  'successIcon': '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="#4f545c" fill-rule="evenodd" clip-rule="evenodd" d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"></path></svg>',
   '': ''
-}, _defineProperty(_at$microphone$speake, "", ''), _defineProperty(_at$microphone$speake, "", ''), _defineProperty(_at$microphone$speake, "", ''), _at$microphone$speake);
+}, _defineProperty(_at$microphone$speake, "", ''), _defineProperty(_at$microphone$speake, "", ''), _at$microphone$speake);
 
 /***/ }),
 
@@ -39724,6 +39864,45 @@ component.options.__file = "resources/js/components/Helper/MenuMouse/ButtonLeft/
 
 /***/ }),
 
+/***/ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MDCreate_vue_vue_type_template_id_69780ed0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MDCreate.vue?vue&type=template&id=69780ed0& */ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=template&id=69780ed0&");
+/* harmony import */ var _MDCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MDCreate.vue?vue&type=script&lang=js& */ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _MDCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _MDCreate_vue_vue_type_template_id_69780ed0___WEBPACK_IMPORTED_MODULE_0__.render,
+  _MDCreate_vue_vue_type_template_id_69780ed0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue":
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue ***!
@@ -40230,6 +40409,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MDCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MDCreate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MDCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************!*\
   !*** ./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue?vue&type=script&lang=js& ***!
@@ -40611,6 +40806,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonMore_vue_vue_type_template_id_4408c7e4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonMore_vue_vue_type_template_id_4408c7e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ButtonMore.vue?vue&type=template&id=4408c7e4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue?vue&type=template&id=4408c7e4&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=template&id=69780ed0&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=template&id=69780ed0& ***!
+  \*****************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MDCreate_vue_vue_type_template_id_69780ed0___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MDCreate_vue_vue_type_template_id_69780ed0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MDCreate_vue_vue_type_template_id_69780ed0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MDCreate.vue?vue&type=template&id=69780ed0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=template&id=69780ed0&");
 
 
 /***/ }),
@@ -41789,7 +42001,24 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "separator-property" }, [
+          _c("span", [_vm._v("MENSAGENS DIRETAS")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "icon",
+              attrs: { "data-toggle": "tooltip", title: "Criar MD" },
+              on: {
+                click: function($event) {
+                  $event.stopPropagation()
+                  return _vm.menuClick("MDCreate")
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-plus" })]
+          )
+        ]),
         _vm._v(" "),
         _vm._l(_vm.friends, function(friend) {
           return _c(
@@ -41920,23 +42149,6 @@ var staticRenderFns = [
         [_vm._v("Encontre ou comece uma conversa")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "separator-property" }, [
-      _c("span", [_vm._v("MENSAGENS DIRETAS")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "icon",
-          attrs: { "data-toggle": "tooltip", title: "Criar MD" }
-        },
-        [_c("i", { staticClass: "fas fa-plus" })]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -42027,6 +42239,159 @@ var render = function() {
             _vm._v(" "),
             _c("li", { staticClass: "menuOption menuDanger" }, [
               _vm._v("Desfazer amizade")
+            ])
+          ]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=template&id=69780ed0&":
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue?vue&type=template&id=69780ed0& ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.visibility
+      ? _c(
+          "div",
+          {
+            staticClass: "menuMouseAction menu-custom",
+            style: {
+              width: "440px",
+              left: _vm.position.x + "px",
+              top: _vm.position.y + "px"
+            }
+          },
+          [
+            _c("span", { staticClass: "selectFriends" }, [
+              _vm._v("SELECIONAR AMIGOS")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "descriptionParagraph" }, [
+              _vm._v(
+                "Você pode adicionar mais " +
+                  _vm._s(_vm.selectedCounter) +
+                  " amigos."
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "interactive-input" },
+              [
+                _vm._l(_vm.selectedUsers, function(selectedUser) {
+                  return _c(
+                    "div",
+                    {
+                      key: selectedUser.id,
+                      staticClass: "selected-user",
+                      on: {
+                        click: function($event) {
+                          $event.stopPropagation()
+                          return _vm.removeElementSelected(selectedUser.id)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(selectedUser.name) +
+                          "\n                "
+                      ),
+                      _c("i", { staticClass: "fas ml-2 mt-1 fa-times" })
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: {
+                    placeholder: "Digite o nome de usuário de um amigo"
+                  },
+                  on: {
+                    keyup: _vm.filterInput,
+                    click: function($event) {
+                      $event.stopPropagation()
+                    }
+                  }
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "scroll-friends" },
+              [
+                _c(
+                  "transition-group",
+                  { attrs: { name: "flip-list", tag: "div" } },
+                  _vm._l(_vm.friends, function(friend) {
+                    return _c(
+                      "div",
+                      {
+                        key: friend.id,
+                        ref: ["user" + friend.id],
+                        refInFor: true,
+                        class: ["userlist", "user-" + friend.id],
+                        on: {
+                          click: function($event) {
+                            $event.stopPropagation()
+                            return _vm.toggleCheckbox($event, friend)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "avatar",
+                            style: {
+                              "background-image": "url('" + friend.image + "')"
+                            }
+                          },
+                          [_c("div", { class: ["status", friend.status] })]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "name" }, [
+                          _vm._v(_vm._s(friend.name)),
+                          _c("em", [
+                            _vm._v(_vm._s(friend.name + friend.hashtagNumber))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "checkbox",
+                          domProps: { innerHTML: _vm._s(_vm.svg.successIcon) }
+                        })
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("button", { staticClass: "createPrivateGroup" }, [
+              _vm._v("Criar grupo privado")
             ])
           ]
         )
@@ -42216,7 +42581,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("ButtonMore"), _vm._v(" "), _c("MyStatus")], 1)
+  return _c(
+    "div",
+    [
+      _c("ButtonMore"),
+      _vm._v(" "),
+      _c("MyStatus"),
+      _vm._v(" "),
+      _c("MDCreate")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54577,6 +54952,7 @@ var map = {
 	"./components/Helper/Layouts/Button.vue": "./resources/js/components/Helper/Layouts/Button.vue",
 	"./components/Helper/Layouts/ButtonExplore.vue": "./resources/js/components/Helper/Layouts/ButtonExplore.vue",
 	"./components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue",
+	"./components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue",
 	"./components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue",
 	"./components/Helper/MenuMouse/ButtonLeft/MouseLeftMenuHandle.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/MouseLeftMenuHandle.vue",
 	"./components/Helper/MenuMouse/ButtonRight/Layouts/Groups.vue": "./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Groups.vue",

@@ -10960,6 +10960,7 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+  width: 3px;
 }
 
 .flex-column {
@@ -11058,13 +11059,193 @@ body {
 
 .menuMouseAction {
   min-width: 210px;
-  max-width: 300px;
   min-height: 50px;
   background-color: #18191C;
   position: absolute;
   padding: 7px;
   z-index: 999;
   border-radius: 5px;
+}
+
+.menuMouseAction.menu-custom {
+  background-color: #36393F;
+  box-shadow: 0 0 0 1px rgba(32, 34, 37, 0.6), 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+  padding: 15px;
+}
+
+.menuMouseAction.menu-custom span.selectFriends {
+  font-size: 15px;
+  width: 100%;
+  float: left;
+  font-weight: 600;
+  color: white;
+}
+
+.menuMouseAction.menu-custom p.descriptionParagraph {
+  font-size: 11px;
+  font-weight: 500;
+  width: 100%;
+  float: left;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.menuMouseAction.menu-custom .interactive-input {
+  width: 100%;
+  min-height: 35px;
+  float: left;
+  background-color: #202225;
+  border-radius: 4px;
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  flex-direction: row;
+  position: relative;
+}
+
+.menuMouseAction.menu-custom .interactive-input input {
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  flex: 1;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 8px;
+}
+
+.menuMouseAction.menu-custom .interactive-input input::placeholder,
+.menuMouseAction.menu-custom .interactive-input input::-webkit-input-placeholder,
+.menuMouseAction.menu-custom .interactive-input input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.menuMouseAction.menu-custom .interactive-input .selected-user {
+  text-align: center;
+  background-color: #36393F;
+  padding: 5px 8px;
+  height: 29px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  margin-top: 3px;
+  border-radius: 2px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.menuMouseAction.menu-custom .interactive-input .selected-user:hover {
+  opacity: 0.9;
+}
+
+.menuMouseAction.menu-custom .interactive-input .selected-user i.fa-times {
+  font-size: 12px;
+}
+
+.menuMouseAction.menu-custom .scroll-friends {
+  width: 100%;
+  height: 190px;
+  position: relative;
+  overflow-y: auto;
+  margin-top: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  float: left;
+}
+
+.menuMouseAction.menu-custom .scroll-friends::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 15px;
+}
+
+.menuMouseAction.menu-custom .scroll-friends:hover::-webkit-scrollbar {
+  display: block;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist {
+  width: 402px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 4px 8px;
+  margin-bottom: 1px;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist:hover span.name em {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist .avatar {
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  border-radius: 50%;
+  float: left;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist span.name {
+  width: calc(100% - 60px);
+  height: 37px;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist span.name em {
+  margin-left: 5px;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist .checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  float: right;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist .checkbox svg {
+  visibility: hidden;
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist.selected .checkbox {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.menuMouseAction.menu-custom .scroll-friends .userlist.selected .checkbox svg {
+  visibility: visible;
+}
+
+.menuMouseAction.menu-custom button.createPrivateGroup {
+  width: calc(100% - 10px);
+  margin-left: 5px;
+  height: 38px;
+  background-color: #7289DA;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 3px;
+  margin-top: 25px;
+}
+
+.menuMouseAction.menu-custom button.createPrivateGroup:hover {
+  background-color: #677bc4;
 }
 
 .menuMouseAction li.menuOption {

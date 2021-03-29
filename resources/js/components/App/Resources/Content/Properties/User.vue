@@ -18,7 +18,7 @@
             </Button>
             <div class="separator-property">
                 <span>MENSAGENS DIRETAS</span>
-                <div class="icon" data-toggle="tooltip" title="Criar MD"><i class="fas fa-plus"></i></div>
+                <div class="icon" @click.stop="menuClick('MDCreate')" data-toggle="tooltip" title="Criar MD"><i class="fas fa-plus"></i></div>
             </div>
             <Button
                 v-for="friend in friends"
@@ -99,7 +99,11 @@ export default {
         },
 
         menuClick(menu) {
-            window.eventBus.leftMenuClick(menu, 81, 'calc(100vh - 355px)')
+            if(menu == 'myStatus') {
+                window.eventBus.leftMenuClick(menu, 81, 'calc(100vh - 355px)')
+            } else {
+                window.eventBus.leftMenuClick(menu, 280, 185)
+            }
         }
     }
 }
