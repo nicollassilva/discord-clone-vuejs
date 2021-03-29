@@ -10947,6 +10947,10 @@ body {
   font-family: "Oxanium", cursive;
   position: relative;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .column-groups {
@@ -11681,11 +11685,16 @@ body {
   height: 32px;
   background: none;
   border: none;
+  border-radius: 3px;
   float: left;
 }
 
 .column-properties .properties-navigation-me .popup-me .buttons button svg {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.column-properties .properties-navigation-me .popup-me .buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .body-application {
@@ -12125,25 +12134,130 @@ body {
   transition: transform 0.3s;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .modal-content {
-  width: 100vw;
-  height: 100vh;
+  width: calc(100vw + 2px);
+  height: calc(100vh + 2px);
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -1px;
+  left: -1px;
   z-index: 1000;
-  display: none;
+}
+
+.modal-content.userSettings {
+  background-color: #36393F;
+}
+
+.modal-content.userSettings .menu-column {
+  width: calc(35% - 5px);
+  background-color: #2F3136;
+  height: 100vh;
+  float: left;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-content.userSettings .menu-column .menu {
+  width: 220px;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 50px 6px 60px 20px;
+}
+
+.modal-content.userSettings .menu-column .menu::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 15px;
+}
+
+.modal-content.userSettings .menu-column .menu:hover::-webkit-scrollbar {
+  display: block;
+}
+
+.modal-content.userSettings .menu-column .menu nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.modal-content.userSettings .menu-column .menu nav li {
+  list-style: none;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.7);
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 8px;
+  border-radius: 3px;
+  cursor: default;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.modal-content.userSettings .menu-column .menu nav li.menuDanger {
+  color: #F04747;
+}
+
+.modal-content.userSettings .menu-column .menu nav li.menuLink {
+  color: #7289DA;
+}
+
+.modal-content.userSettings .menu-column .menu nav li.title {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-content.userSettings .menu-column .menu nav li:not(.menuLink):not(.menuDanger):not(.title):hover,
+.modal-content.userSettings .menu-column .menu nav li:not(.menuLink):not(.menuDanger):not(.title).active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.modal-content.userSettings .menu-column .menu nav li.menuDanger:hover {
+  background-color: rgba(240, 71, 71, 0.1);
+}
+
+.modal-content.userSettings .menu-column .menu nav li.menuLink:hover {
+  background-color: rgba(114, 137, 218, 0.1);
+}
+
+.modal-content.userSettings .menu-column .menu nav li:not(.title) {
+  cursor: pointer;
+}
+
+.modal-content.userSettings .menu-column .menu nav .separator {
+  width: 95%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.07);
+  margin: 7px 0;
+  margin-left: 2.5%;
+  position: relative;
+}
+
+.modal-content.userSettings .menu-column .menu nav .socials {
+  width: 100%;
+  padding: 0 7px;
+}
+
+.modal-content.userSettings .menu-column .menu nav .socials a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  margin-right: 9px;
+}
+
+.modal-content.userSettings .menu-column .menu nav .socials a:hover {
+  color: white;
+}
+
+.animated.zoomIn,
+.animated.zoomOut {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
 }
 
 .bs-tooltip-top .tooltip-inner,

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <transition name="fade">
+        <transition enter-active-class="animated zoomIn" leave-active-class="animated fadeOut" mode="out-in">
         <div class="menuMouseAction" v-if="visibility" :style="[{ 'width': '220px' }, { left: `${position.x}px`, top: (Number.isInteger(position.y) ? position.x + 'px' : position.y) }]">
             <li class="menuOption" @click="updateStatus('online')">
                 <div class="image">

@@ -5,6 +5,7 @@
         <BodyApplication></BodyApplication>
         <MouseRightMenuHandle></MouseRightMenuHandle>
         <MouseLeftMenuHandle></MouseLeftMenuHandle>
+        <ModalHandle></ModalHandle>
     </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ import ColumnProperties from './Resources/ColumnProperties.vue'
 import BodyApplication from './Resources/BodyApplication.vue'
 import MouseRightMenuHandle from '../Helper/MenuMouse/ButtonRight/MouseRightMenuHandle.vue'
 import MouseLeftMenuHandle from '../Helper/MenuMouse/ButtonLeft/MouseLeftMenuHandle.vue'
+import ModalHandle from './Modal/ModalHandle.vue'
 
 export default {
     components: {
@@ -20,7 +22,8 @@ export default {
         ColumnProperties,
         BodyApplication,
         MouseRightMenuHandle,
-        MouseLeftMenuHandle
+        MouseLeftMenuHandle,
+        ModalHandle
     },
     mounted() {
         setTimeout(() => {
