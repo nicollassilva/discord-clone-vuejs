@@ -1,10 +1,12 @@
 <template>
     <div>
+        <transition name="fade">
         <div class="menuMouseAction" v-if="visibility" :style="{ left: `${position.x}px`, top: `${position.y}px` }">
             <li class="menuOption">Iniciar chamada de vídeo</li>
             <li class="menuOption">Iniciar chamada de voz</li>
             <li class="menuOption menuDanger">Desfazer amizade</li>
         </div>
+        </transition>
     </div>
 </template>
 <script>

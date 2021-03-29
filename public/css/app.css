@@ -12122,6 +12122,16 @@ body {
   transition: transform 0.3s;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .bs-tooltip-top .tooltip-inner,
 .bs-tooltip-auto[x-placement^=top] .tooltip-inner,
 .bs-tooltip-right .tooltip-inner,

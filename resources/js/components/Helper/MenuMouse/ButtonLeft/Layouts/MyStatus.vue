@@ -1,5 +1,6 @@
 <template>
     <div>
+        <transition name="fade">
         <div class="menuMouseAction" v-if="visibility" :style="[{ 'width': '220px' }, { left: `${position.x}px`, top: (Number.isInteger(position.y) ? position.x + 'px' : position.y) }]">
             <li class="menuOption" @click="updateStatus('online')">
                 <div class="image">
@@ -34,6 +35,7 @@
                 Definir status personalizado
             </li>
         </div>
+        </transition>
     </div>
 </template>
 <script>

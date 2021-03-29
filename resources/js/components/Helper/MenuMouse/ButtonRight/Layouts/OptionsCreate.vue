@@ -1,9 +1,11 @@
 <template>
     <div>
+        <transition name="fade">
         <div class="menuMouseAction" v-if="visibility" :style="{ left: `${position.x}px`, top: `${position.y}px` }">
             <li class="menuOption">Entrar em um servidor</li>
             <li class="menuOption">Criar um servidor</li>
         </div>
+        </transition>
     </div>
 </template>
 <script>

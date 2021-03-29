@@ -1,5 +1,6 @@
-<template lang="">
+<template>
     <div>
+        <transition name="fade">
         <div class="menuMouseAction" v-if="visibility" :style="{ left: `${position.x}px`, top: `${position.y}px` }">
             <li class="menuOption disabled">Marcar como lida</li>
             <div class="separator"></div>
@@ -15,6 +16,7 @@
             <div class="separator"></div>
             <li class="menuOption">Silenciar</li>
         </div>
+        </transition>
     </div>
 </template>
 <script>

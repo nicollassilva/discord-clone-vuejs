@@ -2781,6 +2781,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2859,6 +2861,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2869,7 +2873,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       selectedCounter: 9,
       selectedUsers: [],
-      friends: window.appData.users,
+      friends: null,
       svg: window.svgHandle
     };
   },
@@ -2884,6 +2888,9 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.selectedCounter = 9;
         _this.selectedUsers = [];
+        _this.friends = window.appData.users.filter(function (e) {
+          return !e.pending;
+        });
       } else {
         if (_this.visibility) {
           _this.toggleVisibility(event.visible);
@@ -2963,6 +2970,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -3111,6 +3120,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3170,6 +3181,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3221,6 +3234,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -40070,7 +40085,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Users_vue_vue_type_template_id_823f2b84_lang_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=823f2b84&lang=true& */ "./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&lang=true&");
+/* harmony import */ var _Users_vue_vue_type_template_id_823f2b84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=823f2b84& */ "./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&");
 /* harmony import */ var _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&lang=js& */ "./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -40082,8 +40097,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _Users_vue_vue_type_template_id_823f2b84_lang_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Users_vue_vue_type_template_id_823f2b84_lang_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Users_vue_vue_type_template_id_823f2b84___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Users_vue_vue_type_template_id_823f2b84___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -40895,19 +40910,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&lang=true&":
-/*!*************************************************************************************************************************!*\
-  !*** ./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&lang=true& ***!
-  \*************************************************************************************************************************/
+/***/ "./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84& ***!
+  \***************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_823f2b84_lang_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_823f2b84_lang_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_823f2b84___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_823f2b84___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_823f2b84_lang_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Users.vue?vue&type=template&id=823f2b84&lang=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&lang=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_823f2b84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Users.vue?vue&type=template&id=823f2b84& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&");
 
 
 /***/ }),
@@ -42220,30 +42235,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.visibility
-      ? _c(
-          "div",
-          {
-            staticClass: "menuMouseAction",
-            style: { left: _vm.position.x + "px", top: _vm.position.y + "px" }
-          },
-          [
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Iniciar chamada de vídeo")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Iniciar chamada de voz")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption menuDanger" }, [
-              _vm._v("Desfazer amizade")
-            ])
-          ]
-        )
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.visibility
+          ? _c(
+              "div",
+              {
+                staticClass: "menuMouseAction",
+                style: {
+                  left: _vm.position.x + "px",
+                  top: _vm.position.y + "px"
+                }
+              },
+              [
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Iniciar chamada de vídeo")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Iniciar chamada de voz")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption menuDanger" }, [
+                  _vm._v("Desfazer amizade")
+                ])
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42268,135 +42292,146 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.visibility
-      ? _c(
-          "div",
-          {
-            staticClass: "menuMouseAction menu-custom",
-            style: {
-              width: "440px",
-              left: _vm.position.x + "px",
-              top: _vm.position.y + "px"
-            }
-          },
-          [
-            _c("span", { staticClass: "selectFriends" }, [
-              _vm._v("SELECIONAR AMIGOS")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "descriptionParagraph" }, [
-              _vm._v(
-                "Você pode adicionar mais " +
-                  _vm._s(_vm.selectedCounter) +
-                  " amigos."
-              )
-            ]),
-            _vm._v(" "),
-            _c(
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.visibility
+          ? _c(
               "div",
-              { staticClass: "interactive-input" },
+              {
+                staticClass: "menuMouseAction menu-custom",
+                style: {
+                  width: "440px",
+                  left: _vm.position.x + "px",
+                  top: _vm.position.y + "px"
+                }
+              },
               [
-                _vm._l(_vm.selectedUsers, function(selectedUser) {
-                  return _c(
-                    "div",
-                    {
-                      key: selectedUser.id,
-                      staticClass: "selected-user",
+                _c("span", { staticClass: "selectFriends" }, [
+                  _vm._v("SELECIONAR AMIGOS")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "descriptionParagraph" }, [
+                  _vm._v(
+                    "Você pode adicionar mais " +
+                      _vm._s(_vm.selectedCounter) +
+                      " amigos."
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "interactive-input" },
+                  [
+                    _vm._l(_vm.selectedUsers, function(selectedUser) {
+                      return _c(
+                        "div",
+                        {
+                          key: selectedUser.id,
+                          staticClass: "selected-user",
+                          on: {
+                            click: function($event) {
+                              $event.stopPropagation()
+                              return _vm.removeElementSelected(selectedUser.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(selectedUser.name) +
+                              "\n                "
+                          ),
+                          _c("i", { staticClass: "fas ml-2 mt-1 fa-times" })
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        placeholder: "Digite o nome de usuário de um amigo"
+                      },
                       on: {
+                        keyup: _vm.filterInput,
                         click: function($event) {
                           $event.stopPropagation()
-                          return _vm.removeElementSelected(selectedUser.id)
                         }
                       }
-                    },
-                    [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(selectedUser.name) +
-                          "\n                "
-                      ),
-                      _c("i", { staticClass: "fas ml-2 mt-1 fa-times" })
-                    ]
-                  )
-                }),
+                    })
+                  ],
+                  2
+                ),
                 _vm._v(" "),
-                _c("input", {
-                  attrs: {
-                    placeholder: "Digite o nome de usuário de um amigo"
-                  },
-                  on: {
-                    keyup: _vm.filterInput,
-                    click: function($event) {
-                      $event.stopPropagation()
-                    }
-                  }
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "scroll-friends" },
-              [
                 _c(
-                  "transition-group",
-                  { attrs: { name: "flip-list", tag: "div" } },
-                  _vm._l(_vm.friends, function(friend) {
-                    return _c(
-                      "div",
-                      {
-                        key: friend.id,
-                        ref: ["user" + friend.id],
-                        refInFor: true,
-                        class: ["userlist", "user-" + friend.id],
-                        on: {
-                          click: function($event) {
-                            $event.stopPropagation()
-                            return _vm.toggleCheckbox($event, friend)
-                          }
-                        }
-                      },
-                      [
-                        _c(
+                  "div",
+                  { staticClass: "scroll-friends" },
+                  [
+                    _c(
+                      "transition-group",
+                      { attrs: { name: "flip-list", tag: "div" } },
+                      _vm._l(_vm.friends, function(friend) {
+                        return _c(
                           "div",
                           {
-                            staticClass: "avatar",
-                            style: {
-                              "background-image": "url('" + friend.image + "')"
+                            key: friend.id,
+                            ref: ["user" + friend.id],
+                            refInFor: true,
+                            class: ["userlist", "user-" + friend.id],
+                            on: {
+                              click: function($event) {
+                                $event.stopPropagation()
+                                return _vm.toggleCheckbox($event, friend)
+                              }
                             }
                           },
-                          [_c("div", { class: ["status", friend.status] })]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "name" }, [
-                          _vm._v(_vm._s(friend.name)),
-                          _c("em", [
-                            _vm._v(_vm._s(friend.name + friend.hashtagNumber))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", {
-                          staticClass: "checkbox",
-                          domProps: { innerHTML: _vm._s(_vm.svg.successIcon) }
-                        })
-                      ]
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "avatar",
+                                style: {
+                                  "background-image":
+                                    "url('" + friend.image + "')"
+                                }
+                              },
+                              [_c("div", { class: ["status", friend.status] })]
+                            ),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "name" }, [
+                              _vm._v(_vm._s(friend.name)),
+                              _c("em", [
+                                _vm._v(
+                                  _vm._s(friend.name + friend.hashtagNumber)
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", {
+                              staticClass: "checkbox",
+                              domProps: {
+                                innerHTML: _vm._s(_vm.svg.successIcon)
+                              }
+                            })
+                          ]
+                        )
+                      }),
+                      0
                     )
-                  }),
-                  0
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("button", { staticClass: "createPrivateGroup" }, [
-              _vm._v("Criar grupo privado")
-            ])
-          ]
-        )
-      : _vm._e()
-  ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("button", { staticClass: "createPrivateGroup" }, [
+                  _vm._v("Criar grupo privado")
+                ])
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42421,144 +42456,125 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.visibility
-      ? _c(
-          "div",
-          {
-            staticClass: "menuMouseAction",
-            style: [
-              { width: "220px" },
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.visibility
+          ? _c(
+              "div",
               {
-                left: _vm.position.x + "px",
-                top: Number.isInteger(_vm.position.y)
-                  ? _vm.position.x + "px"
-                  : _vm.position.y
-              }
-            ]
-          },
-          [
-            _c(
-              "li",
-              {
-                staticClass: "menuOption",
-                on: {
-                  click: function($event) {
-                    return _vm.updateStatus("online")
+                staticClass: "menuMouseAction",
+                style: [
+                  { width: "220px" },
+                  {
+                    left: _vm.position.x + "px",
+                    top: Number.isInteger(_vm.position.y)
+                      ? _vm.position.x + "px"
+                      : _vm.position.y
                   }
-                }
-              },
-              [_vm._m(0), _vm._v("\n            Disponível\n        ")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass: "menuOption",
-                on: {
-                  click: function($event) {
-                    return _vm.updateStatus("absent")
-                  }
-                }
-              },
-              [_vm._m(1), _vm._v("\n            Ausente\n        ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass: "menuOption",
-                on: {
-                  click: function($event) {
-                    return _vm.updateStatus("busy")
-                  }
-                }
+                ]
               },
               [
-                _vm._m(2),
-                _vm._v("\n            Não perturbar\n            "),
-                _c("p", [
-                  _vm._v(
-                    "Você não irá mais receber notificações na área de trabalho."
-                  )
+                _c(
+                  "li",
+                  {
+                    staticClass: "menuOption",
+                    on: {
+                      click: function($event) {
+                        return _vm.updateStatus("online")
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "image" }, [
+                      _c("div", { staticClass: "status online" })
+                    ]),
+                    _vm._v("\n            Disponível\n        ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "menuOption",
+                    on: {
+                      click: function($event) {
+                        return _vm.updateStatus("absent")
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "image" }, [
+                      _c("div", { staticClass: "status absent" })
+                    ]),
+                    _vm._v("\n            Ausente\n        ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "menuOption",
+                    on: {
+                      click: function($event) {
+                        return _vm.updateStatus("busy")
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "image" }, [
+                      _c("div", { staticClass: "status busy" })
+                    ]),
+                    _vm._v("\n            Não perturbar\n            "),
+                    _c("p", [
+                      _vm._v(
+                        "Você não irá mais receber notificações na área de trabalho."
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "menuOption",
+                    on: {
+                      click: function($event) {
+                        return _vm.updateStatus("offline")
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "image" }, [
+                      _c("div", { staticClass: "status offline" })
+                    ]),
+                    _vm._v("\n            Invisível\n            "),
+                    _c("p", [
+                      _vm._v(
+                        "Você não aparecerá como disponível, mas terá acesso completo ao Discord."
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _c("div", { staticClass: "image" }),
+                  _vm._v("\n            Definir status personalizado\n        ")
                 ])
               ]
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass: "menuOption",
-                on: {
-                  click: function($event) {
-                    return _vm.updateStatus("offline")
-                  }
-                }
-              },
-              [
-                _vm._m(3),
-                _vm._v("\n            Invisível\n            "),
-                _c("p", [
-                  _vm._v(
-                    "Você não aparecerá como disponível, mas terá acesso completo ao Discord."
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _vm._m(4)
-          ]
-        )
-      : _vm._e()
-  ])
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "image" }, [
-      _c("div", { staticClass: "status online" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "image" }, [
-      _c("div", { staticClass: "status absent" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "image" }, [
-      _c("div", { staticClass: "status busy" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "image" }, [
-      _c("div", { staticClass: "status offline" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "menuOption" }, [
-      _c("div", { staticClass: "image" }),
-      _vm._v("\n            Definir status personalizado\n        ")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42616,58 +42632,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.visibility
-      ? _c(
-          "div",
-          {
-            staticClass: "menuMouseAction",
-            style: { left: _vm.position.x + "px", top: _vm.position.y + "px" }
-          },
-          [
-            _c("li", { staticClass: "menuOption disabled" }, [
-              _vm._v("Marcar como lida")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption menuLink" }, [
-              _vm._v("Convidar pessoas")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Silenciar Servidor")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Ocultar canais silenciados")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Config. de notificação")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Config. de privacidade")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Alterar apelido")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption menuDanger" }, [
-              _vm._v("Sair do servidor")
-            ])
-          ]
-        )
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.visibility
+          ? _c(
+              "div",
+              {
+                staticClass: "menuMouseAction",
+                style: {
+                  left: _vm.position.x + "px",
+                  top: _vm.position.y + "px"
+                }
+              },
+              [
+                _c("li", { staticClass: "menuOption disabled" }, [
+                  _vm._v("Marcar como lida")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption menuLink" }, [
+                  _vm._v("Convidar pessoas")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Silenciar Servidor")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Ocultar canais silenciados")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Config. de notificação")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Config. de privacidade")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Alterar apelido")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption menuDanger" }, [
+                  _vm._v("Sair do servidor")
+                ])
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42692,26 +42717,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.visibility
-      ? _c(
-          "div",
-          {
-            staticClass: "menuMouseAction",
-            style: { left: _vm.position.x + "px", top: _vm.position.y + "px" }
-          },
-          [
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Entrar em um servidor")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Criar um servidor")
-            ])
-          ]
-        )
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.visibility
+          ? _c(
+              "div",
+              {
+                staticClass: "menuMouseAction",
+                style: {
+                  left: _vm.position.x + "px",
+                  top: _vm.position.y + "px"
+                }
+              },
+              [
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Entrar em um servidor")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Criar um servidor")
+                ])
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42720,10 +42754,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&lang=true&":
-/*!****************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&lang=true& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Helper/MenuMouse/ButtonRight/Layouts/Users.vue?vue&type=template&id=823f2b84& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -42736,52 +42770,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.visibility
-      ? _c(
-          "div",
-          {
-            staticClass: "menuMouseAction",
-            style: { left: _vm.position.x + "px", top: _vm.position.y + "px" }
-          },
-          [
-            _c("li", { staticClass: "menuOption disabled" }, [
-              _vm._v("Marcar como lida")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [_vm._v("Perfil")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [_vm._v("Chamar")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [_vm._v("Adicionar nota")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Fechar mensagem direta")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Convidar para o servidor")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [
-              _vm._v("Adicionar amigo")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [_vm._v("Bloquear")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "separator" }),
-            _vm._v(" "),
-            _c("li", { staticClass: "menuOption" }, [_vm._v("Silenciar")])
-          ]
-        )
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.visibility
+          ? _c(
+              "div",
+              {
+                staticClass: "menuMouseAction",
+                style: {
+                  left: _vm.position.x + "px",
+                  top: _vm.position.y + "px"
+                }
+              },
+              [
+                _c("li", { staticClass: "menuOption disabled" }, [
+                  _vm._v("Marcar como lida")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [_vm._v("Perfil")]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [_vm._v("Chamar")]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Adicionar nota")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Fechar mensagem direta")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Convidar para o servidor")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [
+                  _vm._v("Adicionar amigo")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [_vm._v("Bloquear")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "separator" }),
+                _vm._v(" "),
+                _c("li", { staticClass: "menuOption" }, [_vm._v("Silenciar")])
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

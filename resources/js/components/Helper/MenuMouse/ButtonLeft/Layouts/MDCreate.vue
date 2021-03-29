@@ -1,5 +1,6 @@
 <template>
     <div>
+        <transition name="fade">
         <div class="menuMouseAction menu-custom" v-if="visibility" :style="{ width: '440px',left: `${position.x}px`, top: `${position.y}px` }">
             <span class="selectFriends">SELECIONAR AMIGOS</span>
             <p class="descriptionParagraph">Você pode adicionar mais {{ selectedCounter }} amigos.</p>
@@ -23,6 +24,7 @@
             </div>
             <button class="createPrivateGroup">Criar grupo privado</button>
         </div>
+        </transition>
     </div>
 </template>
 <script>
@@ -36,7 +38,7 @@ export default {
             },
             selectedCounter: 9,
             selectedUsers: [],
-            friends: window.appData.users,
+            friends: null,
             svg: window.svgHandle
         }
     },
@@ -47,6 +49,7 @@ export default {
                 this.setPositions(event.positionX, event.positionY)
                 this.selectedCounter = 9
                 this.selectedUsers = []
+                this.friends = window.appData.users.filter(e => !e.pending)
             } else {
                 if(this.visibility) {
                     this.toggleVisibility(event.visible)
