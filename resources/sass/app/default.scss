@@ -11,7 +11,7 @@ body {
     position: relative;
     float: left;
     padding: 7px 0;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 ::-webkit-scrollbar { display: none; width: 3px; }
@@ -34,42 +34,54 @@ body {
     background-repeat: no-repeat;
     background-size: auto 60px;
     position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 9px;
+        height: 0;
+        top: 24px;
+        left: -17px;
+        background-color: none;
+        border-radius: 10px;
+        transition: all .2s;
+    }
+
+    &.active {
+        &::before {
+            top: 4px;
+            height: 40.5px;
+            background-color: #eee;
+        }
+    }
+
+    svg { color: white; }
+
+    &:last-of-type { margin-bottom: 0; }
+    &:hover { border-radius: 35%; cursor: pointer; }
+
+    &.icon-me:hover,
+    &.active {
+        background-color: $dPurple;
+        border-radius: 35%;
+    }
+
+    &.intuitive {
+        svg { color: $dSuccess; }
+        &:hover,
+        &.active {
+            background-color: $dSuccess;
+    
+            svg { color: white; }
+        }
+    }
 }
-
-.rounded-icon::before {
-    content: '';
-    position: absolute;
-    width: 9px;
-    height: 0;
-    top: 24px;
-    left: -17px;
-    background-color: none;
-    border-radius: 10px;
-    transition: all .2s;
-}
-
-.rounded-icon.active::before {
-    top: 4px;
-    height: 40.5px;
-    background-color: #eee;
-}
-
-.rounded-icon svg { color: white; }
-.rounded-icon.intuitive svg { color: $dSuccess; }
-
-.rounded-icon:last-of-type { margin-bottom: 0; }
-.rounded-icon:hover { border-radius: 35%; cursor: pointer; }
-
-.rounded-icon.icon-me:hover,
-.rounded-icon.active { background-color: $dPurple; border-radius: 35%; }
-
-.rounded-icon.intuitive:hover { background-color: $dSuccess; }
-.rounded-icon.intuitive:hover svg { color: white }
 
 .column-groups .navigation-me,
 .column-groups .navigation-groups {
     width: 100%;
     min-height: 55px;
+    height: auto;
     float: left;
     position: relative;
     padding: 5px 0;
@@ -140,7 +152,7 @@ body {
                 height: 35px;
                 background-color: transparent;
                 border: none;
-                flex: 1;
+                flex: auto;
                 color: rgba(255, 255, 255, .5);
                 padding: 0 8px;
 
@@ -1137,3 +1149,14 @@ body {
 
 .fade-enter-active, .fade-leave-active { transition: opacity .3s; }
 .fade-enter, .fade-leave-to { opacity: 0; }
+
+.modal-content {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}

@@ -68,14 +68,13 @@ export default {
 
         toggleCheckbox(event, user) {
             let parentNode = event.target.parentNode.classList,
-                secondParent = event.target.parentNode.parentNode.classList,
-                action;
+                secondParent = event.target.parentNode.parentNode.classList
 
             if(parentNode && parentNode.contains('userlist')) {
-                parentNode.contains('selected') ? (action = 'up', this.toggleSelectedUser(user, 'remove')) : (action = 'down', this.toggleSelectedUser(user))
+                parentNode.contains('selected') ? this.toggleSelectedUser(user, 'remove') : this.toggleSelectedUser(user)
                 parentNode.toggle('selected')
             } else {
-                secondParent.contains('selected') ? (action = 'up', this.toggleSelectedUser(user, 'remove')) : (action = 'down', this.toggleSelectedUser(user))
+                secondParent.contains('selected') ? this.toggleSelectedUser(user, 'remove') : this.toggleSelectedUser(user)
                 secondParent.toggle('selected')
             }
         },
@@ -85,6 +84,7 @@ export default {
                 if(this.selectedUsers.filter(e => e.id === user.id) <= 0) {
                     this.selectedUsers.push(user)
                     this.selectedCounter--
+                    
                 }
             } else { 
                 window.removeByAttr(this.selectedUsers, 'id', user.id)

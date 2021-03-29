@@ -45,7 +45,7 @@
                 <div class="buttons">
                     <button data-toggle="tooltip" title="Dessilenciar" @click="microphone = !microphone" v-html="toggleMicrophone()"></button>
                     <button data-toggle="tooltip" title="Desativar áudio" @click="speaker = !speaker" v-html="toggleSpeaker()"></button>
-                    <button data-toggle="tooltip" title="Configurações de Usuário" v-html="svg.settings"></button>
+                    <button data-toggle="tooltip" @click="toggleModal('userSettings')" title="Configurações de Usuário" v-html="svg.settings"></button>
                 </div>
             </div>
         </div>
@@ -104,6 +104,10 @@ export default {
             } else {
                 window.eventBus.leftMenuClick(menu, 280, 185)
             }
+        },
+
+        toggleModal(modal) {
+            window.eventBus.toggleModal(modal)
         }
     }
 }

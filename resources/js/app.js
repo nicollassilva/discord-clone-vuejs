@@ -23,8 +23,13 @@ window.eventBus = new Vue({
         changePage(page, data) {
             this.$emit('changePage', { page, data })
         },
+
         leftMenuClick(menu, ...positions) {
             this.$emit('leftMenuEvent', { type: menu, visible: true, positionX: positions[0], positionY: positions[1] })
+        },
+        
+        toggleModal(modal, ...data) {
+            this.$emit('toggleModal', { modal, ...data })
         }
     }
 })

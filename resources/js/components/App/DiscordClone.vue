@@ -8,7 +8,6 @@
     </div>
 </template>
 <script>
-
 import ColumnGroups from './Resources/ColumnGroups.vue'
 import ColumnProperties from './Resources/ColumnProperties.vue'
 import BodyApplication from './Resources/BodyApplication.vue'

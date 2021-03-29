@@ -1977,6 +1977,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2716,6 +2718,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         window.eventBus.leftMenuClick(menu, 280, 185);
       }
+    },
+    toggleModal: function toggleModal(modal) {
+      window.eventBus.toggleModal(modal);
     }
   }
 });
@@ -2910,14 +2915,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     toggleCheckbox: function toggleCheckbox(event, user) {
       var parentNode = event.target.parentNode.classList,
-          secondParent = event.target.parentNode.parentNode.classList,
-          action;
+          secondParent = event.target.parentNode.parentNode.classList;
 
       if (parentNode && parentNode.contains('userlist')) {
-        parentNode.contains('selected') ? (action = 'up', this.toggleSelectedUser(user, 'remove')) : (action = 'down', this.toggleSelectedUser(user));
+        parentNode.contains('selected') ? this.toggleSelectedUser(user, 'remove') : this.toggleSelectedUser(user);
         parentNode.toggle('selected');
       } else {
-        secondParent.contains('selected') ? (action = 'up', this.toggleSelectedUser(user, 'remove')) : (action = 'down', this.toggleSelectedUser(user));
+        secondParent.contains('selected') ? this.toggleSelectedUser(user, 'remove') : this.toggleSelectedUser(user);
         secondParent.toggle('selected');
       }
     },
@@ -3341,6 +3345,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Helper_AudioHandle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Helper/AudioHandle */ "./resources/js/components/Helper/AudioHandle.js");
 /* harmony import */ var _components_Helper_ApplicationData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Helper/ApplicationData */ "./resources/js/components/Helper/ApplicationData.js");
 /* harmony import */ var _components_App_DiscordClone_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App/DiscordClone.vue */ "./resources/js/components/App/DiscordClone.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -3374,6 +3384,15 @@ window.eventBus = new Vue({
         positionX: arguments.length <= 1 ? undefined : arguments[1],
         positionY: arguments.length <= 2 ? undefined : arguments[2]
       });
+    },
+    toggleModal: function toggleModal(modal) {
+      for (var _len = arguments.length, data = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        data[_key - 1] = arguments[_key];
+      }
+
+      this.$emit('toggleModal', _objectSpread({
+        modal: modal
+      }, data));
     }
   }
 });
@@ -39806,40 +39825,6 @@ component.options.__file = "resources/js/components/Helper/Layouts/Button.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/Helper/Layouts/ButtonExplore.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/Helper/Layouts/ButtonExplore.vue ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-var script = {}
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__.default)(
-  script,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-component.options.__file = "resources/js/components/Helper/Layouts/ButtonExplore.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue ***!
@@ -41056,95 +41041,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "column-groups flex-column" },
-      [
-        _c(
-          "div",
-          { staticClass: "navigation-me flex-column" },
-          [
-            _c(
-              "Button",
-              {
-                attrs: { owner: "", title: "Início" },
-                nativeOn: {
-                  click: function($event) {
-                    return _vm.changePage()
-                  }
+    _c("div", { staticClass: "column-groups" }, [
+      _c(
+        "div",
+        { staticClass: "navigation-me flex-column" },
+        [
+          _c(
+            "Button",
+            {
+              attrs: { owner: "", title: "Início" },
+              nativeOn: {
+                click: function($event) {
+                  return _vm.changePage()
                 }
-              },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "homeIcon-FuNwkv",
-                    attrs: {
-                      "aria-hidden": "false",
-                      width: "28",
-                      height: "20",
-                      viewBox: "0 0 28 20"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        fill: "currentColor",
-                        d:
-                          "M20.6644 20C20.6644 20 19.8014 18.9762 19.0822 18.0714C22.2226 17.1905 23.4212 15.2381 23.4212 15.2381C22.4384 15.881 21.5034 16.3334 20.6644 16.6429C19.4658 17.1429 18.3151 17.4762 17.1884 17.6667C14.887 18.0953 12.7774 17.9762 10.9795 17.6429C9.61301 17.381 8.43836 17 7.45548 16.6191C6.90411 16.4048 6.30479 16.1429 5.70548 15.8096C5.63356 15.7619 5.56164 15.7381 5.48973 15.6905C5.44178 15.6667 5.41781 15.6429 5.39384 15.6191C4.96233 15.381 4.7226 15.2143 4.7226 15.2143C4.7226 15.2143 5.87329 17.1191 8.91781 18.0238C8.19863 18.9286 7.31164 20 7.31164 20C2.0137 19.8333 0 16.381 0 16.381C0 8.7144 3.45205 2.50017 3.45205 2.50017C6.90411 -0.07123 10.1884 0.000197861 10.1884 0.000197861L10.4281 0.285909C6.11301 1.52399 4.12329 3.40493 4.12329 3.40493C4.12329 3.40493 4.65068 3.11921 5.53767 2.71446C8.10274 1.59542 10.1404 1.2859 10.9795 1.21447C11.1233 1.19066 11.2432 1.16685 11.387 1.16685C12.8493 0.976379 14.5034 0.92876 16.2295 1.11923C18.5068 1.38114 20.9521 2.0478 23.4452 3.40493C23.4452 3.40493 21.5514 1.61923 17.476 0.381146L17.8116 0.000197861C17.8116 0.000197861 21.0959 -0.07123 24.5479 2.50017C24.5479 2.50017 28 8.7144 28 16.381C28 16.381 25.9623 19.8333 20.6644 20ZM9.51712 8.88106C8.15068 8.88106 7.07192 10.0715 7.07192 11.5239C7.07192 12.9763 8.17466 14.1667 9.51712 14.1667C10.8836 14.1667 11.9623 12.9763 11.9623 11.5239C11.9863 10.0715 10.8836 8.88106 9.51712 8.88106ZM18.2671 8.88106C16.9007 8.88106 15.8219 10.0715 15.8219 11.5239C15.8219 12.9763 16.9247 14.1667 18.2671 14.1667C19.6336 14.1667 20.7123 12.9763 20.7123 11.5239C20.7123 10.0715 19.6336 8.88106 18.2671 8.88106Z"
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navigation-groups flex-column" },
-          [_c("groups")],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navigation-me flex-column mb-3" },
-          [
-            _c(
-              "Button",
-              { attrs: { "data-menu": "optionsCreate", intuitive: "" } },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "circleIcon-1-oi1i",
-                    attrs: {
-                      "aria-hidden": "false",
-                      width: "24",
-                      height: "24",
-                      viewBox: "0 0 24 24"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        fill: "currentColor",
-                        d:
-                          "M20 11.1111H12.8889V4H11.1111V11.1111H4V12.8889H11.1111V20H12.8889V12.8889H20V11.1111Z"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("Button", { attrs: { intuitive: "" } }, [
+              }
+            },
+            [
               _c(
                 "svg",
                 {
+                  staticClass: "homeIcon-FuNwkv",
+                  attrs: {
+                    "aria-hidden": "false",
+                    width: "28",
+                    height: "20",
+                    viewBox: "0 0 28 20"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      fill: "currentColor",
+                      d:
+                        "M20.6644 20C20.6644 20 19.8014 18.9762 19.0822 18.0714C22.2226 17.1905 23.4212 15.2381 23.4212 15.2381C22.4384 15.881 21.5034 16.3334 20.6644 16.6429C19.4658 17.1429 18.3151 17.4762 17.1884 17.6667C14.887 18.0953 12.7774 17.9762 10.9795 17.6429C9.61301 17.381 8.43836 17 7.45548 16.6191C6.90411 16.4048 6.30479 16.1429 5.70548 15.8096C5.63356 15.7619 5.56164 15.7381 5.48973 15.6905C5.44178 15.6667 5.41781 15.6429 5.39384 15.6191C4.96233 15.381 4.7226 15.2143 4.7226 15.2143C4.7226 15.2143 5.87329 17.1191 8.91781 18.0238C8.19863 18.9286 7.31164 20 7.31164 20C2.0137 19.8333 0 16.381 0 16.381C0 8.7144 3.45205 2.50017 3.45205 2.50017C6.90411 -0.07123 10.1884 0.000197861 10.1884 0.000197861L10.4281 0.285909C6.11301 1.52399 4.12329 3.40493 4.12329 3.40493C4.12329 3.40493 4.65068 3.11921 5.53767 2.71446C8.10274 1.59542 10.1404 1.2859 10.9795 1.21447C11.1233 1.19066 11.2432 1.16685 11.387 1.16685C12.8493 0.976379 14.5034 0.92876 16.2295 1.11923C18.5068 1.38114 20.9521 2.0478 23.4452 3.40493C23.4452 3.40493 21.5514 1.61923 17.476 0.381146L17.8116 0.000197861C17.8116 0.000197861 21.0959 -0.07123 24.5479 2.50017C24.5479 2.50017 28 8.7144 28 16.381C28 16.381 25.9623 19.8333 20.6644 20ZM9.51712 8.88106C8.15068 8.88106 7.07192 10.0715 7.07192 11.5239C7.07192 12.9763 8.17466 14.1667 9.51712 14.1667C10.8836 14.1667 11.9623 12.9763 11.9623 11.5239C11.9863 10.0715 10.8836 8.88106 9.51712 8.88106ZM18.2671 8.88106C16.9007 8.88106 15.8219 10.0715 15.8219 11.5239C15.8219 12.9763 16.9247 14.1667 18.2671 14.1667C19.6336 14.1667 20.7123 12.9763 20.7123 11.5239C20.7123 10.0715 19.6336 8.88106 18.2671 8.88106Z"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "navigation-groups flex-column" },
+        [_c("groups")],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "navigation-me flex-column mb-3" },
+        [
+          _c(
+            "Button",
+            { attrs: { "data-menu": "optionsCreate", intuitive: "" } },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "circleIcon-1-oi1i",
                   attrs: {
                     "aria-hidden": "false",
                     width: "24",
@@ -41157,44 +41115,73 @@ var render = function() {
                     attrs: {
                       fill: "currentColor",
                       d:
-                        "M12 10.9C11.39 10.9 10.9 11.39 10.9 12C10.9 12.61 11.39 13.1 12 13.1C12.61 13.1 13.1 12.61 13.1 12C13.1 11.39 12.61 10.9 12 10.9ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM14.19 14.19L6 18L9.81 9.81L18 6L14.19 14.19Z"
+                        "M20 11.1111H12.8889V4H11.1111V11.1111H4V12.8889H11.1111V20H12.8889V12.8889H20V11.1111Z"
                     }
                   })
                 ]
               )
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("Button", { attrs: { intuitive: "" } }, [
-          _c(
-            "svg",
-            {
-              staticClass: "circleIcon-1-oi1i",
-              attrs: {
-                "aria-hidden": "false",
-                width: "24",
-                height: "24",
-                viewBox: "0 0 24 24"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  fill: "currentColor",
-                  "fill-rule": "evenodd",
-                  "clip-rule": "evenodd",
-                  d:
-                    "M16.293 9.293L17.707 10.707L12 16.414L6.29297 10.707L7.70697 9.293L11 12.586V2H13V12.586L16.293 9.293ZM18 20V18H20V20C20 21.102 19.104 22 18 22H6C4.896 22 4 21.102 4 20V18H6V20H18Z"
-                }
-              })
             ]
-          )
-        ])
-      ],
-      1
-    )
+          ),
+          _vm._v(" "),
+          _c("Button", { attrs: { intuitive: "" } }, [
+            _c(
+              "svg",
+              {
+                attrs: {
+                  "aria-hidden": "false",
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    fill: "currentColor",
+                    d:
+                      "M12 10.9C11.39 10.9 10.9 11.39 10.9 12C10.9 12.61 11.39 13.1 12 13.1C12.61 13.1 13.1 12.61 13.1 12C13.1 11.39 12.61 10.9 12 10.9ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM14.19 14.19L6 18L9.81 9.81L18 6L14.19 14.19Z"
+                  }
+                })
+              ]
+            )
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "navigation-groups flex-column mt-0" },
+        [
+          _c("Button", { attrs: { intuitive: "" } }, [
+            _c(
+              "svg",
+              {
+                staticClass: "circleIcon-1-oi1i",
+                attrs: {
+                  "aria-hidden": "false",
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    fill: "currentColor",
+                    "fill-rule": "evenodd",
+                    "clip-rule": "evenodd",
+                    d:
+                      "M16.293 9.293L17.707 10.707L12 16.414L6.29297 10.707L7.70697 9.293L11 12.586V2H13V12.586L16.293 9.293ZM18 20V18H20V20C20 21.102 19.104 22 18 22H6C4.896 22 4 21.102 4 20V18H6V20H18Z"
+                  }
+                })
+              ]
+            )
+          ])
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -42143,7 +42130,12 @@ var render = function() {
                 "data-toggle": "tooltip",
                 title: "Configurações de Usuário"
               },
-              domProps: { innerHTML: _vm._s(_vm.svg.settings) }
+              domProps: { innerHTML: _vm._s(_vm.svg.settings) },
+              on: {
+                click: function($event) {
+                  return _vm.toggleModal("userSettings")
+                }
+              }
             })
           ])
         ])
@@ -54995,7 +54987,6 @@ var map = {
 	"./components/App/Resources/Content/Properties/Layouts/Button.vue": "./resources/js/components/App/Resources/Content/Properties/Layouts/Button.vue",
 	"./components/App/Resources/Content/Properties/User.vue": "./resources/js/components/App/Resources/Content/Properties/User.vue",
 	"./components/Helper/Layouts/Button.vue": "./resources/js/components/Helper/Layouts/Button.vue",
-	"./components/Helper/Layouts/ButtonExplore.vue": "./resources/js/components/Helper/Layouts/ButtonExplore.vue",
 	"./components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/ButtonMore.vue",
 	"./components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MDCreate.vue",
 	"./components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue": "./resources/js/components/Helper/MenuMouse/ButtonLeft/Layouts/MyStatus.vue",
