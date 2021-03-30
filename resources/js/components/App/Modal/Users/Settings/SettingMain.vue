@@ -1,13 +1,13 @@
 <template>
     <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut" mode="out-in">
-    <div v-if="visibility" class="modal-content userSettings">
+    <div v-if="visibility" class="modalContent userSettings">
         <div class="menu-column">
             <div class="menu">
-                <nav>
+                <nav class="userSettings">
                     <li class="title">Configurações de Usuário</li>
-                    <li>Minha conta</li>
-                    <li>Privacidade e segurança</li>
-                    <li>Aplicativos autorizados</li>
+                    <li @click="modalHref('Main')" class="active">Minha conta</li>
+                    <li @click="modalHref('PrivacySecurity')">Privacidade e segurança</li>
+                    <li @click="modalHref('AuthorizedApplications')">Aplicativos autorizados</li>
                     <li>Conexões</li>
                     <div class="separator"></div>
                     <li class="title">Configurações de Cobrança</li>
@@ -30,7 +30,7 @@
                     <li>HypeSquad</li>
                     <div class="separator"></div>
                     <li class="menuDanger">Sair</li>
-                    <div class="separator"></div>
+                    <div class="separator mb-3"></div>
                     <div class="socials">
                         <a href="https://twitter.com/discord" v-html="svg.twitter"></a>
                         <a href="https://facebook.com/discord" v-html="svg.facebook"></a>
@@ -39,15 +39,32 @@
                 </nav>
             </div>
         </div>
+        <div class="menu-layout">
+            <Main :User="user" v-if="bodyActive === 'Main'"></Main>
+            <PrivacySecurity v-if="bodyActive === 'PrivacySecurity'"></PrivacySecurity>
+            <AuthorizedApplications v-if="bodyActive === 'AuthorizedApplications'"></AuthorizedApplications>
+            <div class="modalClose" v-html="svg.timesClose" @click="visibility = false"></div>
+        </div>
     </div>
     </transition>
 </template>
 <script>
+import Main from './Layouts/Main.vue'
+import PrivacySecurity from './Layouts/PrivacySecurity.vue'
+import AuthorizedApplications from './Layouts/AuthorizedApplications.vue'
+
 export default {
+    components: {
+        Main,
+        PrivacySecurity,
+        AuthorizedApplications
+    },
     data() {
         return {
-            visibility: false,
-            svg: window.svgHandle
+            visibility: true,
+            svg: window.svgHandle,
+            bodyActive: 'Main',
+            user: window.myUser
         }
     },
     mounted() {
@@ -62,8 +79,27 @@ export default {
                 this.visibility = false
             }
         })
-        
-        console.log(navigator.platform, navigator.appVersion)
+    },
+    updated() {
+        document.querySelector('nav.userSettings').addEventListener('click', event => {
+            let targetClassList = event.target.classList,
+                targetActive = document.querySelector('nav.userSettings li.active')
+
+            if(!targetClassList.contains('title') && 
+               !targetClassList.contains('separator') &&
+               !targetClassList.contains('active')) {
+
+                targetActive && targetActive.classList.remove('active')
+                targetClassList.toggle('active')
+            }
+        })
+    },
+    methods: {
+        modalHref(body) {
+            if(body !== this.bodyActive) {
+                this.bodyActive = body
+            }
+        }
     }
 }
 </script>

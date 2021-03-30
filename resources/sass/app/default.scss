@@ -12,7 +12,7 @@ body {
     position: relative;
     float: left;
     padding: 7px 0;
-    overflow-y: auto;
+    overflow: hidden scroll;
 }
 
 ::-webkit-scrollbar { display: none; width: 3px; }
@@ -110,7 +110,7 @@ body {
     background-color: $dBackgroundMenuActionMouse;
     position: absolute;
     padding: 7px;
-    z-index: 999;
+    z-index: 1020;
     border-radius: 5px;
 
     &.menu-custom {
@@ -191,7 +191,7 @@ body {
             width: 100%;
             height: 190px;
             position: relative;
-            overflow-y: auto;
+            overflow: hidden scroll;
             margin-top: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, .05);
             float: left;
@@ -525,7 +525,7 @@ body {
     height: calc(100vh - 48px);
     position: relative;
     padding: 10px 10px 50px 10px;
-    overflow-y: auto;
+    overflow: hidden scroll;
 
     .button {
         width: 100%;
@@ -544,7 +544,9 @@ body {
             .infos span {
                 color: white;
             }
+        }
 
+        &:hover {
             i.fa-times {
                 visibility: visible;
             }
@@ -898,7 +900,7 @@ body {
             height: calc(100% - 75px);
             position: relative;
             padding: 15px;
-            overflow-y: auto;
+            overflow: hidden scroll;
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
@@ -1018,7 +1020,7 @@ body {
             float: left;
             position: relative;
             padding: 16px 30px;
-            overflow-y: auto;
+            overflow: hidden scroll;
             
             .friend-title {
                 height: 25px;
@@ -1149,11 +1151,9 @@ body {
 .strikethrough-1n4ekb { color: $dDanger }
 .attachButtonPlay-3iJ0mf { color: $dSuccess; }
 
-.flip-list-move {
-    transition: transform .3s;
-}
+.flip-list-move { transition: transform .3s; }
 
-.modal-content {
+.modalContent {
     width: calc(100vw + 2px);
     height: calc(100vh + 2px);
     background-color: rgba(0, 0, 0, 0.5);
@@ -1175,15 +1175,16 @@ body {
             justify-content: flex-end;
             align-items: center;
 
+            @media only screen and (max-width: 1300px) { width: calc(24% - 5px); }
+
             .menu {
                 width: 220px;
                 height: 100vh;
-                overflow-y: auto;
+                overflow: hidden scroll;
                 position: relative;
                 padding: 50px 6px 60px 20px;
 
                 &::-webkit-scrollbar-thumb { background-color: $dBackground; border-radius: 15px; }
-
                 &:hover { &::-webkit-scrollbar { display: block; } }
 
                 nav {
@@ -1227,8 +1228,18 @@ body {
                             background-color: rgba(240, 71, 71, 0.1);
                         }
 
+                        &.menuDanger.active {
+                            background-color: $dDanger;
+                            color: white;
+                        }
+
                         &.menuLink:hover {
                             background-color: rgba(114, 137, 218, 0.1);
+                        }
+
+                        &.menuLink.active {
+                            background-color: $dPurple;
+                            color: white;
                         }
 
                         &:not(.title) {
@@ -1259,6 +1270,305 @@ body {
                             }
                         }
                     }
+                }
+            }
+        }
+
+        .menu-layout {
+            width: calc(100% - calc(35% - 5px));
+            height: 100vh;
+            float: left;
+            position: relative;
+            overflow: hidden scroll;
+
+            &::-webkit-scrollbar-thumb { background-color: $dBackground; border-radius: 15px; }
+            &:hover { &::-webkit-scrollbar { display: block; } }
+
+            .modalBody {
+                width: 742px;
+                height: 100vh;
+                float: left;
+                position: relative;
+                padding: 60px 40px 80px;
+
+                span.title {
+                    width: 100%;
+                    font-weight: 800;
+                    color: white;
+                    font-size: 15px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 20px;
+                    float: left;
+                    position: relative;
+                }
+
+                .box-settings {
+                    width: 100%;
+                    height: 328px;
+                    border-radius: 10px;
+                    background-color: $dBackgroundProperties;
+                    float: left;
+                    padding: 16px;
+                    margin-bottom: 20px;
+
+                    .initial-settings {
+                        width: 100%;
+                        height: 82px;
+                        position: relative;
+
+                        label.avatar {
+                            width: 80px;
+                            height: 80px;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            border-radius: 50%;
+                            float: left;
+                            position: relative;
+                            cursor: pointer;
+
+                            &::before {
+                                content: "MUDAR \A AVATAR";
+                                white-space: pre-wrap;
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                color: white;
+                                top: 0;
+                                left: 0;
+                                display: none;
+                                background-color: rgba(0, 0, 0, 0.6);
+                                border-radius: 50%;
+                                font-size: 10px;
+                                font-weight: 600;
+                                text-align: center;
+                                padding-top: 24px;
+                            }
+
+                            &:hover {
+                                &::before { display: block }
+                            }
+
+                            i {
+                                width: 28px;
+                                height: 28px;
+                                position: absolute;
+                                top: -3px;
+                                right: -2px;
+                                background-color: #dcddde;
+                                background-image: url('/images/avatarUpload.svg');
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+
+                        span.nameUser {
+                            margin-left: 10px;
+                            padding-left: 10px;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            height: 80px;
+                            float: left;
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: white;
+
+                            em {
+                                font-size: 15px;
+                                font-weight: 400;
+                                color: rgba(255, 255, 255, 0.6)
+                            }
+                        }
+
+                        button.more {
+                            float: right;
+                            margin-top: 24px;
+                            margin-right: 9px;
+                            border: none;
+                            background-color: transparent;
+                            
+                            svg { color: rgba(255, 255, 255, 0.6) }
+                        }
+                    }
+
+                    .flex-settings {
+                        width: 100%;
+                        height: 200px;
+                        background-color: $dbackgroundApplication;
+                        float: left;
+                        margin-top: 9px;
+                        border-radius: 8px;
+                        padding: 16px;
+
+                        .option {
+                            width: 100%;
+                            position: relative;
+                            height: 45px;
+                            margin-bottom: 18px;
+
+                            span {
+                                &.title-mini {
+                                    width: 80%;
+                                    font-size: 10px;
+                                    color: rgba(255, 255, 255, .4);
+                                    float: left;
+                                    font-weight: 600;
+                                    letter-spacing: 0.7px;
+                                    text-transform: uppercase;
+                                    margin-bottom: 3px;
+                                }
+
+                                &:last-of-type {
+                                    width: 80%;
+                                    float: left;
+                                    color: white;
+                                    font-weight: 300;
+
+                                    em {
+                                        font-size: 14px;
+                                        color: rgba(255, 255, 255, .5)
+                                    }
+                                }
+                            }
+
+                            button {
+                                float: right;
+                                color: #fff;
+                                background-color: #747f8d;
+                                margin-top: -14px;
+                                border: none;
+                                border-radius: 3px;
+                                font-size: 12px;
+                                font-weight: 600;
+                                padding: 9px 17px 4px 17px;
+
+                                &:hover {
+                                    opacity: 0.9;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .separator {
+                    width: 100%;
+                    height: 1px;
+                    background-color: rgba(255, 255, 255, .07);
+                    margin: 20px 0;
+                    float: left;
+                    position: relative;
+                }
+
+                button.purpleButton,
+                button.dangerButton,
+                button.dangerButtonInline {
+                    padding: 5px 15px;
+                    padding-top: 7px;
+                    background-color: $dPurple;
+                    color: white;
+                    font-size: 13px;
+                    font-weight: 600;
+                    border: none;
+                    border-radius: 4px;
+
+                    &:hover {
+                        background-color: $dPurpleButtonHover;
+                    }
+                }
+
+                button.dangerButton {
+                    background-color: $dDanger;
+                    &:hover {
+                        opacity: 0.9;
+                        background-color: $dDanger;
+                    }
+                }
+
+                button.dangerButtonInline {
+                    background-color: transparent;
+                    font-weight: 500;
+                    border: 1px solid $dDanger;
+                    color: $dDanger;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+
+                .two-factor {
+                    width: 100%;
+                    height: 170px;
+                    margin-top: 15px;
+                    float: left;
+                    padding: 15px 5px;
+
+                    span {
+                        &.title-mini {
+                            width: calc(100% - 150px);
+                            font-size: 10px;
+                            color: rgba(255, 255, 255, .4);
+                            float: left;
+                            font-weight: 600;
+                            letter-spacing: 0.7px;
+                            text-transform: uppercase;
+                            margin-bottom: 3px;
+                        }
+
+                        &.description {
+                            width: calc(100% - 150px);
+                            font-size: 13px;
+                            margin-top: 10px;
+                            color: rgba(255, 255, 255, .6);
+                            float: left;
+                            font-weight: 400;
+                        }
+                    }
+
+                    .image-twoFactor {
+                        width: 142px;
+                        height: 55px;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        float: right;
+                        background-image: url('/images/twoFactorAuthentication.svg');
+                        margin-top: 20px;
+                    }
+                }
+            }
+
+            .modalClose {
+                margin-top: 61px;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 2px solid rgba(255, 255, 255, .3);
+                float: left;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                svg { color: rgba(255, 255, 255, .3); }
+
+                &::before {
+                    content: 'ESC';
+                    position: absolute;
+                    color: rgba(255, 255, 255, .3);
+                    bottom: -29px;
+                    left: 5px;
+                    font-size: 12px;
+                    font-weight: 500;
+                }
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, .1);
+                    cursor: pointer;
                 }
             }
         }
