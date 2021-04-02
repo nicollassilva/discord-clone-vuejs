@@ -12287,7 +12287,8 @@ body {
 }
 
 .modalContent.userSettings .menu-layout .modalBody {
-  width: 742px;
+  width: calc(50vw + 110px);
+  max-width: 742px;
   height: 100vh;
   float: left;
   position: relative;
@@ -12512,7 +12513,7 @@ body {
   height: 170px;
   margin-top: 15px;
   float: left;
-  padding: 15px 5px;
+  padding: 15px 0px;
 }
 
 .modalContent.userSettings .menu-layout .modalBody .two-factor span.title-mini {
@@ -12544,6 +12545,154 @@ body {
   float: right;
   background-image: url("/images/twoFactorAuthentication.svg");
   margin-top: 20px;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings {
+  width: 100%;
+  padding: 8px 15px;
+  background-color: #2F3136;
+  border-radius: 5px;
+  margin: 8px 0;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings:hover {
+  background-color: rgba(79, 84, 92, 0.16);
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings:hover .selector-info span.title-selector {
+  color: white;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings.active {
+  background-color: #202225;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings.active span.title-selector,
+.modalContent.userSettings .menu-layout .modalBody .selector-settings.active span.description-selector {
+  color: white !important;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings.active .checkbox::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  background-color: #7289DA;
+  border-radius: 50%;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings .checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  position: relative;
+  margin-right: 10px;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings .selector-info {
+  width: calc(100% - 30px);
+  height: auto;
+  position: relative;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings .selector-info span {
+  width: 100%;
+  float: left;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings .selector-info span.title-selector {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .selector-settings .selector-info span.description-selector {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings {
+  width: 100%;
+  height: auto;
+  margin: 6px 0;
+  position: relative;
+  float: left;
+  cursor: pointer;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings span.title-option {
+  width: calc(100% - 50px);
+  margin-right: 10px;
+  float: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings span.description-option {
+  width: 100%;
+  padding-right: 10px;
+  margin-top: 10px;
+  float: left;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings span a,
+.modalContent.userSettings .menu-layout .modalBody .option-settings span .link {
+  color: #00b0f4;
+  font-weight: 500;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings .option-box {
+  background-color: #72767d;
+  width: 40px;
+  padding: 3px;
+  height: 24px;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  transition: background-color 0.5s ease-in;
+  float: right;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings .option-box::before {
+  content: "";
+  font-family: "Font Awesome 5 Pro" !important;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #72767d;
+  transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.7s linear;
+  left: 3px;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings.active .option-box {
+  background-color: #43B581;
+  font-size: 12px;
+}
+
+.modalContent.userSettings .menu-layout .modalBody .option-settings.active .option-box::before {
+  content: "";
+  color: #43B581;
+  left: 19px;
 }
 
 .modalContent.userSettings .menu-layout .modalClose {

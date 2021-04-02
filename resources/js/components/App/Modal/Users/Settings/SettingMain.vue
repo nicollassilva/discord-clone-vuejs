@@ -5,9 +5,9 @@
             <div class="menu">
                 <nav class="userSettings">
                     <li class="title">Configurações de Usuário</li>
-                    <li @click="modalHref('Main')" class="active">Minha conta</li>
-                    <li @click="modalHref('PrivacySecurity')">Privacidade e segurança</li>
-                    <li @click="modalHref('AuthorizedApplications')">Aplicativos autorizados</li>
+                    <li @click="modalHref('Main')" :class="{ active: bodyActive === 'Main' }">Minha conta</li>
+                    <li @click="modalHref('PrivacySecurity')" :class="{ active: bodyActive === 'PrivacySecurity' }">Privacidade e segurança</li>
+                    <li @click="modalHref('AuthorizedApplications')" :class="{ active: bodyActive === 'AuthorizedApplications' }">Aplicativos autorizados</li>
                     <li>Conexões</li>
                     <div class="separator"></div>
                     <li class="title">Configurações de Cobrança</li>
@@ -49,9 +49,9 @@
     </transition>
 </template>
 <script>
-import Main from './Layouts/Main.vue'
-import PrivacySecurity from './Layouts/PrivacySecurity.vue'
-import AuthorizedApplications from './Layouts/AuthorizedApplications.vue'
+import Main from './Components/Main.vue'
+import PrivacySecurity from './Components/PrivacySecurity.vue'
+import AuthorizedApplications from './Components/AuthorizedApplications.vue'
 
 export default {
     components: {
@@ -63,7 +63,7 @@ export default {
         return {
             visibility: true,
             svg: window.svgHandle,
-            bodyActive: 'Main',
+            bodyActive: 'PrivacySecurity',
             user: window.myUser
         }
     },
@@ -79,18 +79,10 @@ export default {
                 this.visibility = false
             }
         })
-    },
-    updated() {
-        document.querySelector('nav.userSettings').addEventListener('click', event => {
-            let targetClassList = event.target.classList,
-                targetActive = document.querySelector('nav.userSettings li.active')
 
-            if(!targetClassList.contains('title') && 
-               !targetClassList.contains('separator') &&
-               !targetClassList.contains('active')) {
-
-                targetActive && targetActive.classList.remove('active')
-                targetClassList.toggle('active')
+        window.eventBus.$on('changeSettingsMenu', event => {
+            if(event != this.bodyActive) {
+                this.bodyActive = event
             }
         })
     },

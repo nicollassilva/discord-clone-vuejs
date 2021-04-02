@@ -1285,7 +1285,8 @@ body {
             &:hover { &::-webkit-scrollbar { display: block; } }
 
             .modalBody {
-                width: 742px;
+                width: calc(50vw + 110px);
+                max-width: 742px;
                 height: 100vh;
                 float: left;
                 position: relative;
@@ -1505,7 +1506,7 @@ body {
                     height: 170px;
                     margin-top: 15px;
                     float: left;
-                    padding: 15px 5px;
+                    padding: 15px 0px;
 
                     span {
                         &.title-mini {
@@ -1538,6 +1539,160 @@ body {
                         float: right;
                         background-image: url('/images/twoFactorAuthentication.svg');
                         margin-top: 20px;
+                    }
+                }
+
+                .selector-settings {
+                    width: 100%;
+                    padding: 8px 15px;
+                    background-color: $dBackgroundProperties;
+                    border-radius: 5px;
+                    margin: 8px 0;
+                    position: relative;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $dBackgroundPropertiesHover;
+
+                        .selector-info {
+                            span.title-selector { color: white; }
+                        }
+                    }
+
+                    &.active {
+                        background-color: $dBackground;
+
+                        span {
+                            &.title-selector,
+                            &.description-selector { color: white !important; }
+                        }
+
+                        .checkbox {
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: calc(50% - 5px);
+                                left: calc(50% - 5px);
+                                width: 10px;
+                                height: 10px;
+                                background-color: $dPurple;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+
+                    .checkbox {
+                        width: 20px;
+                        height: 20px;
+                        border: 2px solid rgba(255, 255, 255, .7);
+                        border-radius: 50%;
+                        position: relative;
+                        margin-right: 10px;
+                    }
+
+                    .selector-info {
+                        width: calc(100% - 30px);
+                        height: auto;
+                        position: relative;
+
+                        span {
+                            width: 100%;
+                            float: left;
+
+                            &.title-selector {
+                                font-size: 14px;
+                                color: rgba(255, 255, 255, .7);
+                                font-weight: 600;
+                            }
+
+                            &.description-selector {
+                                font-size: 12px;
+                                color: rgba(255, 255, 255, .7);
+                                font-weight: 300;
+                                margin-top: 5px;
+                            }
+                        }
+                    }
+                }
+
+                .option-settings {
+                    width: 100%;
+                    height: auto;
+                    margin: 6px 0;
+                    position: relative;
+                    float: left;
+                    cursor: pointer;
+
+                    span {
+                        &.title-option {
+                            width: calc(100% - 50px);
+                            margin-right: 10px;
+                            float: left;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: white;
+                        }
+
+                        &.description-option {
+                            width: 100%;
+                            padding-right: 10px;
+                            margin-top: 10px;
+                            float: left;
+                            font-size: 12px;
+                            font-weight: 300;
+                            color: rgba(255, 255, 255, .7);
+                        }
+
+                        a,
+                        .link {
+                            color: $dLink;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .option-box {
+                        background-color: $dBackgroundOptionDisabled;
+                        width: 40px;
+                        padding: 3px;
+                        height: 24px;
+                        border-radius: 15px;
+                        position: relative;
+                        display: flex;
+                        justify-content: flex-start;
+                        transition: background-color .5s ease-in;
+                        float: right;
+
+                        &::before {
+                            content: '\f00d';
+                            font-family: $fontAwesome !important;
+                            position: absolute;
+                            width: 18px;
+                            height: 18px;
+                            background-color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: $dBackgroundOptionDisabled;
+                            transition: left .3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color .7s linear;
+                            left: 3px;
+                        }
+                    }
+
+                    &.active {
+                        .option-box {
+                            background-color: $dBackgroundOptionActive;
+                            font-size: 12px;
+
+                            &::before {
+                                content: '\f00c';
+                                color: $dBackgroundOptionActive;
+                                left: 19px;
+                            }
+                        }
                     }
                 }
             }

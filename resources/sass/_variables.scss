@@ -3,6 +3,7 @@ $body-bg: #f8fafc;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
+$fontAwesome: 'Font Awesome 5 Pro';
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
@@ -21,6 +22,7 @@ $cyan: #6cb2eb;
 $dBackground: #202225;
 $dbackgroundApplication: #36393F;
 $dBackgroundProperties: #2F3136;
+$dBackgroundPropertiesHover: rgba(79,84,92,0.16);
 $dBackgroundMenuActionMouse: #18191C;
 $dBackgroundGroupNameHover: #34373C;
 $dBackgroundPopupMe: #292B2F;
@@ -33,3 +35,7 @@ $dDanger: #F04747;
 $dSuccess: #43B581;
 $dWarning: #FAA61A;
 $dHeader: #b9bbbe;
+$dLink: #00b0f4;
+
+$dBackgroundOptionDisabled: rgb(114, 118, 125);
+$dBackgroundOptionActive: $dSuccess;
