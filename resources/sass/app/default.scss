@@ -1468,7 +1468,8 @@ body {
 
                 button.purpleButton,
                 button.dangerButton,
-                button.dangerButtonInline {
+                button.dangerButtonInline,
+                button.purpleButtonInline {
                     padding: 5px 15px;
                     padding-top: 7px;
                     background-color: $dPurple;
@@ -1496,6 +1497,16 @@ body {
                     font-weight: 500;
                     border: 1px solid $dDanger;
                     color: $dDanger;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+
+                button.purpleButtonInline {
+                    background-color: transparent;
+                    font-weight: 500;
+                    border: 1px solid $dPurple;
+                    color: $dPurple;
                     &:hover {
                         background-color: transparent;
                     }
@@ -1540,6 +1551,53 @@ body {
                         background-image: url('/images/twoFactorAuthentication.svg');
                         margin-top: 20px;
                     }
+                }
+
+                .note {
+                    width: 100%;
+                    float: left;
+                    height: auto;
+                    position: relative;
+                    margin-top: 20px;
+                    background-color: $dBackgroundModalNote;
+                    padding: 18px;
+                    border: 1px solid $dBackground;
+                    border-radius: 5px;
+                    color: rgba(255, 255, 255, .8);
+                    font-weight: 500;
+                    font-size: 12px;
+
+                    span {
+                        &.title {
+                            width: 100%;
+                            font-size: 10px;
+                            color: rgba(255, 255, 255, .4);
+                            float: left;
+                            font-weight: 600;
+                            letter-spacing: 0.7px;
+                            text-transform: uppercase;
+                            margin-bottom: 3px;
+                        }
+                    }
+
+                    .connectionAccounts {
+                        display: flex;
+                        flex-wrap: wrap;
+                        max-width: 100%;
+                    }
+                }
+
+                .connection {
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 5px;
+                    background-color: $dBackgroundProperties;
+                    background-size: 36px 36px;
+                    background-repeat: no-repeat;
+                    background-position: 50%;
+                    margin-right: 8px;
+                    margin-bottom: 8px;
+                    cursor: pointer;
                 }
 
                 .selector-settings {
@@ -1730,5 +1788,30 @@ body {
     }
 }
 
+.midModal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1200;
+    margin: 0;
+
+    .midModalBody {
+        width: auto;
+        min-width: 200px;
+        min-height: 100px;
+        padding: 15px;
+        background-color: $dBackgroundProperties;
+        position: relative;
+        border-radius: 8px;
+    }
+}
+
 .animated.zoomIn,
 .animated.zoomOut { animation-duration: .3s }
+
+.midModal.animated.zoomIn,
+.midModal.animated.zoomOut { animation-duration: 1s }

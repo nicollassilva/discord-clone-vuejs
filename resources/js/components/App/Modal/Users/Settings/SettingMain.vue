@@ -5,10 +5,10 @@
             <div class="menu">
                 <nav class="userSettings">
                     <li class="title">Configurações de Usuário</li>
-                    <li @click="modalHref('Main')" :class="{ active: bodyActive === 'Main' }">Minha conta</li>
-                    <li @click="modalHref('PrivacySecurity')" :class="{ active: bodyActive === 'PrivacySecurity' }">Privacidade e segurança</li>
-                    <li @click="modalHref('AuthorizedApplications')" :class="{ active: bodyActive === 'AuthorizedApplications' }">Aplicativos autorizados</li>
-                    <li>Conexões</li>
+                    <li @click="toModal('Main')" :class="{ active: bodyActive === 'Main' }">Minha conta</li>
+                    <li @click="toModal('PrivacySecurity')" :class="{ active: bodyActive === 'PrivacySecurity' }">Privacidade e segurança</li>
+                    <li @click="toModal('AuthorizedApplications')" :class="{ active: bodyActive === 'AuthorizedApplications' }">Aplicativos autorizados</li>
+                    <li @click="toModal('Connections')" :class="{ active: bodyActive === 'Connections' }">Conexões</li>
                     <div class="separator"></div>
                     <li class="title">Configurações de Cobrança</li>
                     <li class="menuLink">Discord Nitro</li>
@@ -43,6 +43,7 @@
             <Main :User="user" v-if="bodyActive === 'Main'"></Main>
             <PrivacySecurity v-if="bodyActive === 'PrivacySecurity'"></PrivacySecurity>
             <AuthorizedApplications v-if="bodyActive === 'AuthorizedApplications'"></AuthorizedApplications>
+            <Connections v-if="bodyActive === 'Connections'"></Connections>
             <div class="modalClose" v-html="svg.timesClose" @click="visibility = false"></div>
         </div>
     </div>
@@ -52,6 +53,7 @@
 import Main from './Components/Main.vue'
 import PrivacySecurity from './Components/PrivacySecurity.vue'
 import AuthorizedApplications from './Components/AuthorizedApplications.vue'
+import Connections from './Components/Connections.vue'
 
 export default {
     components: {
@@ -61,9 +63,9 @@ export default {
     },
     data() {
         return {
-            visibility: true,
+            visibility: false,
             svg: window.svgHandle,
-            bodyActive: 'PrivacySecurity',
+            bodyActive: 'Connections',
             user: window.myUser
         }
     },
@@ -87,7 +89,7 @@ export default {
         })
     },
     methods: {
-        modalHref(body) {
+        toModal(body) {
             if(body !== this.bodyActive) {
                 this.bodyActive = body
             }

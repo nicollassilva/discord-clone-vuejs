@@ -68,6 +68,15 @@
             </Option>
             <div class="separator mt-3"></div>
         </div>
+        <div class="two-factor h-auto" style="margin-top: -15px">
+            <span class="title-mini text-white" style="font-size: 14px; text-transform: none; letter-spacing: initial">Solicitar todos os meus dados</span>
+            <span class="description w-100"><a href="https://support.discord.com/hc/pt-br/articles/360004027692" target="_blank">Saiba mais</a> sobre como funciona a obtenção de uma cópia de seus dados pessoais.</span>
+            <button class="purpleButtonInline px-4 py-2" style="margin-top: 20px">Solicitar dados</button>
+        </div>
+        <div class="note">
+            Veja nossos <a href="//discord.com/terms" target="_blank">Termos de Serviço</a> e <a href="//discord.com/privacy" target="_blank">Política de Privacidade</a>.
+        </div>
+        <div class="separator my-5 bg-transparent"></div>
     </div>
 </template>
 <script>
