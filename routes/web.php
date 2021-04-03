@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('app.index');
-});
+// Route::group([
+//     'middleware' => 'auth'
+// ], function() {
+    Route::get('/', function () {
+        return view('app.index');
+    });
+//});
 
 Auth::routes();
 

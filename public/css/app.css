@@ -12994,4 +12994,9 @@ body {
   letter-spacing: 0.8px;
 }
 
+.card-action {
+  background-color: #36393F;
+  border-radius: 5px;
+}
+
 
