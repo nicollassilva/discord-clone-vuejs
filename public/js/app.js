@@ -1861,6 +1861,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1876,11 +1877,27 @@ __webpack_require__.r(__webpack_exports__);
     MouseLeftMenuHandle: _Helper_MenuMouse_ButtonLeft_MouseLeftMenuHandle_vue__WEBPACK_IMPORTED_MODULE_4__.default,
     ModalHandle: _Modal_ModalHandle_vue__WEBPACK_IMPORTED_MODULE_5__.default
   },
+  data: function data() {
+    return {
+      showTransparent: true
+    };
+  },
   mounted: function mounted() {
+    var _this = this;
+
     setTimeout(function () {
       var firstButton = document.querySelector('.column-properties .button:first-of-type');
       if (firstButton) firstButton.click();
     }, 100);
+    window.eventBus.$on('showTransparent', function (event) {
+      return _this.showTransparent = event;
+    });
+  },
+  methods: {
+    closeAll: function closeAll() {
+      this.showTransparent = false;
+      window.eventBus.$emit('closeAllModal', false);
+    }
   }
 });
 
@@ -1936,30 +1953,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      visibility: false,
-      userProfile: {}
+      visibility: true,
+      userProfile: window.appData.users[0]
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    document.addEventListener('click', function (event) {
-      if (event.target) {
-        var eventElement = event.target;
-
-        if (eventElement.classList.contains('midModal')) {
-          eventElement.style.backgroundColor = 'transparent';
-          _this.visibility = false;
-        }
-      }
-    });
     window.eventBus.$on('openProfile', function (event) {
       _this.visibility = true;
       _this.userProfile = event;
+      window.eventBus.$emit('showTransparent', true);
     });
+    window.eventBus.$on('closeAllModal', function (event) {
+      return _this.visibility = event;
+    });
+  },
+  methods: {
+    getStatusTitle: function getStatusTitle(status) {
+      return window.appData.realStatusTitle(status);
+    }
   }
 });
 
@@ -2840,6 +2864,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2873,6 +2901,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     menuClick: function menuClick(event, menu) {
       window.eventBus.leftMenuClick(menu, event.clientX, event.clientY);
+    },
+    openContextMenu: function openContextMenu(event, user) {
+      window.eventBus.toggleMouseMenu({
+        type: 'users',
+        positionX: event.clientX,
+        positionY: event.clientY > 650 ? 590 : event.clientY,
+        user: user,
+        visible: true,
+        listed: this.page != 'pendente' && this.page != 'bloqueado' ? true : false
+      });
     }
   }
 });
@@ -3939,11 +3977,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       user: null,
       visibility: false,
+      listed: false,
       position: {
         x: 0,
         y: 0
@@ -3960,6 +4004,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.setPositions(event.positionX, event.positionY);
 
         _this.user = event.user;
+        _this.listed = event.listed ? true : false;
       } else {
         if (_this.visibility) {
           _this.toggleVisibility(false);
@@ -3976,6 +4021,11 @@ __webpack_require__.r(__webpack_exports__);
         x: x,
         y: y
       };
+    },
+    openProfile: function openProfile() {
+      if (this.user) {
+        window.eventBus.$emit('openProfile', this.user);
+      }
     }
   }
 });
@@ -4079,6 +4129,14 @@ window.eventBus = new Vue({
     },
     toggleMouseMenu: function toggleMouseMenu(object) {
       this.$emit('toggleMouseMenu', object);
+    },
+    closeMenu: function closeMenu() {
+      this.toggleMouseMenu({
+        visible: false
+      });
+      this.$emit('leftMenuEvent', {
+        visible: false
+      });
     }
   }
 });
@@ -4129,15 +4187,6 @@ function removeActiveButton() {
   });
 }
 
-function closeMenu() {
-  window.eventBus.$emit('toggleMouseMenu', {
-    visible: false
-  });
-  window.eventBus.$emit('leftMenuEvent', {
-    visible: false
-  });
-}
-
 window.removeByAttr = function (arr, attr, value) {
   var i = arr.length;
 
@@ -4160,7 +4209,7 @@ $('body').tooltip({
   boundary: 'window'
 });
 document.addEventListener('click', function (_) {
-  closeMenu(), $('.tooltip').remove();
+  window.eventBus.closeMenu(), $('.tooltip').remove();
 });
 buttons.forEach(function (element) {
   element.addEventListener('click', function () {
@@ -4235,7 +4284,7 @@ __webpack_require__.r(__webpack_exports__);
     hashtagNumber: '#1564',
     image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
     activity: 'Programando o Discord Clone',
-    status: 'busy',
+    status: 'offline',
     pending: false
   }, {
     id: 2,
@@ -42338,6 +42387,13 @@ var render = function() {
   return _c(
     "div",
     [
+      _vm.showTransparent
+        ? _c("div", {
+            staticClass: "transparentBackground",
+            on: { click: _vm.closeAll }
+          })
+        : _vm._e(),
+      _vm._v(" "),
       _c("ColumnGroups"),
       _vm._v(" "),
       _c("ColumnProperties"),
@@ -42412,8 +42468,31 @@ var render = function() {
     },
     [
       _vm.visibility
-        ? _c("div", { staticClass: "midModal" }, [
-            _c("div", { staticClass: "midModalBody" })
+        ? _c("div", { staticClass: "midModalBody profile" }, [
+            _c("div", { staticClass: "head-profile" }, [
+              _c("div", { staticClass: "profile-info" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "avatar",
+                    style: {
+                      "background-image": "url('" + _vm.userProfile.image + "')"
+                    }
+                  },
+                  [
+                    _c("div", {
+                      class: ["status", _vm.userProfile.status],
+                      attrs: {
+                        "data-toggle": "tooltip",
+                        title: _vm.getStatusTitle(_vm.userProfile.status)
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "profile-menu" })
+            ])
           ])
         : _vm._e()
     ]
@@ -43853,8 +43932,10 @@ var render = function() {
             {
               key: list.id,
               staticClass: "user-list",
-              attrs: { "data-menu": "users" },
               on: {
+                contextmenu: function($event) {
+                  return _vm.openContextMenu($event, list)
+                },
                 click: function($event) {
                   return _vm.changeBody("conversation", list)
                 }
@@ -45287,15 +45368,31 @@ var render = function() {
                 }
               },
               [
-                _c("li", { staticClass: "menuOption disabled" }, [
-                  _vm._v("Marcar como lida")
-                ]),
+                !_vm.listed
+                  ? _c("li", { staticClass: "menuOption disabled" }, [
+                      _vm._v("Marcar como lida")
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "separator" }),
+                !_vm.listed
+                  ? _c("div", { staticClass: "separator" })
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("li", { staticClass: "menuOption" }, [_vm._v("Perfil")]),
+                _c(
+                  "li",
+                  { staticClass: "menuOption", on: { click: _vm.openProfile } },
+                  [_vm._v("Perfil")]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "menuOption" }, [_vm._v("Chamar")]),
+                !_vm.listed
+                  ? _c("li", { staticClass: "menuOption" }, [_vm._v("Chamar")])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.listed
+                  ? _c("li", { staticClass: "menuOption" }, [
+                      _vm._v("Mensagem")
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("li", { staticClass: "menuOption" }, [
                   _vm._v("Adicionar nota")
@@ -45308,27 +45405,43 @@ var render = function() {
                 _c("div", { staticClass: "separator" }),
                 _vm._v(" "),
                 _c("li", { staticClass: "menuOption" }, [
-                  _vm._v("Convidar para o servidor")
+                  _c("span", [_vm._v("Convidar para o servidor")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-chevron-right" })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "separator" }),
+                !_vm.listed
+                  ? _c("div", { staticClass: "separator" })
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("li", { staticClass: "menuOption" }, [
-                  _vm._v("Adicionar amigo")
-                ]),
+                !_vm.listed
+                  ? _c("li", { staticClass: "menuOption" }, [
+                      _vm._v("Adicionar amigo")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.listed
+                  ? _c("li", { staticClass: "menuOption" }, [
+                      _vm._v("Desfazer amizade")
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("li", { staticClass: "menuOption" }, [_vm._v("Bloquear")]),
                 _vm._v(" "),
-                _c("div", { staticClass: "separator" }),
+                !_vm.listed
+                  ? _c("div", { staticClass: "separator" })
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("li", { staticClass: "menuOption" }, [
-                  _c("span", [
-                    _vm._v("Silenciar "),
-                    _c("b", [_vm._v("@" + _vm._s(_vm.user.name))])
-                  ]),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-chevron-right" })
-                ])
+                !_vm.listed
+                  ? _c("li", { staticClass: "menuOption" }, [
+                      _c("span", [
+                        _vm._v("Silenciar "),
+                        _c("b", [_vm._v("@" + _vm._s(_vm.user.name))])
+                      ]),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "fas fa-chevron-right" })
+                    ])
+                  : _vm._e()
               ]
             )
           : _vm._e()

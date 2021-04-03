@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div v-if="showTransparent" class="transparentBackground" @click="closeAll"></div>
         <ColumnGroups></ColumnGroups>
         <ColumnProperties></ColumnProperties>
         <BodyApplication></BodyApplication>
@@ -25,11 +26,24 @@ export default {
         MouseLeftMenuHandle,
         ModalHandle
     },
+    data() {
+        return {
+            showTransparent: true
+        }
+    },
     mounted() {
         setTimeout(() => {
             let firstButton = document.querySelector('.column-properties .button:first-of-type')
             if(firstButton) firstButton.click()
         }, 100)
+
+        window.eventBus.$on('showTransparent', event => this.showTransparent = event)
+    },
+    methods: {
+        closeAll() {
+            this.showTransparent = false
+            window.eventBus.$emit('closeAllModal', false)
+        }
     }
 }
 </script>

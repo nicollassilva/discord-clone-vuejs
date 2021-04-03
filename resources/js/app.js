@@ -34,6 +34,11 @@ window.eventBus = new Vue({
 
         toggleMouseMenu(object) {
             this.$emit('toggleMouseMenu', object)
+        },
+
+        closeMenu() {
+            this.toggleMouseMenu({ visible: false })
+            this.$emit('leftMenuEvent', { visible: false })
         }
     }
 })
@@ -85,11 +90,6 @@ function removeActiveButton() {
     })
 }
 
-function closeMenu() {
-    window.eventBus.$emit('toggleMouseMenu', { visible: false })
-    window.eventBus.$emit('leftMenuEvent', { visible: false })
-}
-
 window.removeByAttr = function(arr, attr, value) {
     var i = arr.length;
     while(i--) {
@@ -113,7 +113,7 @@ $('body').tooltip({
 });
 
 document.addEventListener('click', _ => {
-    closeMenu(),
+    window.eventBus.closeMenu(),
     $('.tooltip').remove()
 })
 

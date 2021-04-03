@@ -12792,26 +12792,136 @@ body {
   cursor: pointer;
 }
 
-.midModal {
+.transparentBackground {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1200;
+  z-index: 50;
   margin: 0;
 }
 
-.midModal .midModalBody {
-  width: auto;
-  min-width: 200px;
-  min-height: 100px;
-  padding: 15px;
+.midModalBody {
+  min-width: 15px;
+  min-height: 15px;
   background-color: #2F3136;
-  position: relative;
+  position: absolute;
   border-radius: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+.midModalBody.profile {
+  width: 600px;
+  height: 415px;
+  top: calc(50vh - 207.5px);
+}
+
+.midModalBody.profile .head-profile {
+  width: 100%;
+  height: 175px;
+  background-color: #202225;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.midModalBody.profile .head-profile .profile-info {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  padding: 20px;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #7289DA;
+  border-radius: 50%;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status {
+  width: 25px;
+  height: 25px;
+  background-color: #202225;
+  bottom: 0;
+  right: 0;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.online::before,
+.midModalBody.profile .head-profile .profile-info .avatar .status.absent::before,
+.midModalBody.profile .head-profile .profile-info .avatar .status.offline::before,
+.midModalBody.profile .head-profile .profile-info .avatar .status.busy::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #43B581;
+  border-radius: 50%;
+  right: 5px;
+  bottom: 5px;
+  z-index: 2;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.absent::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #202225;
+  top: 3px;
+  left: 3px;
+  z-index: 5;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.absent::before {
+  background-color: #FAA61A;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.busy::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #2F3136;
+  right: 7px;
+  bottom: 10px;
+  z-index: 5;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.busy::before {
+  background-color: #F04747;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.offline::before {
+  background-color: #747f8d;
+}
+
+.midModalBody.profile .head-profile .profile-info .avatar .status.offline::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #202225;
+  right: 9px;
+  bottom: 9px;
+  z-index: 5;
+}
+
+.midModalBody.profile .head-profile .profile-menu {
+  width: 100%;
+  height: 55px;
+  border-top: 1px solid #2F3136;
 }
 
 .animated.zoomIn,
@@ -12820,7 +12930,11 @@ body {
           animation-duration: 0.3s;
 }
 
-.midModal.animated.zoomIn,
+.midModal.animated.zoomIn {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
 .midModal.animated.zoomOut {
   -webkit-animation-duration: 1s;
           animation-duration: 1s;

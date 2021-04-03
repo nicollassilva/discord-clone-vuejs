@@ -1,7 +1,11 @@
 <template>
     <div>
     <transition-group name="flip-list" tag="div">
-        <div class="user-list" data-menu="users" v-for="list in lists" :key="list.id" @click="changeBody('conversation', list)">
+        <div class="user-list"
+            v-for="list in lists"
+            :key="list.id"
+            @contextmenu="openContextMenu($event, list)"
+            @click="changeBody('conversation', list)">
             <div class="avatar" :style="{ 'background-image': `url('${list.image}')` }">
                 <div data-toggle="tooltip" :title="getStatusTitle(list.status)" :class="['status', list.status]"></div>
             </div>
@@ -45,6 +49,17 @@ export default {
 
         menuClick(event, menu) {
             window.eventBus.leftMenuClick(menu, event.clientX, event.clientY)
+        },
+
+        openContextMenu(event, user) {
+            window.eventBus.toggleMouseMenu({
+                type: 'users',
+                positionX: event.clientX,
+                positionY: (event.clientY > 650 ? 590 : event.clientY),
+                user,
+                visible: true,
+                listed: this.page != 'pendente' && this.page != 'bloqueado' ? true : false
+            })
         }
     }
 }
