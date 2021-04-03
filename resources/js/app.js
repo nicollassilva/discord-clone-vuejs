@@ -30,6 +30,10 @@ window.eventBus = new Vue({
         
         toggleModal(modal, ...data) {
             this.$emit('toggleModal', { modal, ...data })
+        },
+
+        toggleMouseMenu(object) {
+            this.$emit('toggleMouseMenu', object)
         }
     }
 })
@@ -66,16 +70,11 @@ const buttons = document.querySelectorAll('.rounded-icon')
  * Functions
  */
 
+ document.addEventListener('contextmenu', event => eventPreventDefault(event))
+
 function eventPreventDefault(e) {
     e.stopPropagation()
     e.preventDefault()
-}
-
-function menuMouseHandle(element, positionX, positionY) {
-    if(element.hasAttribute('data-menu') && element.dataset.menu != '') {
-        closeMenu()
-        window.eventBus.$emit('toggleMouseMenu', { type: element.dataset.menu, positionX, positionY, visible: true })
-    }
 }
 
 function removeActiveButton() {
@@ -89,18 +88,6 @@ function removeActiveButton() {
 function closeMenu() {
     window.eventBus.$emit('toggleMouseMenu', { visible: false })
     window.eventBus.$emit('leftMenuEvent', { visible: false })
-}
-
-function buttonRightMenuToggle() {
-    document.querySelectorAll('[data-menu]').forEach(element => {
-        element.addEventListener('contextmenu', function(e) {
-            const x = e.clientX,
-                  y = e.clientY
-            
-            menuMouseHandle(element, x, y)
-        })
-    })
-
 }
 
 window.removeByAttr = function(arr, attr, value) {
@@ -125,10 +112,6 @@ $('body').tooltip({
     boundary: 'window'
 });
 
-buttonRightMenuToggle()
-
-document.addEventListener('contextmenu', event => { eventPreventDefault(event) })
-
 document.addEventListener('click', _ => {
     closeMenu(),
     $('.tooltip').remove()
@@ -140,6 +123,5 @@ buttons.forEach(element => {
             removeActiveButton()
             element.classList.add('active')
         }
-        buttonRightMenuToggle()
     })
 })

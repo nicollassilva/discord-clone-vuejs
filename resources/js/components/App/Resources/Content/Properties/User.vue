@@ -26,7 +26,7 @@
                 :class="{ 'active': (friend.id === activeId) }"
                 :avatar="friend.image"
                 :status="friend.status"
-                menu="users"
+                @contextmenu.native="openContextMenu($event, friend)"
                 @click.native="changeBody('conversation', friend)"
             >
                 <template v-slot:info>
@@ -108,6 +108,16 @@ export default {
 
         toggleModal(modal) {
             window.eventBus.toggleModal(modal)
+        },
+
+        openContextMenu(event, user) {
+            window.eventBus.toggleMouseMenu({
+                type: 'users',
+                positionX: event.clientX,
+                positionY: (event.clientY > 650 ? 590 : event.clientY),
+                user,
+                visible: true
+            })
         }
     }
 }

@@ -11268,6 +11268,13 @@ body {
   position: relative;
 }
 
+.menuMouseAction li.menuOption i {
+  float: right;
+  font-size: 10px;
+  margin: 0 10px;
+  margin-top: 2.5px;
+}
+
 .menuMouseAction li.menuOption.disabled {
   color: rgba(255, 255, 255, 0.2);
 }

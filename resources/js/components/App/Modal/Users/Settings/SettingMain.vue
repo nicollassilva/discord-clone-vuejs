@@ -65,7 +65,7 @@ export default {
         return {
             visibility: false,
             svg: window.svgHandle,
-            bodyActive: 'Connections',
+            bodyActive: 'Main',
             user: window.myUser
         }
     },

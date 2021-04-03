@@ -14,7 +14,10 @@
             <li class="menuOption">Adicionar amigo</li>
             <li class="menuOption">Bloquear</li>
             <div class="separator"></div>
-            <li class="menuOption">Silenciar</li>
+            <li class="menuOption">
+                <span>Silenciar <b>@{{ user.name }}</b></span>
+                <i class="fas fa-chevron-right"></i>
+            </li>
         </div>
         </transition>
     </div>
@@ -23,6 +26,7 @@
 export default {
     data() {
         return {
+            user: null,
             visibility: false,
             position: {
                 x: 0,
@@ -35,9 +39,10 @@ export default {
             if(event.type && event.type === 'users') {
                 this.toggleVisibility(event.visible)
                 this.setPositions(event.positionX, event.positionY)
+                this.user = event.user
             } else {
                 if(this.visibility) {
-                    this.toggleVisibility(event.visible)
+                    this.toggleVisibility(false)
                 }
             }
         })

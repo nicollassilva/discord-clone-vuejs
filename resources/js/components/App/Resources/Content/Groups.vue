@@ -5,7 +5,7 @@
             :key="group.id"
             :title="group.name"
             :background="group.icon"
-            menu="groups"
+            @contextmenu.native="openContextMenu($event, group)"
             @click.native="changePage(group)"
         ></Button>
     </div>
@@ -28,8 +28,19 @@ export default {
             })
             this.changeBody('group', group)
         },
+
         changeBody(type, data) {
             window.eventBus.$emit('changeBody', { type, data })
+        },
+
+        openContextMenu(event, group) {
+            window.eventBus.toggleMouseMenu({
+                type: 'groups',
+                positionX: event.clientX,
+                positionY: event.clientY,
+                group,
+                visible: true
+            })
         }
     }
 }

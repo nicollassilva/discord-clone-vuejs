@@ -36,7 +36,7 @@ export default {
                 this.setPositions(event.positionX, event.positionY)
             } else {
                 if(this.visibility) {
-                    this.toggleVisibility(event.visible)
+                    this.toggleVisibility(false)
                 }
             }
         })

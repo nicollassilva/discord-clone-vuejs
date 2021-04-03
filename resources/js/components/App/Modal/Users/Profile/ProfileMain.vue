@@ -11,7 +11,7 @@
 export default {
     data() {
         return {
-            visibility: true,
+            visibility: false,
             userProfile: {}
         }
     },
