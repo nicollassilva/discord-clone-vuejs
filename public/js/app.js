@@ -2580,7 +2580,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      months: window.appData.months,
       daySelected: null,
       monthSelected: null,
       yearSelected: null,
@@ -2756,6 +2756,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2763,12 +2766,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      data: {
+        email: '',
+        username: '',
+        password: '',
+        birthday: {
+          day: '',
+          month: '',
+          year: ''
+        }
+      },
       transition: false,
       openedMenu: '',
       daySelected: null,
       monthSelected: null,
-      yearSelected: null
+      yearSelected: null,
+      months: window.appData.months,
+      next: false
     };
+  },
+  computed: {
+    nextStep: function nextStep() {
+      var data = this.data;
+      if (data.email != '' && data.username != '' && data.password != '' && data.password.length >= 6) return true;else return false;
+    }
   },
   mounted: function mounted() {
     this.transition = true;
@@ -4758,6 +4779,7 @@ __webpack_require__.r(__webpack_exports__);
     name: 'TikTok Oficial',
     icon: 'https://s16.tiktokcdn.com/musical/resource/mtact/static/images/share_img.png'
   }],
+  months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
   realStatusTitle: function realStatusTitle(status) {
     var title = '';
 
@@ -44571,7 +44593,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("input", {
                         staticClass: "form-control",
-                        attrs: { type: "email", id: "email", name: "email" }
+                        attrs: {
+                          type: "email",
+                          id: "email",
+                          name: "email",
+                          required: "",
+                          autofocus: ""
+                        }
                       })
                     ]),
                     _vm._v(" "),
@@ -44591,7 +44619,8 @@ var render = function() {
                           attrs: {
                             type: "password",
                             id: "password",
-                            name: "password"
+                            name: "password",
+                            required: ""
                           }
                         })
                       ]
@@ -44695,8 +44724,30 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.data.email,
+                            expression: "data.email"
+                          }
+                        ],
                         staticClass: "form-control",
-                        attrs: { type: "email", id: "email", name: "email" }
+                        attrs: {
+                          type: "email",
+                          id: "email",
+                          required: "",
+                          autofocus: ""
+                        },
+                        domProps: { value: _vm.data.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.data, "email", $event.target.value)
+                          }
+                        }
                       })
                     ]),
                     _vm._v(" "),
@@ -44706,11 +44757,24 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.data.username,
+                            expression: "data.username"
+                          }
+                        ],
                         staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "username",
-                          name: "username"
+                        attrs: { type: "text", id: "username", required: "" },
+                        domProps: { value: _vm.data.username },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.data, "username", $event.target.value)
+                          }
                         }
                       })
                     ]),
@@ -44721,11 +44785,28 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.data.password,
+                            expression: "data.password"
+                          }
+                        ],
                         staticClass: "form-control",
                         attrs: {
                           type: "password",
                           id: "password",
-                          name: "password"
+                          required: ""
+                        },
+                        domProps: { value: _vm.data.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.data, "password", $event.target.value)
+                          }
                         }
                       })
                     ]),
@@ -44867,9 +44948,26 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("button", { attrs: { type: "submit" } }, [
-                      _vm._v("Contnuar")
-                    ]),
+                    _c("input", {
+                      attrs: { type: "hidden", name: "day" },
+                      domProps: { value: _vm.data.birthday.day }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "hidden", name: "month" },
+                      domProps: { value: _vm.data.birthday.month }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "hidden", name: "year" },
+                      domProps: { value: _vm.data.birthday.year }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      { attrs: { type: "submit", disabled: !_vm.nextStep } },
+                      [_vm._v("Continuar")]
+                    ),
                     _vm._v(" "),
                     _c(
                       "p",

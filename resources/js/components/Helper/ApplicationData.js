@@ -163,6 +163,20 @@ export default {
             icon: 'https://s16.tiktokcdn.com/musical/resource/mtact/static/images/share_img.png'
         }
     ],
+    months: [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
+    ],
     realStatusTitle(status) {
         let title = '';
             switch(status) {

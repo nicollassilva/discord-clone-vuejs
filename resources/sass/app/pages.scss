@@ -163,6 +163,8 @@
                 background-color: $dPurple;
                 border: none;
                 height: 44px;
+
+                &[disabled] { opacity: .5; }
             }
 
             p.text-muted { font-size: 12px; }

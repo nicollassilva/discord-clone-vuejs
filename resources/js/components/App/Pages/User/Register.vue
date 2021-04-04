@@ -6,15 +6,15 @@
                         <span class="title">Criar uma conta</span>
                         <div class="form-group mt-3">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control" name="email">
+                            <input type="email" id="email" class="form-control" v-model="data.email" required autofocus>
                         </div>
                         <div class="form-group mt-3">
                             <label for="username">Nome de usuário</label>
-                            <input type="text" id="username" class="form-control" name="username">
+                            <input type="text" id="username" class="form-control" v-model="data.username" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Senha</label>
-                            <input type="password" id="password" class="form-control" name="password">
+                            <input type="password" id="password" class="form-control" v-model="data.password" required>
                         </div>
                         <div class="form-group">
                             <label>Data de Nascimento</label>
@@ -54,7 +54,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit">Contnuar</button>
+                        <input type="hidden" name="day" :value="data.birthday.day">
+                        <input type="hidden" name="month" :value="data.birthday.month">
+                        <input type="hidden" name="year" :value="data.birthday.year">
+                        <button type="submit" :disabled="!nextStep">Continuar</button>
                         <p class="text-muted py-2 mt-1 mb-0">
                             <router-link class="link w-auto float-none" tag="span" to="/login">Já tem uma conta?</router-link>
                         </p>
@@ -73,11 +76,32 @@ export default {
     components: { MenuSelector },
     data() {
         return {
+            data: {
+                email: '',
+                username: '',
+                password: '',
+                birthday: {
+                    day: '',
+                    month: '',
+                    year: ''
+                }
+            },
             transition: false,
             openedMenu: '',
             daySelected: null,
             monthSelected: null,
-            yearSelected: null
+            yearSelected: null,
+            months: window.appData.months,
+            next: false
+        }
+    },
+
+    computed: {
+
+        nextStep() {
+            let data = this.data
+            if(data.email != '' && data.username != '' && data.password != '' && data.password.length >= 6) return true
+            else return false
         }
     },
     

@@ -13188,6 +13188,10 @@ body {
   height: 44px;
 }
 
+.login-wrapper .box-wrapper form.login button[disabled] {
+  opacity: 0.5;
+}
+
 .login-wrapper .box-wrapper form.login p.text-muted {
   font-size: 12px;
 }

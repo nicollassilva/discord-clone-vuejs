@@ -35,20 +35,7 @@ export default {
     },
     data() {
         return {
-            months: [
-                'Janeiro',
-                'Fevereiro',
-                'Março',
-                'Abril',
-                'Maio',
-                'Junho',
-                'Julho',
-                'Agosto',
-                'Setembro',
-                'Outubro',
-                'Novembro',
-                'Dezembro'
-            ],
+            months: window.appData.months,
             daySelected: null,
             monthSelected: null,
             yearSelected: null,
