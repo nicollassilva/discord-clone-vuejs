@@ -1,6 +1,6 @@
 <template>
-        <div class="login-wrapper">
-            <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut" mode="out-in">
+        <div class="login-wrapper" @click.self="toggleMenu">
+            <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut" mode="out-in" appear>
                 <div v-if="transition" class="box-wrapper">
                     <form class="login" autocomplete="off">
                         <span class="title">Criar uma conta</span>
@@ -20,30 +20,47 @@
                             <label>Data de Nascimento</label>
                             <div class="row d-flex justify-content-between">
                                 <div class="col">
-                                    <div class="selector" @click="daySelected = !daySelected">
-                                        <span>Selecionar</span>
-                                        <i :class="['fas', `fa-chevron-${ !daySelected ? 'down' : 'up' }`]"></i>
-                                        <MenuSelector v-if="daySelected" type="day" />
+                                    <div class="selector"
+                                        @click="toggleMenu('day')">
+                                            <span>{{ daySelected || 'Selecionar' }}</span>
+                                            <i :class="['fas', `fa-chevron-${ openedMenu === 'day' ? 'down' : 'up' }`]"></i>
+                                            <MenuSelector
+                                                @updateDay="daySelected = $event"
+                                                v-if="openedMenu === 'day'"
+                                                type="day" />
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="selector" @click="monthSelected = !monthSelected">
-                                        <span>Selecionar</span>
-                                        <i :class="['fas', `fa-chevron-${ !monthSelected ? 'down' : 'up' }`]"></i>
-                                        <MenuSelector v-if="monthSelected" type="mounth" />
+                                    <div class="selector"
+                                        @click="toggleMenu('month')">
+                                            <span>{{ monthSelected || 'Selecionar' }}</span>
+                                            <i :class="['fas', `fa-chevron-${ openedMenu === 'month' ? 'down' : 'up' }`]"></i>
+                                            <MenuSelector
+                                                @updateMonth="monthSelected = $event"
+                                                v-if="openedMenu === 'month'"
+                                                type="month" />
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="selector" @click="yearSelected = !yearSelected">
-                                        <span>Selecionar</span>
-                                        <i :class="['fas', `fa-chevron-${ !yearSelected ? 'down' : 'up' }`]"></i>
-                                        <MenuSelector v-if="yearSelected" type="year" />
+                                    <div class="selector"
+                                        @click="toggleMenu('year')">
+                                            <span>{{ yearSelected || 'Selecionar' }}</span>
+                                            <i :class="['fas', `fa-chevron-${ openedMenu === 'year' ? 'down' : 'up' }`]"></i>
+                                            <MenuSelector
+                                                @updateYear="yearSelected = $event"
+                                                v-if="openedMenu === 'year'"
+                                                type="year" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit">Continuar</button>
-                        <p class="text-muted py-2"><router-link class="link w-auto float-none" tag="span" to="/login">Já tem uma conta?</router-link></p>
+                        <button type="submit">Contnuar</button>
+                        <p class="text-muted py-2 mt-1 mb-0">
+                            <router-link class="link w-auto float-none" tag="span" to="/login">Já tem uma conta?</router-link>
+                        </p>
+                        <p class="text-muted mb-0" style="font-size: 10px">
+                            Ao se registrar, você concorda com os termos de serviço e a política de privacidade do Discord.
+                        </p>
                     </form>
                 </div>
             </transition>
@@ -57,9 +74,10 @@ export default {
     data() {
         return {
             transition: false,
-            daySelected: false,
-            monthSelected: false,
-            yearSelected: false
+            openedMenu: '',
+            daySelected: null,
+            monthSelected: null,
+            yearSelected: null
         }
     },
     
@@ -69,6 +87,16 @@ export default {
 
     destroyed() {
         this.transition = false
+    },
+
+    methods: {
+        toggleMenu(menu = '') {
+            if(this.openedMenu === menu) {
+                this.openedMenu = ''
+            } else [
+                this.openedMenu = menu
+            ]
+        }
     }
 }
 </script>

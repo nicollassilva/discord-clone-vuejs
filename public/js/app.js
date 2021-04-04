@@ -2551,11 +2551,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     type: {
       type: String,
       "default": 'day'
+    }
+  },
+  data: function data() {
+    return {
+      months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      daySelected: null,
+      monthSelected: null,
+      yearSelected: null,
+      fullYear: new Date().getFullYear()
+    };
+  },
+  watch: {
+    daySelected: function daySelected() {
+      this.$emit('updateDay', this.daySelected);
+    },
+    monthSelected: function monthSelected() {
+      this.$emit('updateMonth', this.monthSelected);
+    },
+    yearSelected: function yearSelected() {
+      this.$emit('updateYear', this.yearSelected);
     }
   }
 });
@@ -2699,6 +2739,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2707,9 +2764,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       transition: false,
-      daySelected: false,
-      monthSelected: false,
-      yearSelected: false
+      openedMenu: '',
+      daySelected: null,
+      monthSelected: null,
+      yearSelected: null
     };
   },
   mounted: function mounted() {
@@ -2717,6 +2775,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   destroyed: function destroyed() {
     this.transition = false;
+  },
+  methods: {
+    toggleMenu: function toggleMenu() {
+      var menu = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      if (this.openedMenu === menu) {
+        this.openedMenu = '';
+      } else [this.openedMenu = menu];
+    }
   }
 });
 
@@ -4308,6 +4375,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Helper_ApplicationData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Helper/ApplicationData */ "./resources/js/components/Helper/ApplicationData.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./axios */ "./resources/js/axios.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4383,8 +4451,9 @@ files.keys().map(function (key) {
   return vue__WEBPACK_IMPORTED_MODULE_3__.default.component(key.split('/').pop().split('.')[0], files(key)["default"]);
 });
 /**
- * Principal instance VUE
+ * Principal instance VUE & axios global use
  */
+
 
 
 /**
@@ -4468,6 +4537,28 @@ buttons.forEach(function (element) {
       element.classList.add('active');
     }
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/axios.js":
+/*!*******************************!*\
+  !*** ./resources/js/axios.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
+(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.baseURL) = window.App.url;
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use({
+  install: function install(Vue) {
+    Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_0___default());
+  }
 });
 
 /***/ }),
@@ -44326,16 +44417,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "menu" }, [
-    _vm.type && _vm.type === "day"
-      ? _c(
-          "div",
-          _vm._l(31, function(day) {
-            return _c("li", { key: day }, [_vm._v(_vm._s(day))])
-          }),
-          0
-        )
-      : _vm._e()
+  return _c("transition", { attrs: { name: "fade", appear: "" } }, [
+    _c("div", { staticClass: "menu" }, [
+      _vm.type && _vm.type === "day"
+        ? _c(
+            "div",
+            _vm._l(31, function(day) {
+              return _c(
+                "li",
+                {
+                  key: day,
+                  class: { active: _vm.daySelected === day },
+                  on: {
+                    click: function($event) {
+                      _vm.daySelected = day
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(day))]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type && _vm.type === "month"
+        ? _c(
+            "div",
+            _vm._l(_vm.months, function(month, i) {
+              return _c(
+                "li",
+                {
+                  key: i,
+                  class: { active: _vm.monthSelected === month },
+                  on: {
+                    click: function($event) {
+                      _vm.monthSelected = month
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(month))]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type && _vm.type === "year"
+        ? _c(
+            "div",
+            _vm._l(150, function(year, i) {
+              return _c(
+                "li",
+                {
+                  key: i,
+                  class: { active: _vm.yearSelected === year },
+                  on: {
+                    click: function($event) {
+                      _vm.yearSelected = _vm.fullYear - year
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.fullYear - year))]
+              )
+            }),
+            0
+          )
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []
@@ -44396,7 +44545,8 @@ var render = function() {
           attrs: {
             "enter-active-class": "animated zoomIn",
             "leave-active-class": "animated zoomOut",
-            mode: "out-in"
+            mode: "out-in",
+            appear: ""
           }
         },
         [
@@ -44506,7 +44656,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "login-wrapper" },
+    {
+      staticClass: "login-wrapper",
+      on: {
+        click: function($event) {
+          if ($event.target !== $event.currentTarget) {
+            return null
+          }
+          return _vm.toggleMenu($event)
+        }
+      }
+    },
     [
       _c(
         "transition",
@@ -44514,7 +44674,8 @@ var render = function() {
           attrs: {
             "enter-active-class": "animated zoomIn",
             "leave-active-class": "animated zoomOut",
-            mode: "out-in"
+            mode: "out-in",
+            appear: ""
           }
         },
         [
@@ -44583,24 +44744,33 @@ var render = function() {
                                 staticClass: "selector",
                                 on: {
                                   click: function($event) {
-                                    _vm.daySelected = !_vm.daySelected
+                                    return _vm.toggleMenu("day")
                                   }
                                 }
                               },
                               [
-                                _c("span", [_vm._v("Selecionar")]),
+                                _c("span", [
+                                  _vm._v(
+                                    _vm._s(_vm.daySelected || "Selecionar")
+                                  )
+                                ]),
                                 _vm._v(" "),
                                 _c("i", {
                                   class: [
                                     "fas",
                                     "fa-chevron-" +
-                                      (!_vm.daySelected ? "down" : "up")
+                                      (_vm.openedMenu === "day" ? "down" : "up")
                                   ]
                                 }),
                                 _vm._v(" "),
-                                _vm.daySelected
+                                _vm.openedMenu === "day"
                                   ? _c("MenuSelector", {
-                                      attrs: { type: "day" }
+                                      attrs: { type: "day" },
+                                      on: {
+                                        updateDay: function($event) {
+                                          _vm.daySelected = $event
+                                        }
+                                      }
                                     })
                                   : _vm._e()
                               ],
@@ -44615,24 +44785,35 @@ var render = function() {
                                 staticClass: "selector",
                                 on: {
                                   click: function($event) {
-                                    _vm.monthSelected = !_vm.monthSelected
+                                    return _vm.toggleMenu("month")
                                   }
                                 }
                               },
                               [
-                                _c("span", [_vm._v("Selecionar")]),
+                                _c("span", [
+                                  _vm._v(
+                                    _vm._s(_vm.monthSelected || "Selecionar")
+                                  )
+                                ]),
                                 _vm._v(" "),
                                 _c("i", {
                                   class: [
                                     "fas",
                                     "fa-chevron-" +
-                                      (!_vm.monthSelected ? "down" : "up")
+                                      (_vm.openedMenu === "month"
+                                        ? "down"
+                                        : "up")
                                   ]
                                 }),
                                 _vm._v(" "),
-                                _vm.monthSelected
+                                _vm.openedMenu === "month"
                                   ? _c("MenuSelector", {
-                                      attrs: { type: "mounth" }
+                                      attrs: { type: "month" },
+                                      on: {
+                                        updateMonth: function($event) {
+                                          _vm.monthSelected = $event
+                                        }
+                                      }
                                     })
                                   : _vm._e()
                               ],
@@ -44647,24 +44828,35 @@ var render = function() {
                                 staticClass: "selector",
                                 on: {
                                   click: function($event) {
-                                    _vm.yearSelected = !_vm.yearSelected
+                                    return _vm.toggleMenu("year")
                                   }
                                 }
                               },
                               [
-                                _c("span", [_vm._v("Selecionar")]),
+                                _c("span", [
+                                  _vm._v(
+                                    _vm._s(_vm.yearSelected || "Selecionar")
+                                  )
+                                ]),
                                 _vm._v(" "),
                                 _c("i", {
                                   class: [
                                     "fas",
                                     "fa-chevron-" +
-                                      (!_vm.yearSelected ? "down" : "up")
+                                      (_vm.openedMenu === "year"
+                                        ? "down"
+                                        : "up")
                                   ]
                                 }),
                                 _vm._v(" "),
-                                _vm.yearSelected
+                                _vm.openedMenu === "year"
                                   ? _c("MenuSelector", {
-                                      attrs: { type: "year" }
+                                      attrs: { type: "year" },
+                                      on: {
+                                        updateYear: function($event) {
+                                          _vm.yearSelected = $event
+                                        }
+                                      }
                                     })
                                   : _vm._e()
                               ],
@@ -44676,12 +44868,12 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("button", { attrs: { type: "submit" } }, [
-                      _vm._v("Continuar")
+                      _vm._v("Contnuar")
                     ]),
                     _vm._v(" "),
                     _c(
                       "p",
-                      { staticClass: "text-muted py-2" },
+                      { staticClass: "text-muted py-2 mt-1 mb-0" },
                       [
                         _c(
                           "router-link",
@@ -44693,6 +44885,19 @@ var render = function() {
                         )
                       ],
                       1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass: "text-muted mb-0",
+                        staticStyle: { "font-size": "10px" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Ao se registrar, você concorda com os termos de serviço e a política de privacidade do Discord.\n                "
+                        )
+                      ]
                     )
                   ]
                 )
@@ -62045,6 +62250,18 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

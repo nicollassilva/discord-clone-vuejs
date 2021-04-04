@@ -9,6 +9,18 @@
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width: 1000px) {
+        max-height: 100vh !important;
+        overflow: hidden scroll;
+        align-items: start;
+
+        &::-webkit-scrollbar-thumb { background-color: $dBackground; border-radius: 15px; }
+
+        &:hover {
+            &::-webkit-scrollbar { display: block; }
+        }
+    }
+
     .box-wrapper {
         padding: 20px;
         position: relative;
@@ -99,11 +111,10 @@
                     i {
                         color: rgba(255, 255, 255, 0.7);
                         margin-left: 5px;
+                        font-size: 12px;
                     }
 
-                    &:hover {
-                        cursor: pointer;
-                    }
+                    &:hover { cursor: pointer; }
                     
                     .menu {
                         background-color: $dBackgroundSelectorMenu;
@@ -123,7 +134,7 @@
                             color: rgba(255, 255, 255, 0.7);
                             font-size: 14px;
                             font-weight: 500;
-                            padding: 5px;
+                            padding: 10px;
 
                             &:hover {
                                 background-color: rgba(0, 0, 0, 0.09)

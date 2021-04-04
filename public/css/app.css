@@ -12940,6 +12940,16 @@ body {
           animation-duration: 1s;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .bs-tooltip-top .tooltip-inner,
 .bs-tooltip-auto[x-placement^=top] .tooltip-inner,
 .bs-tooltip-right .tooltip-inner,
@@ -13004,6 +13014,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .login-wrapper {
+    max-height: 100vh !important;
+    overflow: hidden scroll;
+    align-items: start;
+  }
+
+  .login-wrapper::-webkit-scrollbar-thumb {
+    background-color: #202225;
+    border-radius: 15px;
+  }
+
+  .login-wrapper:hover::-webkit-scrollbar {
+    display: block;
+  }
 }
 
 .login-wrapper .box-wrapper {
@@ -13104,6 +13131,7 @@ body {
 .login-wrapper .box-wrapper form.login .form-group .selector i {
   color: rgba(255, 255, 255, 0.7);
   margin-left: 5px;
+  font-size: 12px;
 }
 
 .login-wrapper .box-wrapper form.login .form-group .selector:hover {
@@ -13129,7 +13157,7 @@ body {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
   font-weight: 500;
-  padding: 5px;
+  padding: 10px;
 }
 
 .login-wrapper .box-wrapper form.login .form-group .selector .menu li:hover {

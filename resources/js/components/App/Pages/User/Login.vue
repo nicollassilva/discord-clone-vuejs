@@ -1,6 +1,6 @@
 <template>
         <div class="login-wrapper">
-            <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut" mode="out-in">
+            <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut" mode="out-in" appear>
                 <div v-if="transition" class="box-wrapper">
                     <form class="login" autocomplete="off">
                         <span class="title">Boas-vindas de volta!</span>
