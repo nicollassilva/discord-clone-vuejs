@@ -24,5 +24,8 @@
         "vue-loader": "^15.9.5",
         "vue-template-compiler": "^2.6.10",
         "webpack-livereload-plugin": "^3.0.1"
+    },
+    "dependencies": {
+        "vue-router": "^3.5.1"
     }
 }

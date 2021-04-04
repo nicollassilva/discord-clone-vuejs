@@ -9,10 +9,13 @@ require('./bootstrap');
 import SvgHandle from './components/Helper/SvgHandle'
 import AudioHandle from './components/Helper/AudioHandle'
 import ApplicationData from './components/Helper/ApplicationData'
+import VueRouter from 'vue-router'
 
 /**
  * Globals variables
  */
+
+Vue.use(VueRouter)
 
 window.Vue = require('vue').default
 window.svgHandle = SvgHandle
@@ -51,18 +54,32 @@ window.myUser = window.appData.users[0]
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-
 /**
  * Principal instance VUE
  */
 
-import DiscordClone from './components/App/DiscordClone.vue'
+import Vue from 'vue';
+
+/**
+ * Router
+ */
+
+const routes = require('./router').default
+const router = new VueRouter({ routes, mode: 'history' })
+const authRouters = ['App']
+
+router.beforeEach((to, from, next) => {
+    if(window.App.auth === 'false' && from.name != 'Login' && authRouters.indexOf(to.name) >= 0) next({ name: 'Login' })
+    else next()
+})
+
+/**
+ * Application instance
+ */
 
 const app = new Vue({
-    components: {
-        DiscordClone
-    },
-    el: '#app'
+    el: '#app',
+    router
 });
 
 /**

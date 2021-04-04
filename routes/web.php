@@ -13,14 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group([
-//     'middleware' => 'auth'
-// ], function() {
-    Route::get('/', function () {
-        return view('app.index');
-    });
-//});
+Route::get('/', function () {
+    return view('app.index');
+});
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{vue_capture?}', function () {
+    return view('app.index');
+ })->where('vue_capture', '^(?!storage).*$'); 

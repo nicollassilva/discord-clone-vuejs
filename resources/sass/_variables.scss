@@ -27,6 +27,8 @@ $dBackgroundMenuActionMouse: #18191C;
 $dBackgroundGroupNameHover: #34373C;
 $dBackgroundPopupMe: #292B2F;
 $dBackgroundTextarea: #40444b;
+$dBackgroundInput: rgba(0, 0, 0, 0.1);
+$dBackgroundSelectorMenu: #303339;
 
 $dPurple: #7289DA;
 $dPurpleHover: #6881D7;
@@ -36,7 +38,10 @@ $dSuccess: #43B581;
 $dWarning: #FAA61A;
 $dHeader: #b9bbbe;
 $dLink: #00b0f4;
+$dColorInput: #dcddde;
 
 $dBackgroundOptionDisabled: rgb(114, 118, 125);
 $dBackgroundOptionActive: $dSuccess;
 $dBackgroundModalNote: rgba(32,34,37,0.6);
+
+$dBorderInput: rgba(0, 0, 0, 0.4);

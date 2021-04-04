@@ -12994,9 +12994,180 @@ body {
   letter-spacing: 0.8px;
 }
 
-.card-action {
-  background-color: #36393F;
+.login-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/images/loginBackground.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrapper .box-wrapper {
+  padding: 20px;
+  position: relative;
+  background: #36393F;
   border-radius: 5px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  color: #72767d;
+}
+
+.login-wrapper .box-wrapper form.login {
+  width: 430px;
+  height: auto;
+  position: relative;
+  float: left;
+  padding: 0 10px;
+}
+
+.login-wrapper .box-wrapper form.login span {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+.login-wrapper .box-wrapper form.login span.title {
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.login-wrapper .box-wrapper form.login span.description {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.login-wrapper .box-wrapper form.login span.link {
+  color: #7289DA;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: left;
+}
+
+.login-wrapper .box-wrapper form.login span.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-wrapper .box-wrapper form.login .form-group {
+  margin: 10px 0;
+  float: left;
+  width: 100%;
+}
+
+.login-wrapper .box-wrapper form.login .form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.login-wrapper .box-wrapper form.login .form-group input,
+.login-wrapper .box-wrapper form.login .form-group .selector {
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 42px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #dcddde;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.login-wrapper .box-wrapper form.login .form-group input:focus,
+.login-wrapper .box-wrapper form.login .form-group .selector:focus {
+  box-shadow: none;
+  border-color: #7289DA !important;
+}
+
+.login-wrapper .box-wrapper form.login .form-group input:hover,
+.login-wrapper .box-wrapper form.login .form-group .selector:hover {
+  border-color: rgba(0, 0, 0, 0.7);
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector i {
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 5px;
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector:hover {
+  cursor: pointer;
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector .menu {
+  background-color: #303339;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  max-width: 100%;
+  max-height: 200px;
+  overflow: hidden scroll;
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector .menu li {
+  width: 100%;
+  float: left;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector .menu li:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector .menu li.active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector .menu::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 15px;
+}
+
+.login-wrapper .box-wrapper form.login .form-group .selector .menu:hover::-webkit-scrollbar {
+  display: block;
+}
+
+.login-wrapper .box-wrapper form.login button {
+  width: 100%;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  background-color: #7289DA;
+  border: none;
+  height: 44px;
+}
+
+.login-wrapper .box-wrapper form.login p.text-muted {
+  font-size: 12px;
+}
+
+.login-wrapper .box-wrapper.animated.zoomIn,
+.login-wrapper .box-wrapper.animated.zoomOut {
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
 }
 
 
