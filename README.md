@@ -1,14 +1,14 @@
 ## Projeto Discord Clone feito em Laravel + VueJS
 
-#### Nesse projeto foi utilizado 
+### Nesse projeto foi utilizado 
 
-### Laravel
-### VueJS
-### VueRouter
-### JQuery (Para o tooltip do Bootstrap 4)
-### Bootstrap
-### SCSS
-### HeidiSQL
+#### Laravel
+#### VueJS
+#### VueRouter
+#### JQuery (Para o tooltip do Bootstrap 4)
+#### Bootstrap
+#### SCSS
+#### HeidiSQL
 
 ## Demonstração: (Somente desktop)
 
