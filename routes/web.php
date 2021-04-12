@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('/{vue_capture?}', function () {
     return view('app.index');
- })->where('vue_capture', '^(?!storage).*$'); 
+ })->where('vue_capture', '^(?!storage).*$');
