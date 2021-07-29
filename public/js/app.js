@@ -4487,12 +4487,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
   routes: routes,
   mode: 'history'
 });
-var authRouters = ['App'];
-router.beforeEach(function (to, from, next) {
-  if (window.App.auth === 'false' && from.name != 'Login' && authRouters.indexOf(to.name) >= 0) next({
-    name: 'Login'
-  });else next();
-});
+var authRouters = ['App']; // router.beforeEach((to, from, next) => {
+//     if(window.App.auth === 'false' && from.name != 'Login' && authRouters.indexOf(to.name) >= 0) next({ name: 'Login' })
+//     else next()
+// })
+
 /**
  * Application instance
  */
@@ -4644,7 +4643,7 @@ __webpack_require__.r(__webpack_exports__);
     id: 1,
     name: 'Nícollas',
     hashtagNumber: '#1564',
-    image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
+    image: 'https://pbs.twimg.com/profile_images/1364039854682558467/Z98f0cUL_400x400.jpg',
     activity: 'Programando o Discord Clone',
     status: 'offline',
     pending: false

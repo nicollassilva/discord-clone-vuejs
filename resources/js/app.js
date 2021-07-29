@@ -69,10 +69,10 @@ const routes = require('./router').default
 const router = new VueRouter({ routes, mode: 'history' })
 const authRouters = ['App']
 
-router.beforeEach((to, from, next) => {
-    if(window.App.auth === 'false' && from.name != 'Login' && authRouters.indexOf(to.name) >= 0) next({ name: 'Login' })
-    else next()
-})
+// router.beforeEach((to, from, next) => {
+//     if(window.App.auth === 'false' && from.name != 'Login' && authRouters.indexOf(to.name) >= 0) next({ name: 'Login' })
+//     else next()
+// })
 
 /**
  * Application instance

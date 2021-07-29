@@ -4,7 +4,7 @@ export default {
             id: 1,
             name: 'Nícollas',
             hashtagNumber: '#1564',
-            image: 'https://cdn.discordapp.com/avatars/275725966536474625/e552ba8d2b889db7f9f0e50b7527041a.png',
+            image: 'https://pbs.twimg.com/profile_images/1364039854682558467/Z98f0cUL_400x400.jpg',
             activity: 'Programando o Discord Clone',
             status: 'offline',
             pending: false
