@@ -1,5 +1,9 @@
 ## Projeto Discord Clone feito em Laravel + VueJS
 
+## Demonstração: (Somente desktop)
+
+[Clique aqui](https://nicollas.dev.br/projects/discord-clone-vuejs/)
+
 ### Nesse projeto foi utilizado 
 
 #### Laravel
@@ -9,7 +13,3 @@
 #### Bootstrap
 #### SCSS
 #### HeidiSQL
-
-## Demonstração: (Somente desktop)
-
-[Clique aqui](https://nicollas.dev.br/projects/discord-clone-vuejs/)
