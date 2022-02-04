@@ -2,7 +2,7 @@
 
 ## Demonstração: (Somente desktop)
 
-[Clique aqui](https://nicollas.dev.br/projects/discord-clone-vuejs/)
+[Clique aqui](https://murmuring-reef-48337.herokuapp.com/)
 
 ### Nesse projeto foi utilizado 
 
