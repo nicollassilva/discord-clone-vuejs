@@ -8,6 +8,7 @@
                         <div data-toggle="tooltip" 
                             :title="getStatusTitle(userProfile.status)"
                             :class="['status', userProfile.status]"></div>
+                            Perfil
                     </div>
                 </div>
                 <div class="profile-menu"></div>
